@@ -6351,14 +6351,14 @@ this.b=b},
 nh:function nh(a,b,c){this.f=a
 this.b=b
 this.a=c},
-Rq:function(a,b){var t,s=null,r=U.Fv(a.i(0,"icon"),85,85),q=L.aH(a.i(0,"name"),$.RQ(),C.F),p=a.i(0,"description"),o=$.RP()
+Rq:function(a,b){var t,s=null,r=U.Fv("assets/icon.png",85,85),q=L.aH(a.i(0,"name"),$.RQ(),C.F),p=a.i(0,"description"),o=$.RP()
 p=L.aH(p,o,C.F)
-o=b==="Internship"?N.Eo(L.aH("See Project",o,C.F),new G.P9(a)):N.Eo(L.aH("More Detail",o,C.F),new G.Pa())
+o=b==="Internship"?N.Eo(L.aH("More Detail",o,C.F),new G.P9()):N.Eo(L.aH("See Project",o,C.F),new G.Pa(a))
 t=u.E
 return T.wu(H.b([r,new T.aG(10,s,s,s),T.Eg(T.jq(H.b([q,new T.aG(s,10,s,s),p,new T.aG(s,5,s,s),o],t),C.aI,C.bs,C.b4))],t),C.dq)},
 Bo:function(a){return T.Eg(B.SP($.RN().i(0,a)[0],new G.P7(a),a))},
-P9:function P9(a){this.a=a},
-Pa:function Pa(){},
+P9:function P9(){},
+Pa:function Pa(a){this.a=a},
 P7:function P7(a){this.a=a},
 Vh:function(a,b){switch(b){case C.bv:return a
 case C.dz:case C.i9:case C.kX:return(a|1)>>>0
@@ -38129,11 +38129,11 @@ $0:function(){var t=this.a.pI(u.iK)
 t.dQ()},
 $S:0}
 G.P9.prototype={
-$0:function(){var t=this.a.i(0,"url")
-C.al.qK(window,t,"_blank")},
+$0:function(){},
 $S:0}
 G.Pa.prototype={
-$0:function(){},
+$0:function(){var t=this.a.i(0,"url")
+C.al.qK(window,t,"_blank")},
 $S:0}
 G.P7.prototype={
 $0:function(){var t=$.RN().i(0,this.a)[1]
