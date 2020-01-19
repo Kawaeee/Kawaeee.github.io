@@ -9,7 +9,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
   if (screenSize.width < 750) {
     return Container(
       width: screenSize.width,
-      height: screenSize.height,
+      // height: screenSize.height,
       child: ListView(
         physics: const AlwaysScrollableScrollPhysics(),
         shrinkWrap: true,
