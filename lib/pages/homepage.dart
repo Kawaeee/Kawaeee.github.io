@@ -11,17 +11,23 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: Container(
-              constraints: BoxConstraints(
-                minWidth: constraints.maxWidth,
-                minHeight: constraints.maxHeight,
+          return Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  gradient: theme,
+                ),
               ),
-              decoration: BoxDecoration(
-                gradient: theme,
+              SingleChildScrollView(
+                child: Container(
+                  constraints: BoxConstraints(
+                    minWidth: constraints.maxWidth,
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: createPortfolio(screenSize, context),
+                ),
               ),
-              child: createPortfolio(screenSize, context),
-            ),
+            ],
           );
         },
       ),
