@@ -9,6 +9,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
   if (screenSize.width < 750) {
     return IntrinsicHeight(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -144,7 +145,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                                 style: sectionDetail,
                               ),
                               onPressed: () {
-                                showInternshipDetail(screenSize, context);
+                                displayExperienceDetail(screenSize, context);
                               }),
                         ],
                       ),
@@ -159,7 +160,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                   style: sectionHeader,
                 ),
                 SizedBox(height: 10),
-                createProject(repositories[0], null),
+                createProject(repositories[0], null, context),
                 SizedBox(height: 10),
                 Text(
                   'Internship Projects',
@@ -167,9 +168,9 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                   style: sectionHeader,
                 ),
                 SizedBox(height: 10),
-                createProject(internshipProject[0], 'Internship'),
+                createProject(internshipProject[0], 'Internship', context),
                 SizedBox(height: 5),
-                createProject(internshipProject[1], 'Internship'),
+                createProject(internshipProject[1], 'Internship', context),
                 SizedBox(height: 10),
                 Text(
                   'Repositories',
@@ -177,19 +178,19 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                   style: sectionHeader,
                 ),
                 SizedBox(height: 10),
-                createProject(repositories[1], null),
+                createProject(repositories[1], null, context),
                 SizedBox(height: 5),
-                createProject(repositories[2], null),
+                createProject(repositories[2], null, context),
                 SizedBox(height: 5),
-                createProject(repositories[3], null),
+                createProject(repositories[3], null, context),
                 SizedBox(height: 5),
-                createProject(repositories[4], null),
+                createProject(repositories[4], null, context),
                 SizedBox(height: 5),
-                createProject(repositories[5], null),
+                createProject(repositories[5], null, context),
                 SizedBox(height: 5),
-                createProject(repositories[6], null),
+                createProject(repositories[6], null, context),
                 SizedBox(height: 5),
-                createProject(repositories[7], null),
+                createProject(repositories[7], null, context),
                 SizedBox(height: 10),
               ],
             ),

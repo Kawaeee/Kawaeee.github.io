@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kawae_portfolio/contents/portfolio.dart';
 import 'package:kawae_portfolio/utils/font_config.dart';
+import 'package:kawae_portfolio/utils/show_dialog.dart';
 
 // Including all projects,internship
-Widget createProject(Map map, String type) {
+Widget createProject(Map map, String type, BuildContext context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: <Widget>[
@@ -38,22 +39,22 @@ Widget createProject(Map map, String type) {
             type == 'Internship'
                 ? FlatButton(
                     child: Text(
+                      'More Detail',
+                      textAlign: TextAlign.center,
+                      style: sectionDetail,
+                    ),
+                    onPressed: () {
+                      displayInternshipDetail(context);
+                    },
+                  )
+                : FlatButton(
+                    child: Text(
                       'See Project',
                       textAlign: TextAlign.center,
                       style: sectionDetail,
                     ),
                     onPressed: () {
                       navigateLink(map['url']);
-                    },
-                  )
-                : FlatButton(
-                    child: Text(
-                      'More Detail',
-                      textAlign: TextAlign.center,
-                      style: sectionDetail,
-                    ),
-                    onPressed: () {
-                      // Dialog with full text
                     },
                   ),
           ],

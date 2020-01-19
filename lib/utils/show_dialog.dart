@@ -4,7 +4,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:kawae_portfolio/contents/portfolio.dart';
 import 'package:kawae_portfolio/utils/font_config.dart';
 
-void showInternshipDetail(Size screenSize, BuildContext context) {
+void displayExperienceDetail(Size screenSize, BuildContext context) {
   showDialog(
     barrierDismissible: false,
     context: context,
@@ -122,6 +122,28 @@ void showInternshipDetail(Size screenSize, BuildContext context) {
                 },
               ),
             ],
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void displayInternshipDetail(BuildContext context) {
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30.0))),
+        title: Text('Coming soon...'),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Done'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
           ),
         ],
       );
