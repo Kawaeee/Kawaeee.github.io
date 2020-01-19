@@ -6351,14 +6351,14 @@ this.b=b},
 nh:function nh(a,b,c){this.f=a
 this.b=b
 this.a=c},
-Rq:function(a,b){var t,s=null,r=U.Fv("assets/icon.png",85,85),q=L.aH(a.i(0,"name"),$.RQ(),C.F),p=a.i(0,"description"),o=$.RP()
+Rq:function(a,b){var t,s=null,r=U.Fv(a.i(0,"icon"),85,85),q=L.aH(a.i(0,"name"),$.RQ(),C.F),p=a.i(0,"description"),o=$.RP()
 p=L.aH(p,o,C.F)
-o=b==="Internship"?N.Eo(L.aH("More Detail",o,C.F),new G.P9()):N.Eo(L.aH("See Project",o,C.F),new G.Pa(a))
+o=b==="Internship"?N.Eo(L.aH("See Project",o,C.F),new G.P9(a)):N.Eo(L.aH("More Detail",o,C.F),new G.Pa())
 t=u.E
 return T.wu(H.b([r,new T.aG(10,s,s,s),T.Eg(T.jq(H.b([q,new T.aG(s,10,s,s),p,new T.aG(s,5,s,s),o],t),C.aI,C.bs,C.b4))],t),C.dq)},
 Bo:function(a){return T.Eg(B.SP($.RN().i(0,a)[0],new G.P7(a),a))},
-P9:function P9(){},
-Pa:function Pa(a){this.a=a},
+P9:function P9(a){this.a=a},
+Pa:function Pa(){},
 P7:function P7(a){this.a=a},
 Vh:function(a,b){switch(b){case C.bv:return a
 case C.dz:case C.i9:case C.kX:return(a|1)>>>0
@@ -9767,7 +9767,7 @@ k=$.RQ()
 l=L.aH(l,k,C.F)
 j=$.Bq.i(0,"degree")
 i=$.RP()
-return M.eQ(h,B.T2(H.b([T.jq(H.b([t,new T.aG(h,20,h,h),M.eQ(h,T.jq(H.b([s,new T.aG(h,8,h,h),r,new T.aG(h,8,h,h),p,new T.aG(h,10,h,h),n,new T.aG(h,10,h,h),T.wu(H.b([m,new T.aG(10,h,h,h),T.Eg(T.jq(H.b([l,new T.aG(h,10,h,h),L.aH(j,i,C.F),new T.aG(h,5,h,h),L.aH($.Bq.i(0,"faculty"),i,C.F),new T.aG(h,5,h,h),L.aH($.Bq.i(0,f),i,C.F)],q),C.aI,C.bs,C.b4))],q),C.dq),new T.aG(h,10,h,h),L.aH("Experience",o,C.F),new T.aG(h,10,h,h),T.wu(H.b([U.Fv($.Bs.i(0,"icon"),85,85),new T.aG(10,h,h,h),T.Eg(T.jq(H.b([L.aH($.Bs.i(0,g),k,C.F),new T.aG(h,10,h,h),L.aH($.Bs.i(0,"role"),i,C.F),new T.aG(h,5,h,h),L.aH($.Bs.i(0,"duration"),i,C.F),new T.aG(h,5,h,h),N.Eo(L.aH("More Detail",i,C.F),new D.P8(a,b))],q),C.aI,C.bs,C.b4))],q),C.dq),new T.aG(h,10,h,h),L.aH("Senior Project",o,C.F),new T.aG(h,10,h,h),G.Rq($.a1H[0],h),new T.aG(h,10,h,h),L.aH("Internship Projects",o,C.F),new T.aG(h,10,h,h),G.Rq($.Vy[0],e),new T.aG(h,5,h,h),G.Rq($.Vy[1],e),new T.aG(h,10,h,h)],q),C.aI,C.bs,C.b4),h,h,h,h,h,new V.ax(64,0,64,0),h),new T.fL(C.iM,h,h,L.aH("Made with love by Flutter",A.ho(h,h,C.Q,h,h,h,h,h,h,h,h,10,h,C.cf,h,h,!0,h,h,h,h,h,h),h),h)],q),C.aI,C.fg,C.b4)],q),C.iN,!0),h,h,h,a.b,h,h,d)}else return M.eQ(h,new T.fL(C.aa,h,h,L.aH("Kawae's portfolio will coming to Desktop site soon...",A.ho(h,h,C.Q,h,h,h,h,h,h,h,h,40,h,C.cf,h,h,!0,h,h,h,h,h,h),h),h),h,h,h,h,h,h,h)},
+return M.eQ(h,B.T2(H.b([T.jq(H.b([t,new T.aG(h,20,h,h),M.eQ(h,T.jq(H.b([s,new T.aG(h,8,h,h),r,new T.aG(h,8,h,h),p,new T.aG(h,10,h,h),n,new T.aG(h,10,h,h),T.wu(H.b([m,new T.aG(10,h,h,h),T.Eg(T.jq(H.b([l,new T.aG(h,10,h,h),L.aH(j,i,C.F),new T.aG(h,5,h,h),L.aH($.Bq.i(0,"faculty"),i,C.F),new T.aG(h,5,h,h),L.aH($.Bq.i(0,f),i,C.F)],q),C.aI,C.bs,C.b4))],q),C.dq),new T.aG(h,10,h,h),L.aH("Experience",o,C.F),new T.aG(h,10,h,h),T.wu(H.b([U.Fv($.Bs.i(0,"icon"),85,85),new T.aG(10,h,h,h),T.Eg(T.jq(H.b([L.aH($.Bs.i(0,g),k,C.F),new T.aG(h,10,h,h),L.aH($.Bs.i(0,"role"),i,C.F),new T.aG(h,5,h,h),L.aH($.Bs.i(0,"duration"),i,C.F),new T.aG(h,5,h,h),N.Eo(L.aH("More Detail",i,C.F),new D.P8(a,b))],q),C.aI,C.bs,C.b4))],q),C.dq),new T.aG(h,10,h,h),L.aH("Senior Project",o,C.F),new T.aG(h,10,h,h),G.Rq($.a1H[0],h),new T.aG(h,10,h,h),L.aH("Internship Projects",o,C.F),new T.aG(h,10,h,h),G.Rq($.Vy[0],e),new T.aG(h,5,h,h),G.Rq($.Vy[1],e),new T.aG(h,10,h,h)],q),C.aI,C.bs,C.b4),h,h,h,h,h,new V.ax(64,0,64,0),h),new T.fL(C.iM,h,h,L.aH("Made with love by Flutter",A.ho(h,h,C.Q,h,h,h,h,h,h,h,h,10,h,C.cf,h,h,!0,h,h,h,h,h,h),h),h)],q),C.aI,C.fg,C.b4)],q),C.iN,!0),h,h,h,h,h,h,d)}else return M.eQ(h,new T.fL(C.aa,h,h,L.aH("Kawae's portfolio will coming to Desktop site soon...",A.ho(h,h,C.Q,h,h,h,h,h,h,h,h,40,h,C.cf,h,h,!0,h,h,h,h,h,h),h),h),h,h,h,h,h,h,h)},
 P8:function P8(a,b){this.a=a
 this.b=b},
 Vo:function(a,b){var t=H.b(a.split("\n"),u.s)
@@ -38129,11 +38129,11 @@ $0:function(){var t=this.a.pI(u.iK)
 t.dQ()},
 $S:0}
 G.P9.prototype={
-$0:function(){},
-$S:0}
-G.Pa.prototype={
 $0:function(){var t=this.a.i(0,"url")
 C.al.qK(window,t,"_blank")},
+$S:0}
+G.Pa.prototype={
+$0:function(){},
 $S:0}
 G.P7.prototype={
 $0:function(){var t=$.RN().i(0,this.a)[1]
