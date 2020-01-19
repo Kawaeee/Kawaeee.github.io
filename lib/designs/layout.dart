@@ -50,51 +50,11 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Expanded(
-                          child: IconButton(
-                            icon: contacts['Phone'][0],
-                            tooltip: 'Phone',
-                            onPressed: () {
-                              navigateLink(contacts['Phone'][1]);
-                            },
-                          ),
-                        ),
-                        Expanded(
-                          child: IconButton(
-                            icon: contacts['Email'][0],
-                            tooltip: 'Email',
-                            onPressed: () {
-                              navigateLink(contacts['Email'][1]);
-                            },
-                          ),
-                        ),
-                        Expanded(
-                          child: IconButton(
-                            icon: contacts['GitHub'][0],
-                            tooltip: 'GitHub',
-                            onPressed: () {
-                              navigateLink(contacts['GitHub'][1]);
-                            },
-                          ),
-                        ),
-                        Expanded(
-                          child: IconButton(
-                            icon: contacts['Linkedin'][0],
-                            tooltip: 'Linkedin',
-                            onPressed: () {
-                              navigateLink(contacts['Linkedin'][1]);
-                            },
-                          ),
-                        ),
-                        Expanded(
-                          child: IconButton(
-                            icon: contacts['Medium'][0],
-                            tooltip: 'Medium',
-                            onPressed: () {
-                              navigateLink(contacts['Medium'][1]);
-                            },
-                          ),
-                        ),
+                        createContact('Phone'),
+                        createContact('Email'),
+                        createContact('GitHub'),
+                        createContact('Linkedin'),
+                        createContact('Medium'),
                       ],
                     ),
                     SizedBox(height: 10),
@@ -212,31 +172,31 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                       textAlign: TextAlign.center,
                       style: sectionHeader,
                     ),
-                    // SizedBox(height: 10),
-                    // createInternship(internshipProject[0]),
-                    // SizedBox(height: 5),
-                    // createInternship(internshipProject[1]),
-                    // SizedBox(height: 10),
-                    // Text(
-                    //   'Repositories',
-                    //   textAlign: TextAlign.center,
-                    //   style: sectionHeader,
-                    // ),
-                    // SizedBox(height: 10),
-                    // createRepository(repositories[1]),
-                    // SizedBox(height: 5),
-                    // createRepository(repositories[2]),
-                    // SizedBox(height: 5),
-                    // createRepository(repositories[3]),
-                    // SizedBox(height: 5),
-                    // createRepository(repositories[4]),
-                    // SizedBox(height: 5),
-                    // createRepository(repositories[5]),
-                    // SizedBox(height: 5),
-                    // createRepository(repositories[6]),
-                    // SizedBox(height: 5),
-                    // createRepository(repositories[7]),
-                    // SizedBox(height: 10),
+                    SizedBox(height: 10),
+                    createInternship(internshipProject[0]),
+                    SizedBox(height: 5),
+                    createInternship(internshipProject[1]),
+                    SizedBox(height: 10),
+                    Text(
+                      'Repositories',
+                      textAlign: TextAlign.center,
+                      style: sectionHeader,
+                    ),
+                    SizedBox(height: 10),
+                    createRepository(repositories[1]),
+                    SizedBox(height: 5),
+                    createRepository(repositories[2]),
+                    SizedBox(height: 5),
+                    createRepository(repositories[3]),
+                    SizedBox(height: 5),
+                    createRepository(repositories[4]),
+                    SizedBox(height: 5),
+                    createRepository(repositories[5]),
+                    SizedBox(height: 5),
+                    createRepository(repositories[6]),
+                    SizedBox(height: 5),
+                    createRepository(repositories[7]),
+                    SizedBox(height: 10),
                   ],
                 ),
               ),
@@ -257,7 +217,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
       ),
     );
   } else {
-    // Large screen size (>580)
+    // Large screen size
     return Container(
       child: Align(
         alignment: Alignment.center,

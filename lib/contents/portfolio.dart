@@ -111,7 +111,7 @@ final internshipProject = [
   {
     'name': 'Pantip Tag classifier',
     'description':
-        'A classifier that can classify 34 classes from a total of 38 classes which does not include isolate, religion, Korea and mixed room.',
+        'A classifier that can classify 34 classes from a total of 38 classes which does not include isolate, religion, Korea and mixed room',
     'icon': 'assets/blank.png',
     'detail': 'Coming soon...',
   },

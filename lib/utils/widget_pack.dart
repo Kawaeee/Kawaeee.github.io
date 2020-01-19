@@ -99,3 +99,15 @@ Widget createInternship(Map map) {
     ],
   );
 }
+
+Widget createContact(String value) {
+  return Expanded(
+    child: IconButton(
+      icon: contacts[value][0],
+      tooltip: value,
+      onPressed: () {
+        navigateLink(contacts[value][1]);
+      },
+    ),
+  );
+}
