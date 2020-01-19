@@ -9,13 +9,21 @@ class HomePage extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Container(
-        width: screenSize.width,
-        height: screenSize.height,
-        decoration: BoxDecoration(
-          gradient: theme,
-        ),
-        child: createPortfolio(screenSize, context),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: Container(
+              constraints: BoxConstraints(
+                minWidth: constraints.maxWidth,
+                minHeight: constraints.maxHeight,
+              ),
+              decoration: BoxDecoration(
+                gradient: theme,
+              ),
+              child: createPortfolio(screenSize, context),
+            ),
+          );
+        },
       ),
     );
   }
