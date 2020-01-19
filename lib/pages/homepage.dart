@@ -15,11 +15,7 @@ class HomePage extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: theme,
         ),
-        child: Stack(
-          children: <Widget>[
-            createPortfolio(screenSize, context),
-          ],
-        ),
+        child: createPortfolio(screenSize, context),
       ),
     );
   }
