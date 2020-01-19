@@ -5,9 +5,8 @@ import 'package:kawae_portfolio/utils/font_config.dart';
 import 'package:kawae_portfolio/utils/show_dialog.dart';
 import 'package:kawae_portfolio/utils/widget_pack.dart';
 
-Widget createPortfolio(String size, Size screenSize, BuildContext context) {
-  if (size == 'S') {
-    // Small screen size (<580)
+Widget createPortfolio(Size screenSize, BuildContext context) {
+  if (screenSize.width < 750) {
     return Container(
       width: screenSize.width,
       height: screenSize.height,
@@ -51,40 +50,50 @@ Widget createPortfolio(String size, Size screenSize, BuildContext context) {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        IconButton(
-                          icon: contacts['Phone'][0],
-                          tooltip: 'Phone',
-                          onPressed: () {
-                            navigateLink(contacts['Phone'][1]);
-                          },
+                        Expanded(
+                          child: IconButton(
+                            icon: contacts['Phone'][0],
+                            tooltip: 'Phone',
+                            onPressed: () {
+                              navigateLink(contacts['Phone'][1]);
+                            },
+                          ),
                         ),
-                        IconButton(
-                          icon: contacts['Email'][0],
-                          tooltip: 'Email',
-                          onPressed: () {
-                            navigateLink(contacts['Email'][1]);
-                          },
+                        Expanded(
+                          child: IconButton(
+                            icon: contacts['Email'][0],
+                            tooltip: 'Email',
+                            onPressed: () {
+                              navigateLink(contacts['Email'][1]);
+                            },
+                          ),
                         ),
-                        IconButton(
-                          icon: contacts['GitHub'][0],
-                          tooltip: 'GitHub',
-                          onPressed: () {
-                            navigateLink(contacts['GitHub'][1]);
-                          },
+                        Expanded(
+                          child: IconButton(
+                            icon: contacts['GitHub'][0],
+                            tooltip: 'GitHub',
+                            onPressed: () {
+                              navigateLink(contacts['GitHub'][1]);
+                            },
+                          ),
                         ),
-                        IconButton(
-                          icon: contacts['Linkedin'][0],
-                          tooltip: 'Linkedin',
-                          onPressed: () {
-                            navigateLink(contacts['Linkedin'][1]);
-                          },
+                        Expanded(
+                          child: IconButton(
+                            icon: contacts['Linkedin'][0],
+                            tooltip: 'Linkedin',
+                            onPressed: () {
+                              navigateLink(contacts['Linkedin'][1]);
+                            },
+                          ),
                         ),
-                        IconButton(
-                          icon: contacts['Medium'][0],
-                          tooltip: 'Medium',
-                          onPressed: () {
-                            navigateLink(contacts['Medium'][1]);
-                          },
+                        Expanded(
+                          child: IconButton(
+                            icon: contacts['Medium'][0],
+                            tooltip: 'Medium',
+                            onPressed: () {
+                              navigateLink(contacts['Medium'][1]);
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -189,20 +198,20 @@ Widget createPortfolio(String size, Size screenSize, BuildContext context) {
                       ],
                     ),
                     SizedBox(height: 10),
-                    // // Project
-                    // Text(
-                    //   'Senior Project',
-                    //   textAlign: TextAlign.center,
-                    //   style: sectionHeader,
-                    // ),
-                    // SizedBox(height: 10),
-                    // createRepository(repositories[0]),
-                    // SizedBox(height: 10),
-                    // Text(
-                    //   'Internship Projects',
-                    //   textAlign: TextAlign.center,
-                    //   style: sectionHeader,
-                    // ),
+                    // Project
+                    Text(
+                      'Senior Project',
+                      textAlign: TextAlign.center,
+                      style: sectionHeader,
+                    ),
+                    SizedBox(height: 10),
+                    createRepository(repositories[0]),
+                    SizedBox(height: 10),
+                    Text(
+                      'Internship Projects',
+                      textAlign: TextAlign.center,
+                      style: sectionHeader,
+                    ),
                     // SizedBox(height: 10),
                     // createInternship(internshipProject[0]),
                     // SizedBox(height: 5),
@@ -247,7 +256,7 @@ Widget createPortfolio(String size, Size screenSize, BuildContext context) {
         ],
       ),
     );
-  } else if (size == 'L') {
+  } else {
     // Large screen size (>580)
     return Container(
       child: Align(
@@ -263,6 +272,4 @@ Widget createPortfolio(String size, Size screenSize, BuildContext context) {
       ),
     );
   }
-
-  return Container();
 }

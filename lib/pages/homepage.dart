@@ -16,10 +16,7 @@ class HomePage extends StatelessWidget {
           gradient: theme,
         ),
         child: Stack(
-          children: <Widget>[
-            screenSize.width < 850
-                ? createPortfolio('S', screenSize, context)
-                : createPortfolio('L', screenSize, context),
+          children: <Widget>[ createPortfolio(screenSize, context)
           ],
         ),
       ),

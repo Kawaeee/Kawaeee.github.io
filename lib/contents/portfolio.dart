@@ -36,7 +36,7 @@ final aboutMe = {
 // Contacts
 final contacts = {
   'Phone': [
-    Icon(MaterialCommunityIcons.phone, size: 32, color: Colors.white),
+    Icon(MaterialCommunityIcons.phone, size: 30, color: Colors.white),
     'tel:+66848519908'
   ],
   'Email': [
