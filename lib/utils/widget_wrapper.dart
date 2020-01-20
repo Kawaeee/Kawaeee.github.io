@@ -30,27 +30,16 @@ Widget createProject(Map map, String type, BuildContext context) {
               style: sectionDetail,
             ),
             SizedBox(height: 5),
-            type == 'Internship'
-                ? FlatButton(
-                    child: Text(
-                      'More Detail',
-                      textAlign: TextAlign.center,
-                      style: sectionDetail,
-                    ),
-                    onPressed: () {
-                      displayInternshipDetail(context);
-                    },
-                  )
-                : FlatButton(
-                    child: Text(
-                      'See Project',
-                      textAlign: TextAlign.center,
-                      style: sectionDetail,
-                    ),
-                    onPressed: () {
-                      navigateLink(map['url']);
-                    },
-                  ),
+            FlatButton(
+              child: Text(
+                type == 'Internship' ? 'More Detail' : 'See Project',
+                textAlign: TextAlign.center,
+                style: sectionDetail,
+              ),
+              onPressed: () {
+                navigateLink(map['url']);
+              },
+            ),
           ],
         ),
       ),
