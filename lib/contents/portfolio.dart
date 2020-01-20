@@ -104,7 +104,6 @@ final internshipDetail = {
 };
 
 final skills = [];
-final projects = [];
 
 // All of the projects after this line are optional
 final internshipProject = [

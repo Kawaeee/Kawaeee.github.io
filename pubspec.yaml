@@ -33,7 +33,6 @@ flutter:
 
   assets:
     - assets/fonts/
-
     - assets/icon.png
     - assets/kmutt.png
     - assets/datawow.png

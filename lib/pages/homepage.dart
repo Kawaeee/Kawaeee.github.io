@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Container(
                   constraints: BoxConstraints(
                     minWidth: constraints.maxWidth,

@@ -14,9 +14,7 @@ Widget createProject(Map map, String type, BuildContext context) {
         width: 85,
         height: 85,
       ),
-      SizedBox(
-        width: 10,
-      ),
+      SizedBox(width: 10),
       Expanded(
         child: Column(
           children: <Widget>[
@@ -25,17 +23,13 @@ Widget createProject(Map map, String type, BuildContext context) {
               textAlign: TextAlign.center,
               style: sectionName,
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Text(
               map['description'],
               textAlign: TextAlign.center,
               style: sectionDetail,
             ),
-            SizedBox(
-              height: 5,
-            ),
+            SizedBox(height: 5),
             type == 'Internship'
                 ? FlatButton(
                     child: Text(
@@ -152,14 +146,15 @@ Widget createInternship(Size screenSize, BuildContext context) {
             ),
             SizedBox(height: 5),
             FlatButton(
-                child: Text(
-                  'More Detail',
-                  textAlign: TextAlign.center,
-                  style: sectionDetail,
-                ),
-                onPressed: () {
-                  displayExperienceDetail(screenSize, context);
-                }),
+              child: Text(
+                'More Detail',
+                textAlign: TextAlign.center,
+                style: sectionDetail,
+              ),
+              onPressed: () {
+                displayExperienceDetail(screenSize, context);
+              },
+            ),
           ],
         ),
       ),
