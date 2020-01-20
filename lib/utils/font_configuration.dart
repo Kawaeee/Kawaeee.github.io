@@ -1,4 +1,4 @@
-//Create TextStyle for whatever I want
+// Create own TextStyle
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +21,6 @@ final sectionHeader = createStyle(24, FontWeight.w600, Colors.white70);
 final sectionName = createStyle(14, FontWeight.w600, Colors.grey[800]);
 final sectionDetail = createStyle(12, FontWeight.w400, Colors.grey[800]);
 
-// Internship detail dialog
+// Projects
 final headerStyle = createStyle(14, FontWeight.w500, Colors.white);
 final contentStyle = createStyle(12, FontWeight.w400, Colors.white);

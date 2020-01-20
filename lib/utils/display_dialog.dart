@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:kawae_portfolio/contents/portfolio.dart';
-import 'package:kawae_portfolio/utils/font_config.dart';
+import 'package:kawae_portfolio/utils/font_configuration.dart';
 
-void displayExperienceDetail(Size screenSize, BuildContext context) {
+displayExperienceDetail(Size screenSize, BuildContext context) {
   showDialog(
     barrierDismissible: false,
     context: context,
@@ -107,8 +107,11 @@ void displayExperienceDetail(Size screenSize, BuildContext context) {
             children: <Widget>[
               IconButton(
                 tooltip: 'Blog Review',
-                icon: Icon(MaterialCommunityIcons.medium,
-                    size: 14, color: Colors.white),
+                icon: Icon(
+                  MaterialCommunityIcons.medium,
+                  size: 14,
+                  color: Colors.white,
+                ),
                 onPressed: () {
                   navigateLink(
                     internshipDetail['review'],
@@ -129,7 +132,7 @@ void displayExperienceDetail(Size screenSize, BuildContext context) {
   );
 }
 
-void displayInternshipDetail(BuildContext context) {
+displayInternshipDetail(BuildContext context) {
   showDialog(
     barrierDismissible: false,
     context: context,
