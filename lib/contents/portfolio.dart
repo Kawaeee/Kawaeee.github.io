@@ -19,8 +19,8 @@ final theme = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
-    Color.fromRGBO(21, 65, 168, 1),
-    Color.fromRGBO(145, 234, 228, 1),
+    Color.fromRGBO(21, 65, 150, 1),
+    Color.fromRGBO(150, 240, 228, 1),
   ],
 );
 
@@ -72,38 +72,8 @@ final internship = {
   'icon': 'assets/datawow.png',
   'role': 'Data Science Intern',
   'duration': 'June 2019 – July 2019',
+  'url': 'https://docs.google.com/document/d/1sSDRoUzgJeR0ABg87h4sZkMYJ4Ps_3NS8l5ERhn4T1k/',
 };
-
-final internshipDetail = {
-  'header':
-      '    My tasks and assignment during this internship have defined as the Data Scientist role. My responsibilities can be described as follows:',
-  'responsibilities_0':
-      '- Build state-of-the-art Deep Learning models to tackle Computer Vision and NLP problems',
-  'responsibilities_1':
-      '- Work on data preprocessing in both Image and Text forms',
-  'responsibilities_2':
-      '- Scraping data from the website and apply in a proper useful format',
-  'responsibilities_3':
-      '- Train an NLP model with many approaches and benchmarking it',
-  'responsibilities_4':
-      '- Design use case scenarios to other company for a data recommendation',
-  'responsibilities_5':
-      '- Write documentation to reproduce work to other colleagues who want to continue work on it',
-  'responsibilities_6':
-      '- Create a web platform that can apply deep learning model as the predictor',
-  'responsibilities_7':
-      '- Use data science version control to control binary file such as model',
-  'sub_header': 'Tasks & Assignments',
-  'main_task': 'Pantip tag classifier',
-  'sub_task': 'Emoji Search',
-  'task_detail':
-      '* You can read more about these projects in the section below.',
-  'etc':
-      '    Moreover, I already write an internship review that you can read it down here.',
-  'review': 'https://blog.datawow.io/intern-review-at-datawow-2019-5689c1e16de',
-};
-
-final skills = [];
 
 // All of the projects after this line are optional
 final internshipProject = [

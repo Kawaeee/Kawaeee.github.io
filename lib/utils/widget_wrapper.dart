@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kawae_portfolio/contents/portfolio.dart';
-import 'package:kawae_portfolio/utils/display_dialog.dart';
 import 'package:kawae_portfolio/utils/font_configuration.dart';
 
 // Widget Structure for Projects, Internship sections
@@ -141,7 +140,7 @@ Widget createInternship(Size screenSize, BuildContext context) {
                 style: sectionDetail,
               ),
               onPressed: () {
-                displayExperienceDetail(screenSize, context);
+                navigateLink(internship['url']);
               },
             ),
           ],
