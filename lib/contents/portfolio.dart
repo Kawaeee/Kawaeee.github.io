@@ -112,14 +112,14 @@ final internshipProject = [
     'name': 'Pantip Tag classifier',
     'description':
         'A classifier that can classify 34 types of Pantip tags out of 38 classes which do not include isolate, religion, Korea and mixed room',
-    'icon': 'assets/blank.png',
+    'icon': 'assets/pantip.png',
     'detail': 'Coming soon...',
   },
   {
     'name': 'Emoji Search',
     'description':
         'Web platform that allow the moderator to search emoji and convert all of them into different types of Unicode',
-    'icon': 'assets/blank.png',
+    'icon': 'assets/emoji.png',
     'detail': 'Coming soon...',
   }
 ];

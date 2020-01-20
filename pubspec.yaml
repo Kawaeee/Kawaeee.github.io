@@ -38,6 +38,8 @@ flutter:
     - assets/kmutt.png
     - assets/datawow.png
     - assets/istylist.png
+    - assets/emoji.png
+    - assets/pantip.png
     - assets/blank.png
 
   fonts:
