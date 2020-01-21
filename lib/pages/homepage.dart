@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
                   gradient: theme,
                 ),
               ),
-              screenSize.width < 800
+              screenSize.width < 850
                   ? createMobilePortfolio(constraints)
                   : createDesktopPortfolio(constraints),
             ],
@@ -222,22 +222,22 @@ Widget createDesktopPortfolio(dynamic constraints) {
                 ),
                 Row(
                   children: <Widget>[
-                    Container(
-                      width: constraints.maxWidth / 2,
-                      height: constraints.maxHeight / 1.5,
-                      child: Container(
-                        margin: EdgeInsets.only(left: 16, right: 8, bottom: 32),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 32, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(255, 255, 255, 0.4),
-                          borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                        ),
-                        child: ListView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          children: <Widget>[
-                            Column(
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          width: constraints.maxWidth / 2,
+                          height: constraints.maxHeight / 3,
+                          child: Container(
+                            margin:
+                                EdgeInsets.only(left: 16, right: 8, bottom: 16),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 32, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(255, 255, 255, 0.4),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0)),
+                            ),
+                            child: Column(
                               children: <Widget>[
                                 SizedBox(height: 10),
                                 Text(
@@ -248,19 +248,45 @@ Widget createDesktopPortfolio(dynamic constraints) {
                                 SizedBox(height: 10),
                                 createSection(education, 'Education'),
                                 SizedBox(height: 10),
-                                Text(
-                                  'Experience',
-                                  textAlign: TextAlign.center,
-                                  style: sectionHeader,
-                                ),
-                                SizedBox(height: 10),
-                                createSection(internship, 'Internship'),
-                                SizedBox(height: 10),
                               ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                        Container(
+                          width: constraints.maxWidth / 2,
+                          height: constraints.maxHeight / 3,
+                          child: Container(
+                            margin:
+                                EdgeInsets.only(left: 16, right: 8, bottom: 32),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 32, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(255, 255, 255, 0.4),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0)),
+                            ),
+                            child: ListView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              children: <Widget>[
+                                Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'Experience',
+                                      textAlign: TextAlign.center,
+                                      style: sectionHeader,
+                                    ),
+                                    SizedBox(height: 10),
+                                    createSection(internship, 'Internship'),
+                                    SizedBox(height: 10),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
                       width: constraints.maxWidth / 2,
