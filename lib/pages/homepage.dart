@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
                   gradient: theme,
                 ),
               ),
-              screenSize.width < 850
+              screenSize.width < 800
                   ? createMobilePortfolio(constraints)
                   : createDesktopPortfolio(constraints),
             ],
