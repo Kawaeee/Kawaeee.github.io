@@ -8,19 +8,19 @@ TextStyle createStyle(double fontSize, FontWeight fontWeight, Color color) {
     color: color,
     fontSize: fontSize,
     fontWeight: fontWeight,
-    letterSpacing: 0.5,
+    letterSpacing: 1,
   );
 }
 
 // About me
-final name = createStyle(32, FontWeight.w600, Colors.white70);
+final name =
+    createStyle(32, FontWeight.w600, Color.fromRGBO(255, 255, 255, 0.9));
 final description = createStyle(15, FontWeight.w300, Colors.grey[800]);
-final sectionHeader = createStyle(24, FontWeight.w600, Colors.white70);
 
-// Education
-final sectionName = createStyle(14, FontWeight.w600, Colors.grey[800]);
+// Sections
+final sectionHeader =
+    createStyle(24, FontWeight.w600, Color.fromRGBO(255, 255, 255, 0.8));
+final sectionName = createStyle(16, FontWeight.w600, Colors.grey[800]);
 final sectionDetail = createStyle(12, FontWeight.w400, Colors.grey[800]);
-
-// Projects
-final headerStyle = createStyle(14, FontWeight.w500, Colors.white);
-final contentStyle = createStyle(12, FontWeight.w400, Colors.white);
+final sectionButton =
+    createStyle(14, FontWeight.w200, Color.fromRGBO(255, 255, 255, 0.7));

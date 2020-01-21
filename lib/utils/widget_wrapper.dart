@@ -4,7 +4,7 @@ import 'package:kawae_portfolio/contents/portfolio.dart';
 import 'package:kawae_portfolio/utils/font_configuration.dart';
 
 // Widget Structure for Projects, Internship sections
-Widget createProject(Map map, String type, BuildContext context) {
+Widget createSection(Map map, String type) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: <Widget>[
@@ -29,16 +29,18 @@ Widget createProject(Map map, String type, BuildContext context) {
               style: sectionDetail,
             ),
             SizedBox(height: 5),
-            FlatButton(
-              child: Text(
-                type == 'Internship' ? 'More Detail' : 'See Project',
-                textAlign: TextAlign.center,
-                style: sectionDetail,
-              ),
-              onPressed: () {
-                navigateLink(map['url']);
-              },
-            ),
+            map['url'] != null
+                ? FlatButton(
+                    child: Text(
+                      type == 'Internship' ? 'More Detail' : 'See Project',
+                      textAlign: TextAlign.center,
+                      style: sectionButton,
+                    ),
+                    onPressed: () {
+                      navigateLink(map['url']);
+                    },
+                  )
+                : Container(),
           ],
         ),
       ),
@@ -56,96 +58,5 @@ Widget createContact(String value) {
         navigateLink(contacts[value][1]);
       },
     ),
-  );
-}
-
-Widget createEducation() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: <Widget>[
-      Image.asset(
-        education['icon'],
-        width: 85,
-        height: 85,
-      ),
-      SizedBox(width: 10),
-      Expanded(
-        child: Column(
-          children: <Widget>[
-            Text(
-              education['name'],
-              textAlign: TextAlign.center,
-              style: sectionName,
-            ),
-            SizedBox(height: 10),
-            Text(
-              education['degree'],
-              textAlign: TextAlign.center,
-              style: sectionDetail,
-            ),
-            SizedBox(height: 5),
-            Text(
-              education['faculty'],
-              textAlign: TextAlign.center,
-              style: sectionDetail,
-            ),
-            SizedBox(height: 5),
-            Text(
-              education['description'],
-              textAlign: TextAlign.center,
-              style: sectionDetail,
-            ),
-          ],
-        ),
-      ),
-    ],
-  );
-}
-
-Widget createInternship(Size screenSize, BuildContext context) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: <Widget>[
-      Image.asset(
-        internship['icon'],
-        width: 85,
-        height: 85,
-      ),
-      SizedBox(width: 10),
-      Expanded(
-        child: Column(
-          children: <Widget>[
-            Text(
-              internship['name'],
-              textAlign: TextAlign.center,
-              style: sectionName,
-            ),
-            SizedBox(height: 10),
-            Text(
-              internship['role'],
-              textAlign: TextAlign.center,
-              style: sectionDetail,
-            ),
-            SizedBox(height: 5),
-            Text(
-              internship['duration'],
-              textAlign: TextAlign.center,
-              style: sectionDetail,
-            ),
-            SizedBox(height: 5),
-            FlatButton(
-              child: Text(
-                'More Detail',
-                textAlign: TextAlign.center,
-                style: sectionDetail,
-              ),
-              onPressed: () {
-                navigateLink(internship['url']);
-              },
-            ),
-          ],
-        ),
-      ),
-    ],
   );
 }

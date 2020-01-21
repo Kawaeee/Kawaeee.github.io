@@ -93,7 +93,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                   style: sectionHeader,
                 ),
                 SizedBox(height: 10),
-                createEducation(),
+                createSection(education, 'Education'),
                 SizedBox(height: 10),
                 // Internship
                 Text(
@@ -102,7 +102,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                   style: sectionHeader,
                 ),
                 SizedBox(height: 10),
-                createInternship(screenSize, context),
+                createSection(internship, 'Internship'),
                 SizedBox(height: 10),
                 // Project
                 Text(
@@ -111,7 +111,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                   style: sectionHeader,
                 ),
                 SizedBox(height: 10),
-                createProject(repositories[0], null, context),
+                createSection(repositories[0], 'Project'),
                 SizedBox(height: 10),
                 Text(
                   'Internship Projects',
@@ -119,9 +119,9 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                   style: sectionHeader,
                 ),
                 SizedBox(height: 10),
-                createProject(internshipProject[0], 'Internship', context),
+                createSection(internshipProject[0], 'Internship'),
                 SizedBox(height: 5),
-                createProject(internshipProject[1], 'Internship', context),
+                createSection(internshipProject[1], 'Internship'),
                 SizedBox(height: 10),
                 Text(
                   'Repositories',
@@ -129,13 +129,13 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
                   style: sectionHeader,
                 ),
                 SizedBox(height: 10),
-                createProject(repositories[1], null, context),
+                createSection(repositories[1], 'Project'),
                 SizedBox(height: 5),
-                createProject(repositories[2], null, context),
+                createSection(repositories[2], 'Project'),
                 SizedBox(height: 5),
-                createProject(repositories[3], null, context),
+                createSection(repositories[3], 'Project'),
                 SizedBox(height: 5),
-                createProject(repositories[4], null, context),
+                createSection(repositories[4], 'Project'),
                 SizedBox(height: 10),
               ],
             ),
@@ -160,7 +160,7 @@ Widget createPortfolio(Size screenSize, BuildContext context) {
       child: Align(
         alignment: Alignment.center,
         child: Text(
-          "Kawae's portfolio will coming to Desktop site soon...",
+          "Kawae's portfolio currently support only Mobile site :)",
           style: TextStyle(
             fontSize: 40,
             fontWeight: FontWeight.w100,

@@ -19,8 +19,8 @@ final theme = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
-    Color.fromRGBO(21, 65, 150, 1),
-    Color.fromRGBO(150, 240, 228, 1),
+    Color.fromRGBO(229, 163, 35, 1),
+    Color.fromRGBO(247, 147, 131, 1),
   ],
 );
 
@@ -61,18 +61,18 @@ final contacts = {
 final education = {
   'name': "King Mongkut's University of Technology Thonburi",
   'icon': 'assets/kmutt.png',
-  'degree': 'Bachelor of Science in Computer Science',
-  'faculty': 'School of Information Technology',
-  'description': 'Expected Graduation in November 2020',
+  'description':
+      'Bachelor of Science in Computer Science\nSchool of Information Technology\nExpected Graduation in November 2020',
+  'url': null,
 };
 
 // Internship with full detail
 final internship = {
   'name': 'Data Wow Co., Ltd.',
   'icon': 'assets/datawow.png',
-  'role': 'Data Science Intern',
-  'duration': 'June 2019 – July 2019',
-  'url': 'https://docs.google.com/document/d/1sSDRoUzgJeR0ABg87h4sZkMYJ4Ps_3NS8l5ERhn4T1k/',
+  'description': 'Data Science Intern\nJune 2019 – July 2019',
+  'url':
+      'https://docs.google.com/document/d/1sSDRoUzgJeR0ABg87h4sZkMYJ4Ps_3NS8l5ERhn4T1k/',
 };
 
 // All of the projects after this line are optional
@@ -82,14 +82,16 @@ final internshipProject = [
     'description':
         'A classifier that can classify 34 types of Pantip tags out of 38 classes which do not include isolate, religion, Korea and mixed room',
     'icon': 'assets/pantip.png',
-    'url': 'https://docs.google.com/document/d/12tATEv_tQ_dBiE3EMYCGJLUJltzcM8QCT3ROBzi8I1A/',
+    'url':
+        'https://docs.google.com/document/d/12tATEv_tQ_dBiE3EMYCGJLUJltzcM8QCT3ROBzi8I1A/',
   },
   {
     'name': 'Emoji Search',
     'description':
         'Web platform that allow the moderator to search emoji and convert all of them into different types of Unicode',
     'icon': 'assets/emoji.png',
-    'url': 'https://docs.google.com/document/d/1pGVaSIhBiQtU-OsmSqarybUlkBszKpFpMJ3o3xBZj0M/',
+    'url':
+        'https://docs.google.com/document/d/1pGVaSIhBiQtU-OsmSqarybUlkBszKpFpMJ3o3xBZj0M/',
   }
 ];
 
