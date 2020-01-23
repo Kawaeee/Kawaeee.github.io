@@ -1,9 +1,15 @@
+import 'dart:html' as html;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kawae_portfolio/contents/portfolio.dart';
 import 'package:kawae_portfolio/utils/font_configuration.dart';
 
-// Widget Structure for Projects, Internship sections
+void navigateLink(String url) {
+  html.window.open(url, '_blank');
+}
+
+// Widget structure for Projects, Internship sections
 Widget createSection(Map map, String type) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -48,7 +54,7 @@ Widget createSection(Map map, String type) {
   );
 }
 
-// Widget Structure for Contacts sections
+// Widget structure for Contacts sections
 Widget createContact(String value) {
   return Expanded(
     child: IconButton(

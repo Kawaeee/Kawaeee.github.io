@@ -45,3 +45,10 @@ final sectionButton = createStyle(
   FontWeight.w200,
   Color.fromRGBO(255, 255, 255, 0.7),
 );
+
+// Footer
+final footerStyle = createStyle(
+  10,
+  FontWeight.w100,
+  Colors.white70,
+);

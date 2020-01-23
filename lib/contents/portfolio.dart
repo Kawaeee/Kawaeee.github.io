@@ -1,20 +1,14 @@
-import 'dart:html' as html;
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
-void navigateLink(String url) {
-  html.window.open(url, '_blank');
-}
-
-// Web Title
+// Web title
 final title = "Kawae's Online Portfolio";
 final footer = 'Made with love by Flutter';
 
-// Web Theme Color
-
+// Web theme color
 final theme = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
@@ -24,7 +18,7 @@ final theme = LinearGradient(
   ],
 );
 
-// Web Contents
+// Web contents
 final imgPath = 'assets/icon.png';
 
 final aboutMe = {

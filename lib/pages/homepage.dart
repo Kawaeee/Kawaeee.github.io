@@ -47,7 +47,9 @@ Widget createMobilePortfolio(dynamic constraints) {
           children: <Widget>[
             // About me
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 64),
+              padding: EdgeInsets.symmetric(
+                horizontal: 64,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,6 +76,7 @@ Widget createMobilePortfolio(dynamic constraints) {
                     style: description,
                   ),
                   SizedBox(height: 8),
+                  // Contacts
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
@@ -139,15 +142,12 @@ Widget createMobilePortfolio(dynamic constraints) {
                 ],
               ),
             ),
+            // Footer
             Align(
               alignment: Alignment.bottomCenter,
               child: Text(
                 footer,
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w100,
-                  color: Colors.white70,
-                ),
+                style: footerStyle,
               ),
             ),
           ],
@@ -173,20 +173,26 @@ Widget createDesktopPortfolio(dynamic constraints) {
               children: <Widget>[
                 Row(
                   children: <Widget>[
+                    // About me
                     Container(
                       width: constraints.maxWidth / 1.1,
                       height: 250,
                       child: Container(
                         margin: EdgeInsets.all(16),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
                         decoration: BoxDecoration(
                           color: Color.fromRGBO(255, 255, 255, 0.4),
-                          borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.0),
+                          ),
                         ),
                         child: Row(
                           children: <Widget>[
                             Container(
+                              // Image
                               child: Image.asset(
                                 imgPath,
                                 width: 150,
@@ -220,22 +226,30 @@ Widget createDesktopPortfolio(dynamic constraints) {
                     ),
                   ],
                 ),
+                // Left section - Education/Experience
                 Row(
                   children: <Widget>[
                     Column(
                       children: <Widget>[
+                        // Education
                         Container(
                           width: constraints.maxWidth / 2,
                           height: constraints.maxHeight / 3,
                           child: Container(
-                            margin:
-                                EdgeInsets.only(left: 16, right: 8, bottom: 16),
+                            margin: EdgeInsets.only(
+                              left: 16,
+                              right: 8,
+                              bottom: 16,
+                            ),
                             padding: EdgeInsets.symmetric(
-                                horizontal: 32, vertical: 8),
+                              horizontal: 32,
+                              vertical: 8,
+                            ),
                             decoration: BoxDecoration(
                               color: Color.fromRGBO(255, 255, 255, 0.4),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
+                              ),
                             ),
                             child: Column(
                               children: <Widget>[
@@ -252,18 +266,25 @@ Widget createDesktopPortfolio(dynamic constraints) {
                             ),
                           ),
                         ),
+                        // Experience
                         Container(
                           width: constraints.maxWidth / 2,
                           height: constraints.maxHeight / 3,
                           child: Container(
-                            margin:
-                                EdgeInsets.only(left: 16, right: 8, bottom: 32),
+                            margin: EdgeInsets.only(
+                              left: 16,
+                              right: 8,
+                              bottom: 32,
+                            ),
                             padding: EdgeInsets.symmetric(
-                                horizontal: 32, vertical: 8),
+                              horizontal: 32,
+                              vertical: 8,
+                            ),
                             decoration: BoxDecoration(
                               color: Color.fromRGBO(255, 255, 255, 0.4),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
+                              ),
                             ),
                             child: ListView(
                               physics: const AlwaysScrollableScrollPhysics(),
@@ -288,16 +309,25 @@ Widget createDesktopPortfolio(dynamic constraints) {
                         ),
                       ],
                     ),
+                    // Right Section - Projects
                     Container(
                       width: constraints.maxWidth / 2,
                       height: constraints.maxHeight / 1.5,
                       child: Container(
-                        margin: EdgeInsets.only(left: 8, right: 16, bottom: 32),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 32, vertical: 8),
+                        margin: EdgeInsets.only(
+                          left: 8,
+                          right: 16,
+                          bottom: 32,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 32,
+                          vertical: 8,
+                        ),
                         decoration: BoxDecoration(
                           color: Color.fromRGBO(255, 255, 255, 0.4),
-                          borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.0),
+                          ),
                         ),
                         child: ListView(
                           physics: const AlwaysScrollableScrollPhysics(),
@@ -350,17 +380,21 @@ Widget createDesktopPortfolio(dynamic constraints) {
                 ),
               ],
             ),
+            // Contacts
             Align(
               alignment: Alignment.topRight,
               child: Container(
                 width: 50,
                 height: 225,
-                margin: EdgeInsets.only(top: 16),
+                margin: EdgeInsets.only(
+                  top: 16,
+                ),
                 decoration: BoxDecoration(
                   color: Color.fromRGBO(255, 255, 255, 0.4),
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30.0),
-                      bottomLeft: Radius.circular(30.0)),
+                    topLeft: Radius.circular(30.0),
+                    bottomLeft: Radius.circular(30.0),
+                  ),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -374,15 +408,12 @@ Widget createDesktopPortfolio(dynamic constraints) {
                 ),
               ),
             ),
+            // Footer
             Align(
               alignment: Alignment.bottomCenter,
               child: Text(
                 footer,
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w100,
-                  color: Colors.white70,
-                ),
+                style: footerStyle,
               ),
             ),
           ],
