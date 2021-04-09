@@ -1,3 +1,4 @@
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 
 import 'package:flutter/cupertino.dart';
@@ -35,18 +36,19 @@ Widget createSection(Map map, String type) {
               style: sectionDetail,
             ),
             SizedBox(height: 5),
-            map['url'] != null
-                ? FlatButton(
-                    child: Text(
-                      type == 'Internship' ? 'More Detail' : 'See Project',
-                      textAlign: TextAlign.center,
-                      style: sectionButton,
-                    ),
-                    onPressed: () {
-                      navigateLink(map['url']);
-                    },
-                  )
-                : Container(),
+            if (map['url'] != null)
+              TextButton(
+                child: Text(
+                  type == 'Internship' || type == 'Experience' ? 'More Detail' : 'See Project',
+                  textAlign: TextAlign.center,
+                  style: sectionButton,
+                ),
+                onPressed: () {
+                  navigateLink(map['url']);
+                },
+              )
+            else
+              Container(),
           ],
         ),
       ),

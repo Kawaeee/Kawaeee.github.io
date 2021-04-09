@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
                   gradient: theme,
                 ),
               ),
-              screenSize.width < 850
+              screenSize.width < 850 || screenSize.height < 700
                   ? createMobilePortfolio(constraints)
                   : createDesktopPortfolio(constraints),
             ],
@@ -75,7 +75,7 @@ Widget createMobilePortfolio(dynamic constraints) {
                     textAlign: TextAlign.justify,
                     style: description,
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 10),
                   // Contacts
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -85,9 +85,20 @@ Widget createMobilePortfolio(dynamic constraints) {
                       createContact('GitHub'),
                       createContact('Linkedin'),
                       createContact('Medium'),
+                      createContact('Docker Hub'),
                     ],
                   ),
                   SizedBox(height: 10),
+                  // Experiences
+                  Text(
+                    'Experience',
+                    textAlign: TextAlign.center,
+                    style: sectionHeader,
+                  ),
+                  SizedBox(height: 10),
+                  createSection(experiences[0], 'Experience'),
+                  SizedBox(height: 10),
+                  createSection(experiences[1], 'Internship'),
                   // Education
                   Text(
                     'Education',
@@ -96,15 +107,6 @@ Widget createMobilePortfolio(dynamic constraints) {
                   ),
                   SizedBox(height: 10),
                   createSection(education, 'Education'),
-                  SizedBox(height: 10),
-                  // Internship
-                  Text(
-                    'Experience',
-                    textAlign: TextAlign.center,
-                    style: sectionHeader,
-                  ),
-                  SizedBox(height: 10),
-                  createSection(internship, 'Internship'),
                   SizedBox(height: 10),
                   // Project
                   Text(
@@ -175,7 +177,7 @@ Widget createDesktopPortfolio(dynamic constraints) {
                   children: <Widget>[
                     // About me
                     Container(
-                      width: constraints.maxWidth / 1.1,
+                      width: constraints.maxWidth / 1.05,
                       height: 250,
                       child: Container(
                         margin: EdgeInsets.all(16),
@@ -231,15 +233,57 @@ Widget createDesktopPortfolio(dynamic constraints) {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        // Education
+                        // Experience
                         Container(
                           width: constraints.maxWidth / 2,
-                          height: constraints.maxHeight / 3,
+                          height: constraints.maxHeight / 2.5,
                           child: Container(
                             margin: EdgeInsets.only(
                               left: 16,
                               right: 8,
                               bottom: 16,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 32,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(255, 255, 255, 0.4),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
+                              ),
+                            ),
+                            child: ListView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              children: <Widget>[
+                                Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'Experiences',
+                                      textAlign: TextAlign.center,
+                                      style: sectionHeader,
+                                    ),
+                                    SizedBox(height: 10),
+                                    createSection(experiences[0], 'Experience'),
+                                    SizedBox(height: 10),
+                                    createSection(experiences[1], 'Internship'),
+                                    SizedBox(height: 10),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        // Education
+                        Container(
+                          width: constraints.maxWidth / 2,
+                          height: constraints.maxHeight / 4,
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              left: 16,
+                              right: 8,
                             ),
                             padding: EdgeInsets.symmetric(
                               horizontal: 32,
@@ -266,47 +310,6 @@ Widget createDesktopPortfolio(dynamic constraints) {
                             ),
                           ),
                         ),
-                        // Experience
-                        Container(
-                          width: constraints.maxWidth / 2,
-                          height: constraints.maxHeight / 3,
-                          child: Container(
-                            margin: EdgeInsets.only(
-                              left: 16,
-                              right: 8,
-                              bottom: 32,
-                            ),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 32,
-                              vertical: 8,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Color.fromRGBO(255, 255, 255, 0.4),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(30.0),
-                              ),
-                            ),
-                            child: ListView(
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              children: <Widget>[
-                                Column(
-                                  children: <Widget>[
-                                    SizedBox(height: 10),
-                                    Text(
-                                      'Experience',
-                                      textAlign: TextAlign.center,
-                                      style: sectionHeader,
-                                    ),
-                                    SizedBox(height: 10),
-                                    createSection(internship, 'Internship'),
-                                    SizedBox(height: 10),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                     // Right Section - Projects
@@ -315,9 +318,10 @@ Widget createDesktopPortfolio(dynamic constraints) {
                       height: constraints.maxHeight / 1.5,
                       child: Container(
                         margin: EdgeInsets.only(
+                          top: 8,
                           left: 8,
                           right: 16,
-                          bottom: 32,
+                          bottom: 8,
                         ),
                         padding: EdgeInsets.symmetric(
                           horizontal: 32,
@@ -384,10 +388,10 @@ Widget createDesktopPortfolio(dynamic constraints) {
             Align(
               alignment: Alignment.topRight,
               child: Container(
-                width: 50,
-                height: 225,
+                width: 60,
+                height: 240,
                 margin: EdgeInsets.only(
-                  top: 16,
+                  top: 4,
                 ),
                 decoration: BoxDecoration(
                   color: Color.fromRGBO(255, 255, 255, 0.4),
@@ -404,6 +408,7 @@ Widget createDesktopPortfolio(dynamic constraints) {
                     createContact('GitHub'),
                     createContact('Linkedin'),
                     createContact('Medium'),
+                    createContact('Docker Hub'),
                   ],
                 ),
               ),

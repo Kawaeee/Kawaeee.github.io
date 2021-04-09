@@ -6,15 +6,20 @@ import 'package:flutter_icons/flutter_icons.dart';
 
 // Web title
 final title = "Kawae's Online Portfolio";
-final footer = 'Made with love by Flutter';
+final footer = 'Made with love by Flutter 2.0';
 
 // Web theme color
+// 2020 Gradient
+// Color.fromRGBO(229, 163, 35, 1),
+// Color.fromRGBO(247, 147, 131, 1),
+
 final theme = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [
-    Color.fromRGBO(229, 163, 35, 1),
-    Color.fromRGBO(247, 147, 131, 1),
+    // Merkel's Folks
+    Color.fromRGBO(6, 188, 251, 1),
+    Color.fromRGBO(72, 132, 238, 0.8),
   ],
 );
 
@@ -24,7 +29,7 @@ final imgPath = 'assets/icon.png';
 final aboutMe = {
   'name': 'Kasidech Chumkun',
   'description':
-      '    Adaptive, imaginative, and positive student, who has self-inspiration to develop a Machine Learning model for daily life. Also, interested in pursuing a career related to Data Science and the Artificial Intelligence field.'
+      '    Aspiring Machine Learning Engineer, who mainly worked in the Machine Translation field.'
 };
 
 // Contacts
@@ -49,6 +54,10 @@ final contacts = {
     Icon(MaterialCommunityIcons.medium, size: 32, color: Colors.white),
     'https://medium.com/@kawaekc',
   ],
+  'Docker Hub': [
+    Icon(MaterialCommunityIcons.docker, size: 32, color: Colors.white),
+    'https://hub.docker.com/u/kawaekc',
+  ],
 };
 
 // Education
@@ -60,14 +69,23 @@ final education = {
   'url': null,
 };
 
-// Internship with full detail
-final internship = {
-  'name': 'Data Wow Co., Ltd.',
-  'icon': 'assets/datawow.png',
-  'description': 'Data Science Intern\nJune 2019 – July 2019',
-  'url':
-      'https://docs.google.com/document/d/1sSDRoUzgJeR0ABg87h4sZkMYJ4Ps_3NS8l5ERhn4T1k/',
-};
+// Experiences including full time job and internship with full detail
+final experiences = [
+  {
+    'name': 'Omniscien Technologies:',
+    'icon': 'assets/omniscien.png',
+    'description': 'Machine Learning Engineer\nApril 2020 – Present',
+    'url':
+        'https://docs.google.com/document/d/1zIeFE8VqtcwyNVLpPQtRPhNyWvUSLmCyZ3xer_uDGt0/',
+  },
+  {
+    'name': 'Data Wow Co., Ltd.',
+    'icon': 'assets/datawow.png',
+    'description': 'Data Science Intern\nJune 2019 – July 2019',
+    'url':
+        'https://docs.google.com/document/d/1sSDRoUzgJeR0ABg87h4sZkMYJ4Ps_3NS8l5ERhn4T1k/',
+  }
+];
 
 // All of the projects after this line are optional
 final internshipProject = [

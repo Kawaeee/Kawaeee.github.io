@@ -1,10 +1,10 @@
 name: kawae_portfolio
 description: Kawae's Online portfolio hosting on GitHub Pages
 
-version: 1.0.0+1
+version: 1.0.1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.3.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -40,6 +40,7 @@ flutter:
     - assets/emoji.png
     - assets/pantip.png
     - assets/blank.png
+    - assets/omniscien.png
 
   fonts:
     - family: Nunito
