@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kawae_portfolio/contents/portfolio.dart';
 import 'package:kawae_portfolio/pages/homepage.dart';
 
 void main() {
-  runApp(App());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Prefer - Portrait UP orientation
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(App()));
 }
 
 class App extends StatelessWidget {

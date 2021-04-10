@@ -7,7 +7,7 @@ import 'package:kawae_portfolio/utils/widget_wrapper.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
     final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -22,7 +22,10 @@ class HomePage extends StatelessWidget {
               ),
               orientation == Orientation.portrait
                   ? createMobilePortfolio(constraints)
-                  : createDesktopPortfolio(constraints)
+                  : orientation == Orientation.landscape &&
+                          screenSize.shortestSide < 600
+                      ? createMobilePortfolio(constraints)
+                      : createDesktopPortfolio(constraints)
             ],
           );
         },
