@@ -13,7 +13,8 @@ void navigateLink(String url) {
 // Widget structure for Projects, Internship sections
 Widget createSection(Map map, String type) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
       Image.asset(
         map['icon'],
@@ -21,7 +22,7 @@ Widget createSection(Map map, String type) {
         height: 85,
       ),
       SizedBox(width: 10),
-      Expanded(
+      Flexible(
         child: Column(
           children: <Widget>[
             Text(
@@ -39,7 +40,9 @@ Widget createSection(Map map, String type) {
             if (map['url'] != null)
               TextButton(
                 child: Text(
-                  type == 'Internship' || type == 'Experience' ? 'More Detail' : 'See Project',
+                  type == 'Internship' || type == 'Experience'
+                      ? 'More Detail'
+                      : 'See Project',
                   textAlign: TextAlign.center,
                   style: sectionButton,
                 ),
