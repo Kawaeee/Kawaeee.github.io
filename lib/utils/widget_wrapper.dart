@@ -22,19 +22,26 @@ Widget createSection(Map map, String type) {
         height: 85,
       ),
       SizedBox(width: 10),
-      Flexible(
+      Expanded(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
               map['name'],
               textAlign: TextAlign.center,
               style: sectionName,
+              overflow: TextOverflow.ellipsis,
+              softWrap: true,
+              maxLines: 1,
             ),
             SizedBox(height: 10),
             Text(
               map['description'],
               textAlign: TextAlign.center,
               style: sectionDetail,
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 5,
             ),
             SizedBox(height: 5),
             if (map['url'] != null)
@@ -45,6 +52,9 @@ Widget createSection(Map map, String type) {
                       : 'See Project',
                   textAlign: TextAlign.center,
                   style: sectionButton,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
                 onPressed: () {
                   navigateLink(map['url']);

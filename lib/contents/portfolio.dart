@@ -72,7 +72,7 @@ final education = {
 // Experiences including full time job and internship with full detail
 final experiences = [
   {
-    'name': 'Omniscien Technologies:',
+    'name': 'Omniscien Technologies',
     'icon': 'assets/omniscien.png',
     'description': 'Machine Learning Engineer\nApril 2020 – Present',
     'url':
