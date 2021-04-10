@@ -31,8 +31,8 @@ Widget createSection(Map map, String type) {
               textAlign: TextAlign.center,
               style: sectionName,
               overflow: TextOverflow.ellipsis,
-              softWrap: true,
-              maxLines: 1,
+              softWrap: false,
+              maxLines: 3,
             ),
             SizedBox(height: 10),
             Text(
@@ -41,7 +41,7 @@ Widget createSection(Map map, String type) {
               style: sectionDetail,
               softWrap: true,
               overflow: TextOverflow.ellipsis,
-              maxLines: 5,
+              maxLines: 10,
             ),
             SizedBox(height: 5),
             if (map['url'] != null)
@@ -54,7 +54,7 @@ Widget createSection(Map map, String type) {
                   style: sectionButton,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+                  maxLines: 3,
                 ),
                 onPressed: () {
                   navigateLink(map['url']);

@@ -72,12 +72,18 @@ Widget createMobilePortfolio(dynamic constraints) {
                     aboutMe['name'],
                     textAlign: TextAlign.center,
                     style: name,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
                   ),
                   SizedBox(height: 8),
                   Text(
                     aboutMe['description'],
                     textAlign: TextAlign.justify,
                     style: description,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 5,
                   ),
                   SizedBox(height: 10),
                   // Contacts
