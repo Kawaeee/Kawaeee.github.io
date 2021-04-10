@@ -8,8 +8,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-
+    final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Stack(
@@ -19,9 +20,13 @@ class HomePage extends StatelessWidget {
                   gradient: theme,
                 ),
               ),
-              screenSize.width < 850 || screenSize.height < 700
+              orientation == Orientation.portrait
                   ? createMobilePortfolio(constraints)
-                  : createDesktopPortfolio(constraints),
+                  : orientation == Orientation.landscape
+                      ? screenSize.shortestSide < 550
+                          ? createMobilePortfolio(constraints)
+                          : createDesktopPortfolio(constraints)
+                      : createDesktopPortfolio(constraints)
             ],
           );
         },
@@ -177,7 +182,7 @@ Widget createDesktopPortfolio(dynamic constraints) {
                   children: <Widget>[
                     // About me
                     Container(
-                      width: constraints.maxWidth / 1.05,
+                      width: constraints.maxWidth / 1.1,
                       height: 250,
                       child: Container(
                         margin: EdgeInsets.all(16),
@@ -295,17 +300,23 @@ Widget createDesktopPortfolio(dynamic constraints) {
                                 Radius.circular(30.0),
                               ),
                             ),
-                            child: Column(
+                            child: ListView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              shrinkWrap: true,
                               children: <Widget>[
-                                SizedBox(height: 10),
-                                Text(
-                                  'Education',
-                                  textAlign: TextAlign.center,
-                                  style: sectionHeader,
+                                Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'Education',
+                                      textAlign: TextAlign.center,
+                                      style: sectionHeader,
+                                    ),
+                                    SizedBox(height: 10),
+                                    createSection(education, 'Education'),
+                                    SizedBox(height: 10),
+                                  ],
                                 ),
-                                SizedBox(height: 10),
-                                createSection(education, 'Education'),
-                                SizedBox(height: 10),
                               ],
                             ),
                           ),

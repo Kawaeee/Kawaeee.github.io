@@ -65,7 +65,7 @@ final education = {
   'name': "King Mongkut's University of Technology Thonburi",
   'icon': 'assets/kmutt.png',
   'description':
-      'Bachelor of Science in Computer Science\nSchool of Information Technology',
+      'Bachelor of Science in Computer Science\nSchool of Information Technology\n2016 - 2020',
   'url': null,
 };
 
