@@ -80,7 +80,8 @@ final experiences = [
     'name': 'EATLAB',
     'icon': 'assets/eatlab.png',
     'description': 'Machine Learning Engineer\nSeptember 2021 – Present',
-    'url': '-',
+    'url':
+        'https://docs.google.com/document/d/1WqTI2qxVPLQRbK1aoOFkFkI-a8hwYRPXGbBOAZ6-eO4/',
   },
   {
     'name': 'Omniscien Technologies',
@@ -125,6 +126,25 @@ final repositories = [
         "The mobile application that helps the user to choose a hairstyle based on the user's face shape",
     'icon': 'assets/istylist.png',
     'url': 'https://seniorproject.sit.kmutt.ac.th/showproject/CS59-RE43',
+  },
+  {
+    'name': 'Duplicazer',
+    'description':
+        'Simple web application for remove/find duplicate string from raw text',
+    'icon': 'assets/blank.png',
+    'url': 'https://github.com/Kawaeee/duplicazer',
+  },
+  {
+    'name': 'py-hLEPOR',
+    'description': 'Python Bindings to hLEPOR metric',
+    'icon': 'assets/blank.png',
+    'url': 'https://github.com/Kawaeee/py-hLEPOR',
+  },
+  {
+    'name': 'pyGlue',
+    'description': 'Simple Python library for dealing with a glued word',
+    'icon': 'assets/blank.png',
+    'url': 'https://github.com/Kawaeee/pyGlue',
   },
   {
     'name': 'Corgi butt or a loaf of bread?',
