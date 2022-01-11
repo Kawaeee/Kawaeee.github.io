@@ -1,7 +1,7 @@
 name: kawae_portfolio
 description: Kawae's Online portfolio hosting on GitHub Pages
 
-version: 1.0.1
+version: 1.4.0
 
 environment:
   sdk: '>=2.3.0 <3.0.0'
@@ -41,6 +41,7 @@ flutter:
     - assets/pantip.png
     - assets/blank.png
     - assets/omniscien.png
+    - assets/eatlab.png
 
   fonts:
     - family: Nunito
@@ -48,3 +49,6 @@ flutter:
         - asset: assets/fonts/nunitoSemiBold.ttf
         - asset: assets/fonts/nunitoBold.ttf
           weight: 700
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-SemiBoldItalic.ttf

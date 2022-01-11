@@ -1,17 +1,8 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kawae_portfolio/contents/portfolio.dart';
-import 'package:kawae_portfolio/utils/font_configuration.dart';
+import 'package:kawae_portfolio/util/url_navigator.dart';
+import 'package:kawae_portfolio/style/font.dart';
 
-void navigateLink(String url) {
-  html.window.open(url, '_blank');
-}
-
-// Widget structure for Projects, Internship sections
-Widget createSection(Map map, String type) {
+Widget educationWidget(Map map, String type) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,18 +57,5 @@ Widget createSection(Map map, String type) {
         ),
       ),
     ],
-  );
-}
-
-// Widget structure for Contacts sections
-Widget createContact(String value) {
-  return Expanded(
-    child: IconButton(
-      icon: contacts[value][0],
-      tooltip: value,
-      onPressed: () {
-        navigateLink(contacts[value][1]);
-      },
-    ),
   );
 }

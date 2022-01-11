@@ -6,20 +6,25 @@ import 'package:flutter_icons/flutter_icons.dart';
 
 // Web title
 final title = "Kawae's Online Portfolio";
-final footer = 'Made with love by Flutter 2.0';
+final footer = 'Made with ❤️ by Flutter 2.0';
 
 // Web theme color
-// 2020 Gradient
+// 2020 Gradient - Random
 // Color.fromRGBO(229, 163, 35, 1),
 // Color.fromRGBO(247, 147, 131, 1),
+// 2021 Gradient - OT (Merkel's Folks)
+// Color.fromRGBO(6, 188, 251, 1),
+// Color.fromRGBO(72, 132, 238, 0.8),
+// 2022 Gradient v1 - EATLAB (Salmon with Leonardo)
+// Color.fromRGBO(148, 110, 96, 1),
+// Color.fromRGBO(208, 128, 111, 0.8),
 
 final theme = LinearGradient(
   begin: Alignment.topLeft,
-  end: Alignment.bottomRight,
+  end: Alignment.bottomCenter,
   colors: [
-    // Merkel's Folks
-    Color.fromRGBO(6, 188, 251, 1),
-    Color.fromRGBO(72, 132, 238, 0.8),
+    Color.fromRGBO(148, 110, 96, 1),
+    Color.fromRGBO(208, 128, 111, 0.8),
   ],
 );
 
@@ -29,7 +34,7 @@ final imgPath = 'assets/icon.png';
 final aboutMe = {
   'name': 'Kasidech Chumkun',
   'description':
-      '    Aspiring Machine Learning Engineer, who mainly worked in the Machine Translation field.'
+      '    Aspiring Machine Learning Engineer who worked on both Computer Vision and Natural Language Processing field.'
 };
 
 // Contacts
@@ -72,9 +77,15 @@ final education = {
 // Experiences including full time job and internship with full detail
 final experiences = [
   {
+    'name': 'EATLAB',
+    'icon': 'assets/eatlab.png',
+    'description': 'Machine Learning Engineer\nSeptember 2021 – Present',
+    'url': '-',
+  },
+  {
     'name': 'Omniscien Technologies',
     'icon': 'assets/omniscien.png',
-    'description': 'Machine Learning Engineer\nApril 2020 – Present',
+    'description': 'Machine Learning Engineer\nApril 2020 – September 2021',
     'url':
         'https://docs.google.com/document/d/1zIeFE8VqtcwyNVLpPQtRPhNyWvUSLmCyZ3xer_uDGt0/',
   },
