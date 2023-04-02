@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import Profile from './components/Profile.vue'
+
+let profileName = "Kasidech Chumkun"
+let profileDescription = "Aspiring Machine Learning Engineer who worked on both Computer Vision and Natural Language Processing field."
 </script>
 
 <template>
@@ -8,7 +11,7 @@ import Profile from './components/Profile.vue'
     <img alt="Kawaeee's pfp" class="logo" src="@/assets/me/icon-postelb.png" width="125" height="125" />
 
     <div class="wrapper">
-      <Profile name="Kasidech Chumkun" description="Aspiring Machine Learning Engineer who worked on both Computer Vision and Natural Language Processing field."/>
+      <Profile v-bind:name=profileName v-bind:description=profileDescription />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
