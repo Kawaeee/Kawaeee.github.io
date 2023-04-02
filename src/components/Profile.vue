@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="greetings">
+  <div class="profile-component">
     <h1 class="green">{{ name }}</h1>
     <h3>{{ description }}</h3>
   </div>
@@ -23,14 +23,14 @@ h3 {
   font-size: 1.2rem;
 }
 
-.greetings h1,
-.greetings h3 {
+.profile-component h1,
+.profile-component h3 {
   text-align: center;
 }
 
 @media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
+  .profile-component h1,
+  .profile-component h3 {
     text-align: left;
   }
 }
