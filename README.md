@@ -1,6 +1,6 @@
 # Kawaeee.github.io
 
-Kawae's Online portfolio hosting on GitHub Pages
+Kawae's Online portfolio hosting on GitHub Pages that based on Vue.js HelloWorld template.
 
 ## Recommended IDE Setup
 

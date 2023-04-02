@@ -5,10 +5,10 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img alt="Kasidech's profile picture" class="logo" src="@/assets/me/icon-postelb.png" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld name="Kasidech Chumkun" description="Aspiring Machine Learning Engineer who worked on both Computer Vision and Natural Language Processing field."/>
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
