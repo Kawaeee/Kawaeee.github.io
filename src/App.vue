@@ -1,23 +1,25 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Profile from './components/Profile.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Kasidech's profile picture" class="logo" src="@/assets/me/icon-postelb.png" width="125" height="125" />
+    <img alt="Kawaeee's pfp" class="logo" src="@/assets/me/icon-postelb.png" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld name="Kasidech Chumkun" description="Aspiring Machine Learning Engineer who worked on both Computer Vision and Natural Language Processing field."/>
+      <Profile name="Kasidech Chumkun" description="Aspiring Machine Learning Engineer who worked on both Computer Vision and Natural Language Processing field."/>
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/about">About me</RouterLink>
+        <RouterLink to="/exp">Experiences</RouterLink>
+        <RouterLink to="/proj">Projects</RouterLink>
       </nav>
     </div>
   </header>
 
-  <RouterView />
+  <RouterView/>
 </template>
 
 <style scoped>
@@ -48,7 +50,7 @@ nav a.router-link-exact-active:hover {
 
 nav a {
   display: inline-block;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   border-left: 1px solid var(--color-border);
 }
 
