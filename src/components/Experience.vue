@@ -3,93 +3,68 @@ defineProps<{
   role: string,
   location: string,
   duration: string,
-  detail: string,
+  detail: string[],
   logo: string
 }>()
 </script>
 
 <template>
-    <div class="item">
-      <i>
-        <slot name="icon"></slot>
+    <div class="experience-block">
+      <div class="logo">
         <img v-bind:src=logo width="75" height="75"/>
-      </i>
-      <div class="details">
-        <h3>
-          <slot name="heading"></slot>
-          {{ role }} at {{ location }}
-        </h3>
-        <slot></slot>
-        {{ detail }}
       </div>
-      <div class="duration">{{ duration }}</div>
+      
+      <div class="description">
+        <h3>{{ role }} at {{ location }}</h3>
+        <h4>{{ duration }}</h4>
+        <h5 v-for="dt in detail" v-html=dt></h5>
+      </div>
     </div>
 </template>
 
 <style scoped>
-  .item {
-    margin-top: 2rem;
-    display: flex;
-  }
-  
-  .details {
-    flex: 1;
-    margin-left: 1rem;
-  }
-  
-  .duration {
-    color: var(--color-text);
-  }
 
-  i {
-    display: flex;
-    place-items: center;
-    place-content: center;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    width: 100px;
-    height: 100px;
-    color: var(--color-text);
-  }
-  
-  h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-    color: var(--color-heading);
-  }
-  
-  @media (min-width: 1024px) {
-    .item {
-      margin-top: 10;
-      padding: 1.5rem 0 1rem calc(var(--section-gap) / 2);
-    }
-  
-    i {
-      top: calc(50% - 25px);
-      left: -25px;
-      position: absolute;
-      border: 1px solid var(--color-border);
-      background: var(--color-background);
-      border-radius: 8px;
-      width: 100px;
-      height: 100px;
-      z-index: 100;
-    }
-  
-    .item:before {
-      content: '';
-      border-left: 1px solid var(--color-border);
-      position: absolute;
-      left: 25px;
-      bottom: calc(50% + 25px);
-      height: 50%;
-      z-index: 0;
-    }
+h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: var(--color-heading);
+}
 
-    .item:first-of-type:before {
-      display: none;
-    }
-  }
+h4 {
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+  color: var(--color-text);
+}
+
+h5 {
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin-bottom: 0.25rem;
+  color: var(--color-text);
+}
+
+.experience-block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo {
+  display: flex;
+  margin-right: 15px;
+  place-items: center;
+  place-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  width: 100px;
+  height: 100px;
+  color: var(--color-text);
+}
+
+.description {
+  flex: 1;
+}
+
 </style>
-
