@@ -11,13 +11,13 @@ defineProps<{
 <template>
     <div class="experience-block">
       <div class="logo">
-        <img v-bind:src=logo width="75" height="75"/>
+        <img v-bind:src=logo v-bind:alt=location width="75" height="75"/>
       </div>
       
       <div class="description">
         <h3>{{ role }} at {{ location }}</h3>
         <h4>{{ duration }}</h4>
-        <h5 v-for="dt in detail" v-html=dt></h5>
+        <h5 v-for="(item, index) in detail" v-bind:key="index" v-html="item"></h5>
       </div>
     </div>
 </template>
@@ -26,7 +26,7 @@ defineProps<{
 
 h3 {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.25rem;
   color: var(--color-heading);
 }
