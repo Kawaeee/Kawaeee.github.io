@@ -2,8 +2,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import Profile from './components/Profile.vue'
 
-let profileName = "Kasidech Chumkun"
-let profileDescription = "Data Scientist at Osotspa"
+const profileName = "Kasidech Chumkun"
+const profileDescription = "Data Scientist at Osotspa"
 </script>
 
 <template>
