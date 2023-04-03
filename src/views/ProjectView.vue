@@ -6,7 +6,7 @@ const projects = [
   { name: "iStylist: Hairstyle Recommender", description: "💇‍♂️💻📱 The mobile application that helps the user to choose a hairstyle based on the user's face shape", application_url: "https://seniorproject.sit.kmutt.ac.th/showproject/CS59-RE43", logo: "src/assets/projects/istylist.png", source_url: "" },
   { name: "py-hLEPOR", description: "🐍📊 Python Bindings to hLEPOR metric", application_url: "", logo: "src/assets/projects/blank.png", source_url: "https://github.com/Kawaeee/py-hLEPOR" },
   { name: "pHash", description: "🔍🖼️ Image de-duplication using Perceptual Hashing(pHash)", application_url: "", logo: "src/assets/projects/blank.png", source_url: "https://github.com/Kawaeee/phash" },
-  { name: "For other projects", description: "📁🔍 Feel free to check in my GitHub!", application_url: "", logo: "src/assets/projects/github.png", source_url: "https://github.com/Kawaeee/" },
+  { name: "For other projects", description: "📁🔍 Feel free to check out my GitHub!", application_url: "", logo: "src/assets/projects/github.png", source_url: "https://github.com/Kawaeee/" },
 ]
 </script>
 
