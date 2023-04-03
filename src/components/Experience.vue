@@ -20,8 +20,9 @@ defineProps<{
           {{ role }} at {{ location }}
         </h3>
         <slot></slot>
-        {{ duration }} || {{ detail }}
+        {{ detail }}
       </div>
+      <div class="duration">{{ duration }}</div>
     </div>
 </template>
 
@@ -36,6 +37,10 @@ defineProps<{
     margin-left: 1rem;
   }
   
+  .duration {
+    color: var(--color-text);
+  }
+
   i {
     display: flex;
     place-items: center;
@@ -57,7 +62,7 @@ defineProps<{
   @media (min-width: 1024px) {
     .item {
       margin-top: 10;
-      padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
+      padding: 1.5rem 0 1rem calc(var(--section-gap) / 2);
     }
   
     i {
@@ -69,15 +74,17 @@ defineProps<{
       border-radius: 8px;
       width: 100px;
       height: 100px;
+      z-index: 100;
     }
   
     .item:before {
-      content: ' ';
+      content: '';
       border-left: 1px solid var(--color-border);
       position: absolute;
       left: 25px;
       bottom: calc(50% + 25px);
-      height: calc(50% - 30px);
+      height: 50%;
+      z-index: 0;
     }
 
     .item:first-of-type:before {
