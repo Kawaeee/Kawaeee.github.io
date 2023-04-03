@@ -3,12 +3,12 @@ import { RouterLink, RouterView } from 'vue-router'
 import Profile from './components/Profile.vue'
 
 let profileName = "Kasidech Chumkun"
-let profileDescription = "Data Scientist @Osotspa"
+let profileDescription = "Data Scientist at Osotspa"
 </script>
 
 <template>
   <header>
-    <img alt="Kawaeee's PFP" class="logo" src="@/assets/me/icon-postelb.png" width="125" height="125" />
+    <img alt="Kawaeee's PFP" class="logo" src="src/assets/me/icon-postelb.png" width="125" height="125" />
 
     <div class="wrapper">
       <Profile v-bind:name=profileName v-bind:description=profileDescription />
