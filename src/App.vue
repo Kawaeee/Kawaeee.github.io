@@ -8,7 +8,7 @@ let profileDescription = "Data Scientist at Osotspa"
 
 <template>
   <header>
-    <img alt="Kawaeee's PFP" class="logo" src="src/assets/me/icon-postelb.png" width="125" height="125" />
+    <img alt="Kawaeee's PFP" class="logo" src="src/assets/profile/icon-postelb.png" width="125" height="125" />
 
     <div class="wrapper">
       <Profile v-bind:name=profileName v-bind:description=profileDescription />

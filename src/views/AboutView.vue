@@ -1,28 +1,26 @@
 <script setup lang="ts">
 import About from '../components/About.vue'
 
-const email = "mailto:kawaekc@gmail.com"
-const urls = {
-  github: "https://github.com/Kawaeee",
-  linkedin: "https://www.linkedin.com/in/kasidech-kaw/",
-  medium: "https://kawaekc.medium.com/",
-}
+const header = "Hi, I'm Kaw, a software engineer with experience in data science and machine learning. I have worked for various companies such as Osotspa, EATLAB, and Omniscien Technologies, and also completed an internship at Data Wow. Throughout my career, I have gained expertise in developing data pipeline automation, machine translation, text classification, people detection, and cost optimization in cloud services. I have also created several tools for text translation tasks, internal data labeling, and even a keyword-based emoji search application. [ChatGPT said]"
+
+const contacts = [
+  {name: "Email", url: "mailto:kawaekc@gmail.com", logo: "src/assets/about/email.png"},
+  {name: "GitHub", url: "https://github.com/Kawaeee", logo: "src/assets/about/github.png"},
+  {name: "Linkedin", url: "https://www.linkedin.com/in/kasidech-kaw/", logo: "src/assets/about/linkedin.png"},
+  {name: "Medium", url: "https://kawaekc.medium.com/", logo: "src/assets/about/medium.png"},
+]
 </script>
 
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-    <About v-bind:email=email v-bind:urls=urls></About>
+    <About v-bind:header=header v-bind:contacts=contacts></About>
   </div>
-  
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+<style lang="scss">
+
+.about {
+  padding-top: 20px;
 }
+
 </style>
