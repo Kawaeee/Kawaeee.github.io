@@ -11,7 +11,7 @@ const experiences = {
       "🏷️🛠️ Setup an internal data labeling tool for machine learning project",
       "🔄💾 Migrated ~5.3 billion cap codes from the old system to Primo",
     ],
-    logo: "src/assets/experiences/osotspa.png",
+    logo: "/src/assets/experiences/osotspa.png",
   },
   hedgehoglet: {
     role: "Software Engineer",
@@ -21,7 +21,7 @@ const experiences = {
       "🐱🍲 Worked on <a href='https://github.com/hedgehoglet/cat-food' target='_blank'>cat-food</a> python template",
       "🤔 To be added..."
     ],
-    logo: "src/assets/experiences/hedgehoglet.png",
+    logo: "/src/assets/experiences/hedgehoglet.png",
   },
   eatlab: {
     role: "Machine Learning Engineer",
@@ -32,7 +32,7 @@ const experiences = {
       "🌎🍔 Applied multilingual model to tackle food category classification task",
       "💰💻 Reduced cloud costs on AWS S3 and AWS Sagemaker",
     ],
-    logo: "src/assets/experiences/eatlab.png",
+    logo: "/src/assets/experiences/eatlab.png",
   },
   omniscien: {
     role: "Machine Learning Engineer",
@@ -44,7 +44,7 @@ const experiences = {
       "⚙️💡 Setup back-translation module using AWS EC2 Spot instances",
       "🤝🌍 Supported ParaCrawl team on <a href='https://paracrawl.eu/manufactured-data' target='_blank'>ParaCrawl Synthesized Data (Release 2)</a>",
   ],
-    logo: "src/assets/experiences/omniscien.png",
+    logo: "/src/assets/experiences/omniscien.png",
   },
   datawow: {
     role: "Data Science Intern",
@@ -54,7 +54,7 @@ const experiences = {
       "📊🔍 Implemented and benchmarked Pantip tags text classifier with different approaches: Multinomial, LinearSVC, Bag of Words, fastText, and thai2fit",
       "🔎😀 Developed keyword-based emoji search web application called EmojiSearch",
     ],
-    logo: "src/assets/experiences/datawow.png",
+    logo: "/src/assets/experiences/datawow.png",
   },
   kmutt: {
     role: "Computer Science Student",
@@ -65,7 +65,7 @@ const experiences = {
       "✋✌️👊🧠 Worked on <a href='https://github.com/Kawaeee/RPS_classification' target='_blank'>Rock-Paper-Scissors hand gestures classification</a> using Keras",
       "☕️💻💰 Built <a href='https://github.com/Kawaeee/Starbucks' target='_blank'>fake Starbucks website</a> using PHP and MySQL database",
     ],
-    logo: "src/assets/experiences/kmutt.png",
+    logo: "/src/assets/experiences/kmutt.png",
   }
 }
 </script>
