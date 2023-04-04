@@ -16,7 +16,7 @@ defineProps<{
     <h3>{{ header }}</h3>
     <div class="contacts-list">
       <span v-for="(contact, index) in contacts" v-bind:key="index">
-        <a target='_blank' v-bind:href="contact.url" v-bind:data-tooltip="contact.name"><img v-bind:src="contact.logo" v-bind:alt=contact.name width=50 height=50></a>
+        <a target="_blank" v-bind:href="contact.url" v-bind:data-tooltip="contact.name"><img v-bind:src="contact.logo" v-bind:alt="contact.name" width="50" height="50"></a>
       </span>
     </div>
   </div>

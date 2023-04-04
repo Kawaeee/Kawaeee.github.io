@@ -11,7 +11,7 @@ defineProps<{
 <template>
     <div class="experience-block">
       <div class="logo">
-        <img v-bind:src=logo v-bind:alt=location width="75" height="75"/>
+        <img v-bind:src="logo" v-bind:alt="location" width="75" height="75"/>
       </div>
       
       <div class="description">

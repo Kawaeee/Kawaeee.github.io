@@ -18,11 +18,11 @@ defineProps<{
         <h3>{{ name }}</h3>
         <h4>{{ description }}</h4>
         <h5 v-if="application_url">
-          <a target='_blank' v-bind:href=application_url>🚀 View Application</a>
+          <a target="_blank" v-bind:href=application_url>🚀 View Application</a>
         </h5>
         <h5 v-if="source_url">
-          <a target='_blank' v-bind:href=source_url v-bind:title="source_url.startsWith('https://github') ? 'View Source on GitHub' : ''">
-            {{ source_url.startsWith('https://github') ? '🔗' : '' }} View Source
+          <a target="_blank" v-bind:href=source_url v-bind:title="source_url.startsWith('https://github') ? 'View Source on GitHub' : '' ">
+            {{ source_url.startsWith("https://github") ? "🔗" : "" }} View Source
           </a>
         </h5>
       </div>

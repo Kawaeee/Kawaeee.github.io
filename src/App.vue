@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import Profile from './components/Profile.vue'
-import CustomParticles from './components/Particle.vue'
+import { RouterLink, RouterView } from "vue-router"
+import Profile from "./components/Profile.vue"
+import CustomParticles from "./components/Particle.vue"
+import profilePicture from "./assets/profile/icon-postelb.png"
 
 const profileName = "Kasidech Chumkun"
 const profileDescription = "Data Scientist at Osotspa"
@@ -9,10 +10,10 @@ const profileDescription = "Data Scientist at Osotspa"
 
 <template>
   <header>
-    <img alt="Kawaeee's PFP" class="logo" src="/src/assets/profile/icon-postelb.png" width="125" height="125" />
+    <img alt="Kawaeee's PFP" class="logo" v-bind:src="profilePicture" width="125" height="125" />
 
     <div class="wrapper">
-      <Profile v-bind:name=profileName v-bind:description=profileDescription />
+      <Profile v-bind:name="profileName" v-bind:description="profileDescription" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
