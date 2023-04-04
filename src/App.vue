@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import Profile from './components/Profile.vue'
+import CustomParticles from './components/Particle.vue'
 
 const profileName = "Kasidech Chumkun"
 const profileDescription = "Data Scientist at Osotspa"
@@ -22,11 +23,14 @@ const profileDescription = "Data Scientist at Osotspa"
     </div>
   </header>
 
-  <RouterView v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
-      <component v-bind:key="$route.path" v-bind:is="Component"/>
-    </transition>
-  </RouterView>
+  <main>
+    <CustomParticles/>
+    <RouterView v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component v-bind:key="$route.path" v-bind:is="Component"/>
+      </transition>
+    </RouterView>
+  </main>
 
 </template>
 
