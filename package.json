@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@jridgewell/sourcemap-codec": "^1.4.14",
+    "tsparticles": "^2.9.3",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vue3-particles": "^2.9.3"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",
