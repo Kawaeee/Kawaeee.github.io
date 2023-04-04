@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Experience from "../components/Experience.vue"
 
-import osotspaIcon from "../assets/experiences/osotspa.png"
-import hedgehogletIcon from "../assets/experiences/hedgehoglet.png"
-import eatlabIcon from "../assets/experiences/eatlab.png"
-import omniscienIcon from "../assets/experiences/omniscien.png"
-import datawowIcon from "../assets/experiences/datawow.png"
-import kmuttIcon from "../assets/experiences/kmutt.png"
+import OsotspaIcon from "../assets/experiences/osotspa.png"
+import HedgehogletIcon from "../assets/experiences/hedgehoglet.png"
+import EatlabIcon from "../assets/experiences/eatlab.png"
+import OmniscienIcon from "../assets/experiences/omniscien.png"
+import DatawowIcon from "../assets/experiences/datawow.png"
+import KmuttIcon from "../assets/experiences/kmutt.png"
 
 const experiences = {
   osotspa: {
@@ -18,7 +18,7 @@ const experiences = {
       "🏷️🛠️ Setup an internal data labeling tool for machine learning project",
       "🔄💾 Migrated ~5.3 billion cap codes from the old system to Primo",
     ],
-    logo: osotspaIcon,
+    icon: OsotspaIcon,
   },
   hedgehoglet: {
     role: "Software Engineer",
@@ -28,7 +28,7 @@ const experiences = {
       "🐱🍲 Worked on <a href='https://github.com/hedgehoglet/cat-food' target='_blank'>cat-food</a> python template",
       "🤔 To be added..."
     ],
-    logo: hedgehogletIcon,
+    icon: HedgehogletIcon,
   },
   eatlab: {
     role: "Machine Learning Engineer",
@@ -39,7 +39,7 @@ const experiences = {
       "🌎🍔 Applied multilingual model to tackle food category classification task",
       "💰💻 Reduced cloud costs on AWS S3 and AWS Sagemaker",
     ],
-    logo: eatlabIcon,
+    icon: EatlabIcon,
   },
   omniscien: {
     role: "Machine Learning Engineer",
@@ -51,7 +51,7 @@ const experiences = {
       "⚙️💡 Setup back-translation module using AWS EC2 Spot instances",
       "🤝🌍 Supported ParaCrawl team on <a href='https://paracrawl.eu/manufactured-data' target='_blank'>ParaCrawl Synthesized Data (Release 2)</a>",
   ],
-    logo: omniscienIcon,
+    icon: OmniscienIcon,
   },
   datawow: {
     role: "Data Science Intern",
@@ -61,7 +61,7 @@ const experiences = {
       "📊🔍 Implemented and benchmarked Pantip tags text classifier with different approaches: Multinomial, LinearSVC, Bag of Words, fastText, and thai2fit",
       "🔎😀 Developed keyword-based emoji search web application called EmojiSearch",
     ],
-    logo: datawowIcon,
+    icon: DatawowIcon,
   },
   kmutt: {
     role: "Computer Science Student",
@@ -72,9 +72,10 @@ const experiences = {
       "✋✌️👊🧠 Worked on <a href='https://github.com/Kawaeee/RPS_classification' target='_blank'>Rock-Paper-Scissors hand gestures classification</a> using Keras",
       "☕️💻💰 Built <a href='https://github.com/Kawaeee/Starbucks' target='_blank'>fake Starbucks website</a> using PHP and MySQL database",
     ],
-    logo: kmuttIcon,
+    icon: KmuttIcon,
   }
 }
+
 </script>
 
 <template>
@@ -85,7 +86,7 @@ const experiences = {
               v-bind:location="experience.location"
               v-bind:duration="experience.duration"
               v-bind:detail="experience.detail"
-              v-bind:logo="experience.logo" />
+              v-bind:icon="experience.icon" />
 </div>
 </template>
 

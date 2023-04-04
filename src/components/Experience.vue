@@ -4,14 +4,14 @@ defineProps<{
   location: string,
   duration: string,
   detail: string[],
-  logo: string
+  icon: string
 }>()
 </script>
 
 <template>
     <div class="experience-block">
-      <div class="logo">
-        <img v-bind:src="logo" v-bind:alt="location" width="75" height="75"/>
+      <div class="icon">
+        <img v-bind:src="icon" v-bind:alt="location" width="75" height="75"/>
       </div>
       
       <div class="description">
@@ -51,7 +51,7 @@ h5 {
   margin-bottom: 15px;
 }
 
-.logo {
+.icon {
   display: flex;
   margin-right: 15px;
   place-items: center;

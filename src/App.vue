@@ -2,18 +2,18 @@
 import { RouterLink, RouterView } from "vue-router"
 import Profile from "./components/Profile.vue"
 import CustomParticles from "./components/Particle.vue"
-import profilePicture from "./assets/profile/icon-postelb.png"
+import ProfilePicture from "./assets/profile/icon-postelb.png"
 
-const profileName = "Kasidech Chumkun"
-const profileDescription = "Data Scientist at Osotspa"
+const ProfileName = "Kasidech Chumkun"
+const ProfileDescription = "Data Scientist at Osotspa"
 </script>
 
 <template>
   <header>
-    <img alt="Kawaeee's PFP" class="logo" v-bind:src="profilePicture" width="125" height="125" />
+    <img alt="Kawaeee's PFP" class="icon" v-bind:src="ProfilePicture" width="125" height="125" />
 
     <div class="wrapper">
-      <Profile v-bind:name="profileName" v-bind:description="profileDescription" />
+      <Profile v-bind:name="ProfileName" v-bind:description="ProfileDescription" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -64,7 +64,7 @@ header {
   max-height: 100vh;
 }
 
-.logo {
+.icon {
   display: block;
   margin: 0 auto 2rem;
 }
@@ -101,7 +101,7 @@ nav a:first-of-type {
     padding-right: calc(var(--section-gap) / 3);
   }
 
-  .logo {
+  .icon {
     margin: 0 2rem 0 0;
   }
 

@@ -4,14 +4,14 @@ defineProps<{
   description: string,
   application_url: string,
   source_url: string,
-  logo: string
+  icon: string
 }>()
 </script>
 
 <template>
     <div class="project-block">
-      <div class="logo">
-        <img v-bind:src=logo v-bind:alt=name width="75" height="75"/>
+      <div class="icon">
+        <img v-bind:src=icon v-bind:alt=name width="75" height="75"/>
       </div>
       
       <div class="description">
@@ -57,7 +57,7 @@ h5 {
   align-items: center;
 }
 
-.logo {
+.icon {
   display: flex;
   margin-right: 15px;
   place-items: center;
