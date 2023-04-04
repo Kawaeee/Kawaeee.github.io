@@ -21,7 +21,7 @@ export default {
             resize: { delay: 0.5, enable: true, }
           },
           modes: {
-            attract: { distance: 200, duration: 0.4, easing: "ease-out-quad", factor: 1, maxSpeed: 50, speed: 1, }, 
+            attract: { distance: 200, duration: 0.4, easing: "ease-out-quad", factor: 1, maxSpeed: 50, speed: 1, },
             bounce: { distance: 200 },
             bubble: { distance: 400, duration: 2, mix: false, opacity: 0.8, size: 40, divs: { distance: 200, duration: 0.4, mix: false, selectors: [], }},
             connect: { distance: 80, links: { opacity: 0.5, }, radius: 60, },
@@ -29,10 +29,10 @@ export default {
             push: { default: true, groups: [], quantity: 2, },
             remove: { quantity: 1, },
             repulse: { distance: 200, duration: 0.4, factor: 100, speed: 1, maxSpeed: 50, easing: "ease-out-quad", divs: { distance: 200, duration: 0.4, factor: 100, speed: 1, maxSpeed: 50, easing: "ease-out-quad", selectors: [], }},
-            slow: { factor: 3, radius: 200, }, 
+            slow: { factor: 3, radius: 200, },
             trail: { delay: 1, pauseOnStop: false, quantity: 1, },
             light: { area: { gradient: { start: { value: "#ffffff", }, stop: { value: "#000000", }}, radius: 1000, }, shadow: { color: { value: "#000000", }, length: 2000, }},
-          }, 
+          },
         },
         particles: {
           bounce: { horizontal: { random: { enable: false, minimumValue: 0.1, }, value: 1, }, vertical: { random: { enable: false, minimumValue: 0.1, }, value: 1, }},

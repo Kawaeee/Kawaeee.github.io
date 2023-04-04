@@ -7,7 +7,8 @@ import './assets/main.css'
 
 const app = createApp(App)
 
+// According to this issue: https://github.com/tsparticles/vue3/issues/11
 app.use(router)
-app.use(Particles)
+Particles(app, {})
 
 app.mount('#app')
