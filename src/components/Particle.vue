@@ -54,7 +54,7 @@ export default {
           links: { blink: false, color: { value: "#000" }, consent: false, distance: 150, enable: false, frequency: 1, opacity: 0.4, shadow: { blur: 5, color: { value: "#000", }, enable: false, }, triangles: { enable: false, frequency: 1, }, width: 1, warp: false, },
           repulse: { random: { enable: false, minimumValue: 0, }, value: 0, enabled: false, distance: 1, duration: 1, factor: 1, speed: 1, },
         },
-        absorbers: [ { color: { value: "#00BD7E" }, destroy: true, orbit: false, draggable: false, position: { x: 0, y: 0 }, size: { value: { min: 30, max: 50 }, density: 20, limit: { radius: 100, mass: 0 }, random: { enable: false, minimumValue: 1 }},} ],
+        absorbers: [ { color: { value: "#00BD7E" }, destroy: true, orbit: false, draggable: false, position: { x: 0, y: 0 }, size: { value: { min: 0, max: 1 }, density: 20, limit: { radius: 10000, mass: 0 }, random: { enable: false, minimumValue: 1 }},} ],
         // emitters: [ { direction: "top-right", position: { x: 0, y: 100 }, particles: { shape: { type: "circle" }, color: { value: "random" }, lineLinked: { enable: false, distance: 150, color: "#000", opacity: 0.4, width: 1 }, opacity: { value: 0.3 }, rotate: { value: 0, random: true, direction: "counter-clockwise", animation: { enable: true, speed: 15, sync: false }}}} ],
         pauseOnBlur: true,
         pauseOnOutsideViewport: true,
