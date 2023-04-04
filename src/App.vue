@@ -16,16 +16,44 @@ const profileDescription = "Data Scientist at Osotspa"
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About me</RouterLink>
-        <RouterLink to="/exp">Experiences</RouterLink>
-        <RouterLink to="/proj">Projects</RouterLink>
+        <RouterLink to="/experience">Experiences</RouterLink>
+        <RouterLink to="/project">Projects</RouterLink>
       </nav>
     </div>
   </header>
 
-  <RouterView/>
+  <RouterView v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component v-bind:key="$route.path" v-bind:is="Component"/>
+    </transition>
+  </RouterView>
+
 </template>
 
 <style scoped>
+
+.fade-enter-active
+{
+  animation: fade 0.33s;
+}
+
+.fade-leave-active
+{
+  animation: fade 0.33s reverse;
+}
+
+@keyframes fade 
+{
+  from
+  {
+      opacity: 0%;
+  }
+  to
+  {
+      opacity: 100%;
+  }
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
