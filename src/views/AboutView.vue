@@ -12,7 +12,7 @@ const contacts = [
   {name: "Email", url: "mailto:kawaekc@gmail.com", icon: EmailIcon},
   {name: "GitHub", url: "https://github.com/Kawaeee", icon: GithubIcon},
   {name: "Linkedin", url: "https://www.linkedin.com/in/kasidech-kaw/", icon: LinkedinIcon},
-  {name: "Medium", url: "https://kawaekc.medium.com/", icon: MediumIcon},
+  {name: "Medium", url: "https://kawae.medium.com/", icon: MediumIcon},
 ]
 
 </script>
