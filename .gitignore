@@ -28,3 +28,4 @@ coverage
 *.sw?
 
 .DS_Store
+.next
