@@ -49,11 +49,11 @@ const FloatingBox = ({
   const animationClass = isAnimating
     ? isOpen
       ? "animate-open"
-      : isMinimized
-      ? "animate-minimize"
-      : isMaximized
-      ? "animate-maximize"
       : "animate-close"
+    : isMinimized
+    ? "animate-minimize"
+    : isMaximized
+    ? "animate-maximize"
     : "";
 
   // Dynamic styles
