@@ -49,29 +49,23 @@ export default function Home() {
   return (
     <div className="h-screen text-white flex overflow-hidden relative">
       {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
-      >
+      <video autoPlay loop muted playsInline className="fixed top-0 left-0 w-full h-full object-cover z-[-1]">
         <source src="/images/loop.webm" type="video/webm" />
       </video>
 
       {/* Name Box */}
-      <div className="fixed top-6 left-6 bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg z-10">
-        <h1 className="text-3xl font-nanoline-solid">KASIDECH CHUMKUN</h1>
+      <div className="fixed top-16 left-12 bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg z-10">
+        <h1 className="text-5xl font-nanoline-solid">KASIDECH CHUMKUN</h1>
       </div>
 
       {/* Navigation */}
-      <aside className="fixed top-24 left-6 bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg z-10">
+      <aside className="fixed top-44 left-12 bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg z-10">
         <nav className="space-y-4">
           {["about", "experiences", "projects"].map((section) => (
             <button
               key={section}
               onClick={() => openBox(section)}
-              className="text-lg font-nanoline-regular block hover:text-pink-500 transition-colors duration-300"
+              className="text-xl font-nanoline-regular block hover:text-pink-500 transition-colors duration-300"
             >
               {section.toUpperCase()}
             </button>

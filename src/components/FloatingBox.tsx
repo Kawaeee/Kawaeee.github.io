@@ -8,7 +8,7 @@ const FloatingBox = ({
   onClose,
   onFocus,
   zIndex,
-  position,
+  position: initialPosition,
 }: {
   id: string;
   onClose: (id: string) => void;
@@ -17,95 +17,122 @@ const FloatingBox = ({
   position: { x: number; y: number };
 }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(true); // New state for open animation
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
-  const [prevPosition, setPrevPosition] = useState<{ x: number; y: number } | null>(null);
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
 
-  // Handle Minimize
-  const toggleMinimize = () => {
-    setIsMinimized((prev) => !prev);
-    setIsMaximized(false); // Exit maximize state if minimized
-  };
-
-  // Handle Maximize
-  const toggleMaximize = () => {
-    if (!isMaximized && nodeRef.current) {
-      // Save the current transform position before maximizing
-      const match = nodeRef.current.style.transform.match(/translate\((.+?)px, (.+?)px\)/);
-      if (match) {
-        setPrevPosition({ x: parseFloat(match[1]), y: parseFloat(match[2]) });
-      }
-    }
-    setIsMaximized((prev) => !prev);
-    setIsMinimized(false); // Exit minimize state if maximized
-  };
-
-  // Handle Transform and Restore Position
   useEffect(() => {
-    if (nodeRef.current) {
-      if (isMaximized) {
-        nodeRef.current.style.transform = "none"; // Reset transform when maximized
-      } else if (prevPosition) {
-        // Restore previous position when exiting maximize
-        const { x, y } = prevPosition;
-        nodeRef.current.style.transform = `translate(${x}px, ${y}px)`;
-      }
-    }
-  }, [isMaximized, prevPosition]);
+    const timeout = setTimeout(() => {
+      setIsAnimating(false);
+      setIsOpen(false); // Reset open animation after it plays
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, []);
 
-  // Box styles
-  const boxStyles = {
-    position: isMaximized ? "fixed" : "absolute",
-    top: isMaximized ? 0 : undefined,
-    left: isMaximized ? 0 : undefined,
-    width: isMaximized ? "100vw" : "16rem", // Full width when maximized, default otherwise
-    height: isMaximized ? "100vh" : "10rem", // Full height when maximized, default otherwise
+  const toggleMinimize = () => {
+    setIsMaximized(false);
+    setIsMinimized((prev) => !prev);
+  };
+
+  const toggleMaximize = () => {
+    setIsMinimized(false);
+    setIsMaximized((prev) => !prev);
+  };
+
+  const handleClose = () => {
+    setIsAnimating(true);
+    setTimeout(() => onClose(id), 300);
+  };
+
+  const animationClass = isAnimating
+    ? isOpen
+      ? "animate-open"
+      : isMinimized
+      ? "animate-minimize"
+      : isMaximized
+      ? "animate-maximize"
+      : "animate-close"
+    : "";
+
+  // Dynamic styles
+  const boxStyles: React.CSSProperties = {
+    position: "fixed",
+    top: isMaximized ? "20px" : `${initialPosition.y}px`,
+    left: isMaximized ? "20px" : `${initialPosition.x}px`,
+    width: isMaximized ? "calc(100vw - 40px)" : "16rem",
+    height: isMaximized ? "calc(100vh - 40px)" : "10rem",
     zIndex,
+    borderRadius: isMaximized ? "0" : "15px",
     margin: 0,
     padding: 0,
+    boxShadow: isMaximized
+      ? "0 8px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0)"
+      : "0 4px 15px rgba(0, 0, 0, 0.3)",
+    transition: isDragging
+      ? "none"
+      : isMaximized || isAnimating || isMinimized
+      ? "all 0.3s ease-in-out"
+      : "none",
   };
 
   return (
-    <Draggable
-      nodeRef={nodeRef}
-      bounds={!isMaximized ? "parent" : undefined} // Disable bounds when maximized
-      disabled={isMaximized} // Disable dragging when maximized
-      handle=".handle"
-      defaultPosition={position}
-      onStart={() => onFocus(id)}
-    >
-      <div
-        ref={nodeRef}
-        style={boxStyles}
-        className="bg-gradient-to-br from-gray-800 to-gray-900 text-white shadow-2xl rounded-lg"
-      >
-        {/* Title Bar */}
-        <div className="handle bg-gray-700 flex justify-between items-center p-2 cursor-move rounded-t-lg">
-          <span className="font-semibold">{id.toUpperCase()}</span>
-          <div className="flex space-x-2">
-            <button
-              onClick={toggleMinimize}
-              className="w-4 h-4 bg-yellow-400 rounded-full hover:scale-110 transition-transform"
-            />
-            <button
-              onClick={toggleMaximize}
-              className="w-4 h-4 bg-green-400 rounded-full hover:scale-110 transition-transform"
-            />
-            <button
-              onClick={() => onClose(id)}
-              className="w-4 h-4 bg-red-500 rounded-full hover:scale-110 transition-transform"
-            />
-          </div>
-        </div>
-
-        {/* Content */}
-        {!isMinimized && (
-          <div className="p-4">
-            <p>This is the {id} box. Drag, maximize, minimize, or close me!</p>
-          </div>
-        )}
+<Draggable
+  nodeRef={nodeRef}
+  disabled={isMaximized} // Disable dragging when maximized
+  bounds={!isMaximized ? "parent" : undefined}
+  position={isMaximized ? { x: 0, y: 0 } : undefined}
+  handle=".handle" // Make the title bar the drag handle
+  onStart={() => {
+    setIsDragging(true);
+    onFocus(id);
+  }}
+  onStop={() => setIsDragging(false)}
+>
+  <div
+    ref={nodeRef}
+    style={boxStyles}
+    className={`bg-gradient-to-br from-gray-800 to-gray-900 text-white shadow-lg ${animationClass}`}
+  >
+    {/* Title Bar */}
+    <div className="handle bg-gray-700 flex justify-between items-center p-2 cursor-move rounded-t-lg">
+      <span className="font-nanoline-solid">{id.toUpperCase()}</span>
+      <div className="flex space-x-2">
+        <button
+          onClick={toggleMinimize}
+          disabled={isMinimized} // Disable if already minimized
+          className={`w-4 h-4 rounded-full transition-transform ${
+            isMinimized
+              ? "bg-yellow-400 cursor-not-allowed"
+              : "bg-yellow-400 hover:scale-110"
+          }`}
+        />
+        <button
+          onClick={toggleMaximize}
+          disabled={isMaximized} // Disable if already maximized
+          className={`w-4 h-4 rounded-full transition-transform ${
+            isMaximized
+              ? "bg-green-400 cursor-not-allowed"
+              : "bg-green-400 hover:scale-110"
+          }`}
+        />
+        <button
+          onClick={handleClose}
+          className="w-4 h-4 bg-red-500 rounded-full hover:scale-110 transition-transform"
+        />
       </div>
-    </Draggable>
+    </div>
+
+    {/* Content */}
+    {!isMinimized && (
+      <div className="p-4">
+        <p>This is the {id} box. Drag, maximize, minimize, or close me!</p>
+      </div>
+    )}
+  </div>
+</Draggable>
+
   );
 };
 
