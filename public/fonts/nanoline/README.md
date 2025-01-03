@@ -2,8 +2,9 @@
 
 This project uses the following custom fonts provided by YutaONE:
 
-- [CustomFont-Regular.otf](public/fonts/CustomFont-Regular.otf)
-- [CustomFont-Bold.otf](public/fonts/CustomFont-Bold.otf)
+- [Y1NanoLine-RegularDisplay.otf](public/fonts/nanoline/Y1NanoLine-RegularDisplay.otf)
+- [Y1NanoLine-RegularDisplay.otf](public/fonts/nanoline/Y1NanoLine-RegularDisplay.otf)
+- [Y1NanoLine-SolidDisplay.otf](public/fonts/nanoline/Y1NanoLine-SolidDisplay.otf)
 
 ### Attribution
 
