@@ -19,7 +19,7 @@ export default function Home() {
   // Open a new box or bring an existing one to the front
   const openBox = (id: string) => {
     setBoxes((prev) => {
-      if (prev.find((box) => box.id === id)) return prev; // Prevent duplicate boxes
+      if (prev.some((box) => box.id === id)) return prev; // Prevent duplicate boxes
       return [...prev, { id, position: getRandomPosition() }];
     });
 
@@ -47,10 +47,21 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen bg-black text-white flex overflow-hidden relative">
+    <div className="h-screen text-white flex overflow-hidden relative">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
+      >
+        <source src="/images/loop.webm" type="video/webm" />
+      </video>
+
       {/* Name Box */}
       <div className="fixed top-6 left-6 bg-gray-800 bg-opacity-80 p-4 rounded-lg shadow-lg z-10">
-        <h1 className="text-3xl font-bold">KASIDECH CHUMKUN</h1>
+        <h1 className="text-3xl font-nanoline-solid">KASIDECH CHUMKUN</h1>
       </div>
 
       {/* Navigation */}
@@ -60,7 +71,7 @@ export default function Home() {
             <button
               key={section}
               onClick={() => openBox(section)}
-              className="text-lg block hover:text-pink-500 transition-colors duration-300"
+              className="text-lg font-nanoline-regular block hover:text-pink-500 transition-colors duration-300"
             >
               {section.toUpperCase()}
             </button>
@@ -68,8 +79,8 @@ export default function Home() {
         </nav>
       </aside>
 
-      {/* Main Content */}
-      <div className="ml-1/4 w-full relative">
+      {/* Floating Boxes */}
+      <div className="relative w-full ml-1/4">
         {boxes.map((box) => (
           <FloatingBox
             key={box.id}
