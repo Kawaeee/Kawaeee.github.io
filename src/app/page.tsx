@@ -13,8 +13,15 @@ export default function Home() {
     y: Math.floor(Math.random() * (window.innerHeight - 200)),
   });
 
-  // Helper: Generate a random z-index between 11 and 30
-  const getRandomZIndex = () => Math.floor(Math.random() * 20) + 11;
+  // Helper: Reapply z-indexes starting from 11
+  const reapplyZIndexes = (currentZIndexes: { [key: string]: number }) => {
+    const sortedIds = Object.keys(currentZIndexes).sort((a, b) => currentZIndexes[a] - currentZIndexes[b]);
+    const newZIndexes: { [key: string]: number } = {};
+    sortedIds.forEach((id, index) => {
+      newZIndexes[id] = 11 + index;
+    });
+    return newZIndexes;
+  };
 
   // Open a new box or bring an existing one to the front
   const openBox = (id: string) => {
@@ -23,18 +30,25 @@ export default function Home() {
       return [...prev, { id, position: getRandomPosition() }];
     });
 
-    setZIndexes((prev) => ({
-      ...prev,
-      [id]: getRandomZIndex(),
-    }));
+    setZIndexes((prev) => {
+      const maxZIndex = Math.max(...Object.values(prev), 10);
+      const newZIndex = maxZIndex >= 50 ? 11 : maxZIndex + 1;
+      return reapplyZIndexes({ ...prev, [id]: newZIndex });
+    });
   };
 
   // Bring a box to the front by setting the highest z-index
   const bringToFront = (id: string) => {
-    setZIndexes((prev) => ({
-      ...prev,
-      [id]: Math.max(...Object.values(prev), 30) + 1,
-    }));
+    setZIndexes((prev) => {
+      const maxZIndex = Math.max(...Object.values(prev), 10);
+      const newZIndex = maxZIndex >= 50 ? 11 : maxZIndex + 1;
+
+      // Update the z-index for the current box
+      const updatedZIndexes = { ...prev, [id]: newZIndex };
+
+      // Reapply if the maximum z-index exceeds 50
+      return newZIndex > 50 ? reapplyZIndexes(updatedZIndexes) : updatedZIndexes;
+    });
   };
 
   // Close a box and clean up its z-index
@@ -42,7 +56,7 @@ export default function Home() {
     setBoxes((prev) => prev.filter((box) => box.id !== id));
     setZIndexes((prev) => {
       const { [id]: _, ...rest } = prev; // Remove the z-index for the closed box
-      return rest;
+      return reapplyZIndexes(rest);
     });
   };
 
