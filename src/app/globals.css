@@ -61,6 +61,17 @@ div::-webkit-scrollbar {
   display: none;
 }
 
+.experience-list a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.experience-list a:hover {
+  color: #F87171;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

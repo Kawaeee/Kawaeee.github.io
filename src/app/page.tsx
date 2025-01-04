@@ -15,8 +15,8 @@ export default function Home() {
   // Helper: Generate random positions within the screen bounds
   const getRandomPosition = () => {
     const margin = 20; // Minimum margin from the screen edges
-    const boxWidth = 300; // Assumed box width
-    const boxHeight = 200; // Assumed box height
+    const boxWidth = 900; // Assumed box width
+    const boxHeight = 400; // Assumed box height
 
     return {
       x: Math.max(
@@ -127,7 +127,7 @@ export default function Home() {
             <button
               key={section}
               onClick={() => openBox(section)}
-              className="text-xl sm:text-md md:text-lg lg:text-xl font-nanoline-regular block transition-colors duration-300 hover:text-pink-500"
+              className="text-xl sm:text-md md:text-lg lg:text-xl font-nanoline-regular block transition-colors duration-300 hover:text-red-400"
             >
               {section.toUpperCase()}
             </button>

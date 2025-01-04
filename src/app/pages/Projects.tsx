@@ -1,6 +1,13 @@
 import React from "react";
 
 const projects = {
+  yolov8_tfserving: {
+    name: "YOLOv8 tf-serving",
+    description:
+      "🚀🖥️✨ Convert YOLOv8 models to TensorFlow Serving format for seamless deployment in production environments. ",
+    icon: "/images/projects/blank.png",
+    source_url: "https://github.com/Kawaeee/yolov8_tf-serving",
+  },
   corgiButtOrLoaf: {
     name: "Corgi butt or a loaf of bread?",
     description:

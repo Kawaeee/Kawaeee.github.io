@@ -6,18 +6,25 @@ const experiences = {
     location: "Osotspa",
     duration: "July 2022 - Present",
     detail: [
-      "💻🔍 Created Cleaning + PII hashing data pipeline automation on GCP",
+      "💻🔍 Created Cleaning + PII hashing data pipeline automation on Google Cloud Platform",
       "🏷️🛠️ Setup an internal data labeling tool for machine learning project",
-      "🔄💾 Migrated ~5.3 billion cap codes from the old system to Primo",
+      "🚀📊✨ Initiated, developed, and deployed the SearchTrend project, including pipeline creation and base dashboard development",
+      "🤖💡🔗 Built multi-agent RAG workflow using DSPY and LangGraph",
     ],
     icon: "/images/experiences/osotspa.png",
+    isCurrentJob: true,
   },
   hedgehoglet: {
     role: "Software Engineer",
     location: "Hedgehoglet",
     duration: "July 2022 - Present",
-    detail: ["🐱🍲 Worked on cat-food python template", "🤔 To be added..."],
+    detail: [
+      "🐱🍲 Worked on <a href='https://github.com/hedgehoglet/cat-food' target='_blank'>cat-food</a> python template",
+      "🛠️ Built <a href='https://sandbox.hedgehoglet.dev' target='_blank'>sandbox</a> project for public data sharing site",
+      "🚇🗺️ Developing the Bangkok Transit project to visualize public transportation routes and stations across Bangkok, with a planned release in Q2 2025.",
+    ],
     icon: "/images/experiences/hedgehoglet.png",
+    // isCurrentJob: true,
   },
   eatlab: {
     role: "Machine Learning Engineer",
@@ -38,7 +45,7 @@ const experiences = {
       "🤖🚀 Coded WARC Processor data processing pipeline from idea to production",
       "📖🗣️ Created various types of text translation tasks-related tools: NER, n-gram, etc",
       "⚙️💡 Setup back-translation module using AWS EC2 Spot instances",
-      "🤝🌍 Supported ParaCrawl team on ParaCrawl Synthesized Data (Release 2)",
+      "🤝🌍 Supported ParaCrawl team on <a href='https://paracrawl.eu/manufactured-data' target='_blank'>ParaCrawl Synthesized Data (Release 2)</a>",
     ],
     icon: "/images/experiences/omniscien.png",
   },
@@ -57,9 +64,9 @@ const experiences = {
     location: "SIT, King Mongkut's University of Technology Thonburi",
     duration: "June 2016 - January 2020",
     detail: [
-      "💇‍♂️💻📱 Implemented iStylist: Hairstyle Recommender mobile application",
-      "✋✌️👊🧠 Worked on Rock-Paper-Scissors hand gestures classification using Keras",
-      "☕️💻💰 Built fake Starbucks website using PHP and MySQL database",
+      "💇‍♂️💻📱 Implemented <a href='https://seniorproject.sit.kmutt.ac.th/showproject/CS59-RE43' target='_blank'>iStylist: Hairstyle Recommender</a> mobile application",
+      "✋✌️👊🧠 Worked on <a href='https://github.com/Kawaeee/RPS_classification' target='_blank'>Rock-Paper-Scissors hand gestures classification</a> using Keras",
+      "☕️💻💰 Built <a href='https://github.com/Kawaeee/Starbucks' target='_blank'>fake Starbucks website</a> using PHP and MySQL database",
     ],
     icon: "/images/experiences/kmutt.png",
   },
@@ -71,13 +78,13 @@ const Experiences = () => {
       <div
         className="space-y-6 overflow-y-auto"
         style={{
-          // maxWidth: '80vw',
           maxHeight: "80vh", // Adjust as needed for the scrollable container
           overflowX: "hidden", // Hide horizontal overflow
         }}
       >
         {Object.keys(experiences).map((key) => {
-          const { role, location, duration, detail, icon } = experiences[key];
+          const { role, location, duration, detail, icon, isCurrentJob } =
+            experiences[key];
           return (
             <div
               key={key}
@@ -93,9 +100,18 @@ const Experiences = () => {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white flex items-baseline">
                     {role}
+                    {isCurrentJob && (
+                      <span
+                        className="ml-2 text-red-400 text-sm sm:text-base md:text-md animate-pulse"
+                        style={{ animationDuration: "1.5s" }}
+                      >
+                        (Current Job)
+                      </span>
+                    )}
                   </h3>
+
                   <p className="text-sm sm:text-base md:text-lg text-gray-400">
                     {location}
                   </p>
@@ -106,7 +122,7 @@ const Experiences = () => {
               </div>
 
               {/* Second row: Task list */}
-              <ul className="list-disc pl-4 text-gray-300 space-y-1 text-sm sm:text-base md:text-md mt-4">
+              <ul className="experience-list list-disc pl-4 text-gray-300 space-y-1 text-sm sm:text-base md:text-md mt-4">
                 {detail.map((item, index) => (
                   <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
                 ))}
