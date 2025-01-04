@@ -30,9 +30,8 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
 
   // Trigger open animation on mount
   useEffect(() => {
-    console.log(`FloatingBox ${id} updated zIndex: ${zIndex}`);
     setTimeout(() => setIsVisible(true), 0); // Ensure animation runs after the initial render
-  }, [zIndex]);
+  }, []);
 
   const toggleMinimize = useCallback(() => {
     if (!isDragging) {
@@ -82,40 +81,8 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
   }, []);
 
   const handleFocus = useCallback(() => {
-    console.log(`Focusing box: ${id}`);
-    onFocus(id); // Call the parent's callback to update the z-index
+    onFocus(id);
   }, [id, onFocus]);
-  
-  const boxStyles: React.CSSProperties = {
-    position: "fixed",
-    zIndex,
-    top: isMaximized ? "20px" : undefined,
-    left: isMaximized ? "20px" : undefined,
-    width: isMaximized ? "calc(100vw - 40px)" 
-    : isMinimized
-    ? "15rem"
-    : "auto",
-    height: isMaximized
-    ? "calc(100vh - 40px)"
-    : isMinimized
-    ? "2.5rem"
-    : "auto",
-    maxWidth: isMaximized ? "none" : "75vw", // Prevent the box from being too wide
-    maxHeight: isMaximized ? "none" : "75vh", // Prevent the box from being too tall
-    borderRadius: isMaximized ? "0" : "15px",
-    boxShadow: isMaximized ? "none" : "0 4px 15px rgba(0, 0, 0, 0.3)",
-    overflow: isMinimized ? "hidden" : "auto",
-    transform: isVisible ? "scale(1)" : "scale(0.8)",
-    opacity: isVisible ? 1 : 0,
-    transition: isDragging ? "none" : "all 0.3s ease-in-out", // Disable transition during dragging
-  };
-
-  const contentStyles: React.CSSProperties = {
-    flex: 1,
-    overflow: "auto",
-    padding: "1rem",
-    display: isMinimized ? "none" : "block",
-  };
 
   return (
     <Draggable
@@ -129,29 +96,39 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
     >
       <div
         ref={nodeRef}
-        style={boxStyles}
+        className={`fixed bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-lg shadow-lg overflow-hidden ${
+          isMaximized
+            ? "top-5 left-5 w-[calc(100vw-40px)] h-[calc(100vh-40px)] rounded-none shadow-none"
+            : isMinimized
+            ? "w-60 h-10"
+            : "max-w-[75vw] max-h-[75vh]"
+        } ${isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"} ${
+          isDragging ? "" : "transition-all duration-300 ease-in-out"
+        }`}
+        style={{ zIndex }}
         onMouseDown={handleFocus}
-        className="bg-gradient-to-br from-gray-800 to-gray-900 text-white"
       >
-        <div className="handle bg-gray-700 flex justify-between items-center p-2 cursor-move rounded-t-lg">
+        <div className="handle bg-gray-700 flex justify-between items-center p-2 cursor-move">
           <span className="font-nanoline-solid">{id.toUpperCase()}</span>
           <div className="flex space-x-2">
-            <button
-              onClick={toggleMinimize}
-              className="w-4 h-4 rounded-full transition-transform bg-yellow-400 hover:scale-110"
-            />
-            <button
-              onClick={toggleMaximize}
-              className="w-4 h-4 rounded-full transition-transform bg-green-400 hover:scale-110"
-            />
-            <button
-              onClick={handleClose}
-              className="w-4 h-4 bg-red-500 rounded-full hover:scale-110 transition-transform"
-            />
+          <button
+            onClick={toggleMinimize}
+            className="w-4 h-4 rounded-full bg-yellow-400 hover:scale-125 transition-transform duration-300 ease-in-out"
+            title="Minimize"
+          />
+          <button
+            onClick={toggleMaximize}
+            className="w-4 h-4 rounded-full bg-green-400 hover:scale-125 transition-transform duration-300 ease-in-out"
+            title="Maximize"
+          />
+          <button
+            onClick={handleClose}
+            className="w-4 h-4 rounded-full bg-red-500 hover:scale-125 transition-transform duration-300 ease-in-out"
+            title="Close"
+          />
           </div>
         </div>
-
-        {!isMinimized && (<div style={contentStyles}>{content}</div>)}
+        {!isMinimized && <div className="flex-1 overflow-auto p-4">{content}</div>}
       </div>
     </Draggable>
   );

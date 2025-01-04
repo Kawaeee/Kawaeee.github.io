@@ -26,83 +26,29 @@ const About = () => {
   ];
 
   return (
-    <div
-      style={{
-        width: "100%",
-        maxWidth: "700px",
-        margin: "0 auto",
-        padding: "1rem",
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-      }}
-    >
+    <div className="w-full max-w-3xl mx-auto p-4 flex flex-col gap-6">
       {/* Header Section */}
-      <div style={{ textAlign: "center" }}>
-        <h2
-          style={{
-            
-            fontSize: "1rem",
-            fontWeight: "regular",
-            marginBottom: "0.5rem",
-          }}
-        >
+      <div className="text-center px-4">
+        <h2 className="text-base sm:text-lg font-normal mb-4 text-gray-300 leading-relaxed">
           {header}
         </h2>
       </div>
 
       {/* Contact Section */}
-      <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "1rem",
-        padding: "1rem",
-        backgroundColor: "#1e293b", // Dark background
-        borderRadius: "0.5rem",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
-      }}
-    >
-      {contacts.map((contact, index) => (
-        <a
-          key={index}
-          href={contact.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "0.375rem",
-            backgroundColor: "#f1f5f9", // Light gray background
-            transition: "transform 0.2s ease, box-shadow 0.2s ease",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-            cursor: "pointer",
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = "scale(1.1)";
-            e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-            e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
-          }}
-          aria-label={`Link to ${contact.name}`}
-        >
-          <img
-            src={contact.icon}
-            alt={contact.name}
-            style={{
-              width: "24px",
-              height: "24px",
-            }}
-          />
-        </a>
-      ))}
-    </div>
+      <div className="flex flex-wrap justify-center items-center gap-4 p-4 bg-gray-800 rounded-lg shadow-md">
+        {contacts.map(({ name, url, icon }, index) => (
+          <a
+            key={index}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-md bg-gray-200 transition-transform duration-200 hover:scale-110 shadow-md hover:shadow-lg"
+            aria-label={`Link to ${name}`}
+          >
+            <img src={icon} alt={name} className="w-6 h-6 sm:w-7 sm:h-7" />
+          </a>
+        ))}
+      </div>
     </div>
   );
 };
