@@ -58,7 +58,13 @@ const projects = {
 const Projects = () => {
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 overflow-y-auto"
+        style={{
+          maxHeight: "80vh", // Adjust as needed for the scrollable container
+          overflowX: "hidden", // Hide horizontal overflow
+        }}
+      >
         {Object.keys(projects).map((key) => {
           const { name, description, application_url, icon, source_url } =
             projects[key];
