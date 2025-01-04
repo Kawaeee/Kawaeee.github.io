@@ -8,22 +8,22 @@ Kawae's Online portfolio hosting on GitHub Pages
 
 - **Release Date:** January 4, 2025
 - **Branches:**
-  - `main`: [v1.5.1-prod](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.6.3-prod)
+  - `main`: [v1.6.3-prod](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.6.3-prod)
     Stable release of the Next.js-based portfolio.
-  - `development`: [v1.5.1-development](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.6.3-development)
+  - `development`: [v1.6.3-development](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.6.3-development)
     Development branch for testing new Next.js portfolio features.
 - **Details:**
-  - Transitioned from Flutter 2.0 to Vue.js 3.
-  - Utilized the `HelloWorld` template and integrated `tsParticle` for enhanced interactivity.
-  - Improved portfolio structure and performance with Vue.js 3.
+    - Migrated the portfolio project from Vue.js 3 to Next.js.
+    - Incorporated an animated background and interactive draggable windows using React-Draggable for a dynamic user experience.
+    - Revamped the portfolio theme from a basic Vue.js HelloWorld style to a futuristic web game application design.
 
 ### **Vue.js Framework (v1.5.1)**
 
 - **Release Date:** April 4, 2023
 - **Branches:**
-  - `main`: [v1.6.3-prod](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.5.1-prod)
+  - `main`: [v1.5.1-prod](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.5.1-prod)
     Stable release of the Vue.js-based portfolio.
-  - `development`: [v1.6.3-development](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.5.1-development)
+  - `development`: [v1.5.1-development](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.5.1-development)
     Development branch for testing new Vue.js portfolio features.
 - **Details:**
   - Transitioned from Flutter 2.0 to Vue.js 3.
