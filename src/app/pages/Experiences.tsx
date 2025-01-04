@@ -1,5 +1,5 @@
 const Experiences = () => (
-    <div>
+  <div className="p-4">
       <h2>My Experiences</h2>
       <ul>
         <li>Data Scientist at Osotspa</li>

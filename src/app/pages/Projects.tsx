@@ -1,5 +1,5 @@
 const Projects = () => (
-    <div>
+  <div className="p-4">
       <h2>My Projects</h2>
       <ul>
         <li>Data Pipeline Automation</li>

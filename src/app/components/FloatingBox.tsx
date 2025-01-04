@@ -91,14 +91,30 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
     zIndex,
     top: isMaximized ? "20px" : undefined,
     left: isMaximized ? "20px" : undefined,
-    width: isMaximized ? "calc(100vw - 40px)" : "16rem",
-    height: isMaximized ? "calc(100vh - 40px)" : isMinimized ? "2.5rem" : "10rem",
+    width: isMaximized ? "calc(100vw - 40px)" 
+    : isMinimized
+    ? "15rem"
+    : "auto",
+    height: isMaximized
+    ? "calc(100vh - 40px)"
+    : isMinimized
+    ? "2.5rem"
+    : "auto",
+    maxWidth: isMaximized ? "none" : "75vw", // Prevent the box from being too wide
+    maxHeight: isMaximized ? "none" : "75vh", // Prevent the box from being too tall
     borderRadius: isMaximized ? "0" : "15px",
     boxShadow: isMaximized ? "none" : "0 4px 15px rgba(0, 0, 0, 0.3)",
-    overflow: isMinimized ? "hidden" : "visible",
+    overflow: isMinimized ? "hidden" : "auto",
     transform: isVisible ? "scale(1)" : "scale(0.8)",
     opacity: isVisible ? 1 : 0,
     transition: isDragging ? "none" : "all 0.3s ease-in-out", // Disable transition during dragging
+  };
+
+  const contentStyles: React.CSSProperties = {
+    flex: 1,
+    overflow: "auto",
+    padding: "1rem",
+    display: isMinimized ? "none" : "block",
   };
 
   return (
@@ -135,11 +151,7 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
           </div>
         </div>
 
-        {!isMinimized && (
-          <div className="p-4">
-            {content}
-          </div>
-        )}
+        {!isMinimized && (<div style={contentStyles}>{content}</div>)}
       </div>
     </Draggable>
   );
