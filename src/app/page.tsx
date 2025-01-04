@@ -7,7 +7,9 @@ import Experiences from "./pages/Experiences";
 import Projects from "./pages/Projects";
 
 export default function Home() {
-  const [boxes, setBoxes] = useState<{ id: string; position: { x: number; y: number } }[]>([]);
+  const [boxes, setBoxes] = useState<
+    { id: string; position: { x: number; y: number } }[]
+  >([]);
   const [zIndexes, setZIndexes] = useState<{ [key: string]: number }>({});
 
   // Helper: Generate random positions within the screen bounds
@@ -36,7 +38,9 @@ export default function Home() {
 
   // Helper: Reapply z-indexes starting from 11
   const reapplyZIndexes = (currentZIndexes: { [key: string]: number }) => {
-    const sortedIds = Object.keys(currentZIndexes).sort((a, b) => currentZIndexes[a] - currentZIndexes[b]);
+    const sortedIds = Object.keys(currentZIndexes).sort(
+      (a, b) => currentZIndexes[a] - currentZIndexes[b]
+    );
     const newZIndexes: { [key: string]: number } = {};
     sortedIds.forEach((id, index) => {
       newZIndexes[id] = 11 + index;
@@ -68,7 +72,9 @@ export default function Home() {
       const updatedZIndexes = { ...prev, [id]: newZIndex };
 
       // Reapply if the maximum z-index exceeds 50
-      return newZIndex > 50 ? reapplyZIndexes(updatedZIndexes) : updatedZIndexes;
+      return newZIndex > 50
+        ? reapplyZIndexes(updatedZIndexes)
+        : updatedZIndexes;
     });
   };
 
@@ -91,29 +97,31 @@ export default function Home() {
         return <Projects />;
       default:
         return null;
-  }
+    }
   };
 
   return (
     <div className="h-screen text-white flex overflow-hidden relative">
       {/* Background Video */}
-      <video autoPlay loop muted playsInline className="fixed top-0 left-0 w-full h-full object-cover z-[-1]">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
+      >
         <source src="/images/loop.webm" type="video/webm" />
       </video>
 
       {/* Name Box */}
-      <div
-        className="fixed top-16 left-12 bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg z-10 name-box transition-all duration-500 animate-slideIn"
-      >
+      <div className="fixed top-16 left-12 bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg z-10 name-box transition-all duration-500 animate-slideIn">
         <h1 className="text-center text-gray-100 font-nanoline-solid leading-tight break-words text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
           KASIDECH CHUMKUN
         </h1>
       </div>
 
       {/* Navigation */}
-      <aside
-        className="fixed top-44 left-12 bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg z-10 menu-box transition-all duration-500 animate-slideIn"
-      >
+      <aside className="fixed top-44 left-12 bg-gray-800 bg-opacity-80 p-6 rounded-lg shadow-lg z-10 menu-box transition-all duration-500 animate-slideIn">
         <nav className="space-y-4">
           {["about", "experiences", "projects"].map((section) => (
             <button

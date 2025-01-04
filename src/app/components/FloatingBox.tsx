@@ -24,9 +24,12 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
   const [currentPosition, setCurrentPosition] = useState(initialPosition);
-  const [previousPosition, setPreviousPosition] = useState<{ x: number; y: number } | null>(null);
-  const [isVisible, setIsVisible] = useState(false); // Initially invisible for open animation
-  const [isDragging, setIsDragging] = useState(false); // New state for drag handling
+  const [previousPosition, setPreviousPosition] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Trigger open animation on mount
   useEffect(() => {
@@ -111,24 +114,26 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
         <div className="handle bg-gray-700 flex justify-between items-center p-2 cursor-move">
           <span className="font-nanoline-solid">{id.toUpperCase()}</span>
           <div className="flex space-x-2">
-          <button
-            onClick={toggleMinimize}
-            className="w-4 h-4 rounded-full bg-yellow-400 hover:scale-125 transition-transform duration-300 ease-in-out"
-            title="Minimize"
-          />
-          <button
-            onClick={toggleMaximize}
-            className="w-4 h-4 rounded-full bg-green-400 hover:scale-125 transition-transform duration-300 ease-in-out"
-            title="Maximize"
-          />
-          <button
-            onClick={handleClose}
-            className="w-4 h-4 rounded-full bg-red-500 hover:scale-125 transition-transform duration-300 ease-in-out"
-            title="Close"
-          />
+            <button
+              onClick={toggleMinimize}
+              className="w-4 h-4 rounded-full bg-yellow-400 hover:scale-125 transition-transform duration-300 ease-in-out"
+              title="Minimize"
+            />
+            <button
+              onClick={toggleMaximize}
+              className="w-4 h-4 rounded-full bg-green-400 hover:scale-125 transition-transform duration-300 ease-in-out"
+              title="Maximize"
+            />
+            <button
+              onClick={handleClose}
+              className="w-4 h-4 rounded-full bg-red-500 hover:scale-125 transition-transform duration-300 ease-in-out"
+              title="Close"
+            />
           </div>
         </div>
-        {!isMinimized && <div className="flex-1 overflow-auto p-4">{content}</div>}
+        {!isMinimized && (
+          <div className="flex-1 overflow-auto p-4">{content}</div>
+        )}
       </div>
     </Draggable>
   );

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
 
 :root {
   --background: #ffffff;
@@ -13,47 +13,47 @@
 }
 
 @font-face {
-  font-family: 'NanoLine';
-  src: url('/fonts/nanoline/Y1NanoLine-RegularDisplay.otf') format('opentype');
+  font-family: "NanoLine";
+  src: url("/fonts/nanoline/Y1NanoLine-RegularDisplay.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NanoLine';
-  src: url('/fonts/nanoline/Y1NanoLine-SlimDisplay.otf') format('opentype');
+  font-family: "NanoLine";
+  src: url("/fonts/nanoline/Y1NanoLine-SlimDisplay.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'NanoLine';
-  src: url('/fonts/nanoline/Y1NanoLine-SolidDisplay.otf') format('opentype');
+  font-family: "NanoLine";
+  src: url("/fonts/nanoline/Y1NanoLine-SolidDisplay.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 
 .font-nanoline-slim {
-  font-family: 'NanoLine';
+  font-family: "NanoLine";
   font-weight: 300; /* Slim Display */
 }
 
 .font-nanoline-regular {
-  font-family: 'NanoLine';
+  font-family: "NanoLine";
   font-weight: 400; /* Regular Display */
 }
 
 .font-nanoline-solid {
-  font-family: 'NanoLine';
+  font-family: "NanoLine";
   font-weight: 700; /* Solid Display */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  background: url('/images/fallback.png') no-repeat center center fixed;
+  background: url("/images/fallback.png") no-repeat center center fixed;
   background-size: cover;
-  font-family: 'Exo 2', Arial, Helvetica, sans-serif;
+  font-family: "Exo 2", Arial, Helvetica, sans-serif;
 }
 
 /* Hide scrollbar but keep scrolling functionality */
