@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -51,7 +53,7 @@ body {
   background: var(--background);
   background: url('/images/fallback.png') no-repeat center center fixed;
   background-size: cover;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Exo 2', Arial, Helvetica, sans-serif;
 }
 
 @tailwind base;
