@@ -15,6 +15,15 @@ export default {
       fontFamily: {
         nanoline: ['NanoLine', 'sans-serif'],
       },
+      keyframes: {
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateX(-20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        slideIn: 'slideIn 1s ease-out',
+      },
     },
   },
   plugins: [],
