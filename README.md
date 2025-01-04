@@ -4,13 +4,13 @@ Kawae's Online portfolio hosting on GitHub Pages
 
 ---
 
-### **Next.js Framework (v1.6.3)**
+### **Next.js Framework (v1.6.4)**
 
 - **Release Date:** January 4, 2025
 - **Branches:**
-  - `main`: [v1.6.3-prod](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.6.3-prod)
+  - `main`: [v1.6.4-prod](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.6.4-prod)
     Stable release of the Next.js-based portfolio.
-  - `development`: [v1.6.3-development](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.6.3-development)
+  - `development`: [v1.6.4-development](https://github.com/Kawaeee/Kawaeee.github.io/releases/tag/v1.6.4-development)
     Development branch for testing new Next.js portfolio features.
 - **Details:**
     - Migrated the portfolio project from Vue.js 3 to Next.js.
