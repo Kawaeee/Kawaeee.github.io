@@ -16,7 +16,7 @@ export default function Home() {
   const getRandomPosition = () => {
     const margin = 20; // Minimum margin from the screen edges
     const boxWidth = 900; // Assumed box width
-    const boxHeight = 400; // Assumed box height
+    const boxHeight = 350; // Assumed box height
 
     return {
       x: Math.max(
@@ -149,6 +149,23 @@ export default function Home() {
           />
         ))}
       </div>
+
+      {/* Footer */}
+      <footer className="fixed bottom-0 right-0 text-xs text-gray-400 p-2 flex items-center space-x-2">
+        <p>© 2025 Kawaeee.</p>
+        <span>|</span>
+        <p>
+          Fonts by{" "}
+          <a
+            href="https://twitter.com/yuta_ptv"
+            className="text-red-400 underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @yuta_ptv
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }
