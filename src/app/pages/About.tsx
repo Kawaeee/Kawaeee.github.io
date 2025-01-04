@@ -29,7 +29,7 @@ const About = () => {
     <div className="w-full max-w-3xl mx-auto p-4 flex flex-col gap-6">
       {/* Header Section */}
       <div className="text-center px-4">
-        <h2 className="text-base sm:text-lg font-normal mb-4 text-gray-300 leading-relaxed">
+        <h2 className="text-base sm:text-lg md:text-lg lg:text-lg font-normal mb-4 text-gray-300 leading-relaxed">
           {header}
         </h2>
       </div>
@@ -42,10 +42,14 @@ const About = () => {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-md bg-gray-200 transition-transform duration-200 hover:scale-110 shadow-md hover:shadow-lg"
+            className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center rounded-md bg-gray-200 transition-transform duration-200 hover:scale-110 shadow-md hover:shadow-lg"
             aria-label={`Link to ${name}`}
           >
-            <img src={icon} alt={name} className="w-6 h-6 sm:w-7 sm:h-7" />
+            <img
+              src={icon}
+              alt={name}
+              className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
+            />
           </a>
         ))}
       </div>

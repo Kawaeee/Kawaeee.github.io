@@ -56,6 +56,11 @@ body {
   font-family: 'Exo 2', Arial, Helvetica, sans-serif;
 }
 
+/* Hide scrollbar but keep scrolling functionality */
+div::-webkit-scrollbar {
+  display: none;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
