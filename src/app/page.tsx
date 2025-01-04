@@ -34,6 +34,17 @@ export default function Home() {
     };
   };
 
+  // Helper: Reapply z-indexes starting from 11
+  const reapplyZIndexes = (currentZIndexes: { [key: string]: number }) => {
+    const sortedIds = Object.keys(currentZIndexes).sort((a, b) => currentZIndexes[a] - currentZIndexes[b]);
+    const newZIndexes: { [key: string]: number } = {};
+    sortedIds.forEach((id, index) => {
+      newZIndexes[id] = 11 + index;
+    });
+    return newZIndexes;
+  };
+
+  // Open a new box or bring an existing one to the front
   const openBox = (id: string) => {
     setBoxes((prev) => {
       if (prev.some((box) => box.id === id)) return prev; // Prevent duplicate boxes
@@ -42,15 +53,31 @@ export default function Home() {
 
     setZIndexes((prev) => {
       const maxZIndex = Math.max(...Object.values(prev), 10);
-      return { ...prev, [id]: maxZIndex + 1 };
+      const newZIndex = maxZIndex >= 50 ? 11 : maxZIndex + 1;
+      return reapplyZIndexes({ ...prev, [id]: newZIndex });
     });
   };
 
+  // Bring a box to the front by setting the highest z-index
+  const bringToFront = (id: string) => {
+    setZIndexes((prev) => {
+      const maxZIndex = Math.max(...Object.values(prev), 10);
+      const newZIndex = maxZIndex >= 50 ? 11 : maxZIndex + 1;
+
+      // Update the z-index for the current box
+      const updatedZIndexes = { ...prev, [id]: newZIndex };
+
+      // Reapply if the maximum z-index exceeds 50
+      return newZIndex > 50 ? reapplyZIndexes(updatedZIndexes) : updatedZIndexes;
+    });
+  };
+
+  // Close a box and clean up its z-index
   const closeBox = (id: string) => {
     setBoxes((prev) => prev.filter((box) => box.id !== id));
     setZIndexes((prev) => {
-      const { [id]: _, ...rest } = prev;
-      return rest;
+      const { [id]: _, ...rest } = prev; // Remove the z-index for the closed box
+      return reapplyZIndexes(rest);
     });
   };
 
@@ -64,7 +91,7 @@ export default function Home() {
         return <Projects />;
       default:
         return null;
-    }
+  }
   };
 
   return (
@@ -107,6 +134,7 @@ export default function Home() {
             key={box.id}
             id={box.id}
             onClose={closeBox}
+            onFocus={bringToFront}
             zIndex={zIndexes[box.id] || 0}
             position={box.position}
             content={getContentComponent(box.id)}
