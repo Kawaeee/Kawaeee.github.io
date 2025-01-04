@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import FloatingBox from "../components/FloatingBox";
+import FloatingBox from "./components/FloatingBox";
+import About from "./pages/About";
+import Experiences from "./pages/Experiences";
+import Projects from "./pages/Projects";
 
 export default function Home() {
   const [boxes, setBoxes] = useState<{ id: string; position: { x: number; y: number } }[]>([]);
@@ -60,6 +63,19 @@ export default function Home() {
     });
   };
 
+  const getContentComponent = (id: string) => {
+    switch (id) {
+      case "about":
+        return <About />;
+      case "experiences":
+        return <Experiences />;
+      case "projects":
+        return <Projects />;
+      default:
+        return null;
+  }
+  };
+
   return (
     <div className="h-screen text-white flex overflow-hidden relative">
       {/* Background Video */}
@@ -97,6 +113,7 @@ export default function Home() {
             onFocus={bringToFront}
             zIndex={zIndexes[box.id] || 0}
             position={box.position}
+            content={getContentComponent(box.id)}
           />
         ))}
       </div>

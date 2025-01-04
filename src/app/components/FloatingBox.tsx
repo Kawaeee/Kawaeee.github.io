@@ -9,6 +9,7 @@ type FloatingBoxProps = {
   onFocus: (id: string) => void;
   zIndex: number;
   position: { x: number; y: number };
+  content: React.ReactNode;
 };
 
 const FloatingBox: React.FC<FloatingBoxProps> = ({
@@ -17,6 +18,7 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
   onFocus,
   zIndex,
   position: initialPosition,
+  content,
 }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -135,7 +137,7 @@ const FloatingBox: React.FC<FloatingBoxProps> = ({
 
         {!isMinimized && (
           <div className="p-4">
-            <p>This is the {id} box. Drag, maximize, minimize, or close me!</p>
+            {content}
           </div>
         )}
       </div>
