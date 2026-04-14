@@ -19,10 +19,11 @@ body {
 	font-size: var(--font-size-md);
 	line-height: 1.5;
 	color: var(--fg);
-	background: var(--bg);
+	background: var(--bg-app);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
+	overscroll-behavior-y: none;
 }
 
 button {

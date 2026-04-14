@@ -67,14 +67,15 @@
 		display: flex;
 		align-items: flex-end;
 		gap: 8px;
-		padding: 10px;
+		padding: 6px 6px 6px 14px;
 		border: 1px solid var(--border);
 		border-radius: 22px;
-		background: var(--bg-elev);
+		background: var(--bg-elev-2);
 		transition: border-color 120ms ease, background-color 120ms ease;
 	}
 	.composer:focus-within {
-		border-color: var(--border-strong);
+		border-color: var(--accent);
+		background: var(--bg-elev);
 	}
 
 	textarea {
@@ -83,11 +84,12 @@
 		border: 0;
 		outline: none;
 		background: transparent;
-		font-size: 15px;
+		font-size: 16px;
 		line-height: 1.45;
 		max-height: 160px;
-		padding: 6px 4px 6px 8px;
+		padding: 8px 0;
 		overflow-y: auto;
+		min-width: 0;
 	}
 	textarea::placeholder {
 		color: var(--fg-subtle);
@@ -95,15 +97,18 @@
 
 	.send {
 		flex: 0 0 auto;
-		width: 34px;
-		height: 34px;
+		width: 36px;
+		height: 36px;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 999px;
 		background: var(--accent);
 		color: var(--accent-fg);
-		transition: opacity 120ms ease, transform 120ms ease;
+		transition: opacity 120ms ease, transform 120ms ease, background-color 120ms ease;
+	}
+	.send:not(:disabled):hover {
+		background: var(--accent-strong);
 	}
 	.send:disabled {
 		opacity: 0.35;
