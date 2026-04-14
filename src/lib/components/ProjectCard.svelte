@@ -14,7 +14,11 @@
 		src={asset(item.icon)}
 		alt={item.name}
 		loading="lazy"
-		onerror={(e) => ((e.currentTarget as HTMLImageElement).src = fallbackImage())}
+		onerror={(e) => {
+			const img = e.currentTarget as HTMLImageElement;
+			img.onerror = null;
+			img.src = fallbackImage();
+		}}
 	/>
 	<div class="body">
 		<h3 class="name">{item.name}</h3>

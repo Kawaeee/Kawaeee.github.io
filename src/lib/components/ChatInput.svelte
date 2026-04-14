@@ -1,14 +1,27 @@
 <script lang="ts">
+	import { tick } from 'svelte';
+
+	interface InputApi {
+		focus: () => void;
+	}
+
 	interface Props {
 		onsend: (text: string) => void;
 		disabled?: boolean;
 		placeholder?: string;
+		onready?: (api: InputApi) => void;
 	}
 
-	let { onsend, disabled = false, placeholder = 'Message' }: Props = $props();
+	let { onsend, disabled = false, placeholder = 'Message', onready }: Props = $props();
 
 	let value = $state('');
 	let textarea: HTMLTextAreaElement | null = $state(null);
+
+	$effect(() => {
+		if (textarea && onready) {
+			onready({ focus: () => textarea?.focus() });
+		}
+	});
 
 	function autosize() {
 		if (!textarea) return;
@@ -16,12 +29,13 @@
 		textarea.style.height = Math.min(textarea.scrollHeight, 160) + 'px';
 	}
 
-	function submit() {
+	async function submit() {
 		const trimmed = value.trim();
 		if (!trimmed || disabled) return;
 		onsend(trimmed);
 		value = '';
-		queueMicrotask(autosize);
+		await tick();
+		autosize();
 	}
 
 	function onkeydown(e: KeyboardEvent) {
@@ -109,15 +123,13 @@
 	}
 	.send:not(:disabled):hover {
 		background: var(--accent-strong);
-	}
-	.send:disabled {
-		opacity: 0.35;
-		cursor: not-allowed;
-	}
-	.send:not(:disabled):hover {
 		transform: translateY(-1px);
 	}
 	.send:not(:disabled):active {
 		transform: translateY(0);
+	}
+	.send:disabled {
+		opacity: 0.35;
+		cursor: not-allowed;
 	}
 </style>

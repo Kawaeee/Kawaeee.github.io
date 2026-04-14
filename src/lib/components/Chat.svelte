@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { tick } from 'svelte';
+	import { browser } from '$app/environment';
 	import ThemeToggle from './ThemeToggle.svelte';
 	import Message from './Message.svelte';
 	import TypingIndicator from './TypingIndicator.svelte';
@@ -14,19 +15,26 @@
 	let nextId = 0;
 	const makeId = () => ++nextId;
 
-	function now() {
+	// Empty string on the server so prerendered HTML has no timestamp —
+	// hydration can't then mismatch against whatever the client clock reads.
+	function now(): string {
+		if (!browser) return '';
 		return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 	}
 
-	let messages = $state<ChatMessage[]>([
-		{
+	function greetingMessage(): ChatMessage {
+		return {
 			id: makeId(),
 			role: 'bot',
 			content: [{ kind: 'text', text: chatConfig.greetingText }],
 			time: now()
-		}
-	]);
+		};
+	}
+
+	let messages = $state<ChatMessage[]>([greetingMessage()]);
+	let input: { focus: () => void } | null = null;
 	let typing = $state(false);
+	let replyTimer: ReturnType<typeof setTimeout> | null = null;
 	let scroller: HTMLDivElement | null = $state(null);
 	let inner: HTMLDivElement | null = $state(null);
 	let sentinel: HTMLDivElement | null = $state(null);
@@ -82,7 +90,31 @@
 		return () => inner?.removeEventListener('load', handler, true);
 	});
 
+	// Greeting's `time` is empty on the server to avoid a hydration mismatch;
+	// backfill it on the client after mount.
+	$effect(() => {
+		if (messages.length > 0 && messages[0].role === 'bot' && !messages[0].time) {
+			messages[0] = { ...messages[0], time: now() };
+		}
+	});
+
+	function cancelPendingReply() {
+		if (replyTimer !== null) {
+			clearTimeout(replyTimer);
+			replyTimer = null;
+		}
+	}
+
+	async function handleReset() {
+		cancelPendingReply();
+		typing = false;
+		messages = [greetingMessage()];
+		await forceScrollToBottom();
+		input?.focus();
+	}
+
 	async function handleSend(text: string) {
+		cancelPendingReply();
 		messages = [
 			...messages,
 			{ id: makeId(), role: 'user', content: [{ kind: 'text', text }], time: now() }
@@ -94,10 +126,12 @@
 		const { id } = matchTopic(text);
 		const reply = topicById(id).reply();
 
-		setTimeout(async () => {
+		replyTimer = setTimeout(async () => {
+			replyTimer = null;
 			typing = false;
 			messages = [...messages, { id: makeId(), role: 'bot', content: reply, time: now() }];
 			await forceScrollToBottom();
+			input?.focus();
 		}, chatConfig.typingDelayMs);
 	}
 </script>
@@ -111,7 +145,11 @@
 						class="avatar"
 						src={asset(chatConfig.avatarPath)}
 						alt=""
-						onerror={(e) => ((e.currentTarget as HTMLImageElement).src = fallbackImage())}
+						onerror={(e) => {
+							const img = e.currentTarget as HTMLImageElement;
+							img.onerror = null;
+							img.src = fallbackImage();
+						}}
 					/>
 					<span class="online-dot" aria-hidden="true"></span>
 				</span>
@@ -120,10 +158,33 @@
 					<div class="status">{chatConfig.headerStatus}</div>
 				</div>
 			</div>
-			<ThemeToggle />
+			<div class="actions">
+				<button
+					type="button"
+					class="icon-btn"
+					aria-label="Reset conversation"
+					title="Reset conversation"
+					onclick={handleReset}
+				>
+					<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+						<path
+							d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</button>
+				<ThemeToggle />
+			</div>
 		</header>
 
-		<div class="messages" bind:this={scroller}>
+		<div
+			class="messages"
+			bind:this={scroller}
+			role="log"
+			aria-live="polite"
+			aria-atomic="false"
+			aria-label="Conversation"
+		>
 			<div class="inner" bind:this={inner}>
 				{#each messages as m (m.id)}
 					<Message role={m.role} content={m.content} time={m.time} onsuggestion={handleSend} />
@@ -139,7 +200,12 @@
 			<div class="quick">
 				<Suggestions items={chatConfig.quickReplies} onpick={handleSend} />
 			</div>
-			<ChatInput onsend={handleSend} disabled={typing} placeholder={chatConfig.inputPlaceholder} />
+			<ChatInput
+				onsend={handleSend}
+				disabled={typing}
+				placeholder={chatConfig.inputPlaceholder}
+				onready={(api) => (input = api)}
+			/>
 		</div>
 	</div>
 </div>
@@ -224,6 +290,12 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		max-width: 60vw;
+	}
+
+	.actions {
+		display: flex;
+		align-items: center;
+		gap: 4px;
 	}
 
 	.messages {

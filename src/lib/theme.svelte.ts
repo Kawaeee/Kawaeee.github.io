@@ -30,9 +30,6 @@ function createTheme() {
 		},
 		toggle() {
 			apply(current === 'dark' ? 'light' : 'dark');
-		},
-		set(next: Theme) {
-			apply(next);
 		}
 	};
 }

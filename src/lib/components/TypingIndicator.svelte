@@ -1,4 +1,4 @@
-<div class="row" aria-label="Typing">
+<div class="row" role="status" aria-live="polite" aria-label="Kaw is typing">
 	<div class="dots">
 		<span></span>
 		<span></span>
@@ -19,6 +19,26 @@
 		border-radius: var(--radius-bubble);
 		background: var(--bubble-bot-bg);
 		border-bottom-left-radius: 6px;
+		transform-origin: bottom left;
+		animation: pop-in-left 260ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+	}
+	@keyframes pop-in-left {
+		0% {
+			opacity: 0;
+			transform: translate(-8px, 10px) scale(0.92);
+		}
+		60% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 1;
+			transform: translate(0, 0) scale(1);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.dots {
+			animation: none;
+		}
 	}
 	.dots span {
 		width: 7px;

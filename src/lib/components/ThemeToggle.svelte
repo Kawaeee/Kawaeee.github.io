@@ -4,7 +4,7 @@
 
 <button
 	type="button"
-	class="toggle"
+	class="icon-btn"
 	aria-label="Toggle color theme"
 	title="Toggle theme"
 	onclick={() => theme.toggle()}
@@ -32,23 +32,3 @@
 		</svg>
 	{/if}
 </button>
-
-<style>
-	.toggle {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 36px;
-		height: 36px;
-		border-radius: 999px;
-		color: var(--fg-muted);
-		transition: background-color 120ms ease, color 120ms ease;
-	}
-	.toggle:hover {
-		background: var(--hover);
-		color: var(--fg);
-	}
-	.toggle:active {
-		background: var(--active);
-	}
-</style>

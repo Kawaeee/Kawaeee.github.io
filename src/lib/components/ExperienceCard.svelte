@@ -15,7 +15,11 @@
 			src={asset(item.icon)}
 			alt={item.company}
 			loading="lazy"
-			onerror={(e) => ((e.currentTarget as HTMLImageElement).src = fallbackImage())}
+			onerror={(e) => {
+				const img = e.currentTarget as HTMLImageElement;
+				img.onerror = null;
+				img.src = fallbackImage();
+			}}
 		/>
 		<div class="meta">
 			<h3 class="role">

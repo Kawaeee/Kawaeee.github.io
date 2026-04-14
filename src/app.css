@@ -49,6 +49,24 @@ a:hover {
 	text-decoration: underline;
 }
 
+.icon-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 999px;
+	color: var(--fg-muted);
+	transition: background-color 120ms ease, color 120ms ease;
+}
+.icon-btn:hover {
+	background: var(--hover);
+	color: var(--fg);
+}
+.icon-btn:active {
+	background: var(--active);
+}
+
 ::selection {
 	background: var(--accent);
 	color: var(--accent-fg);

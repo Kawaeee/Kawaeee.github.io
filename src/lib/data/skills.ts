@@ -40,6 +40,6 @@ export const skillGroups: SkillGroup[] = [
     },
     {
         title: 'Backend & Web',
-        items: ['FastAPI', 'Flask', 'Streamlit', 'Next.js', 'Svelte']
+        items: ['FastAPI', 'Flask', 'Streamlit', 'Next.js']
     }
 ];

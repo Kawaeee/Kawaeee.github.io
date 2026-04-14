@@ -1,10 +1,9 @@
-import { topics, type TopicId, type TopicDef } from './data/topics';
+import { topics, type TopicId } from './data/topics';
 
 const STOPWORDS = new Set([
     'a', 'an', 'the', 'and', 'or', 'but', 'so', 'of', 'to', 'for', 'in', 'on', 'at', 'by',
     'is', 'are', 'am', 'was', 'were', 'be', 'been', 'do', 'does', 'did', 'it', 'this', 'that',
     'these', 'those', 'me', 'my', 'mine', 'i',
-    // --- Expanded to prevent false positives on common words ---
     'you', 'your', 'yours', 'we', 'us', 'our',
     'who', 'what', 'where', 'when', 'why', 'how',
     'can', 'could', 'will', 'would', 'should', 'shall', 'may', 'might'
@@ -29,52 +28,45 @@ function normalize(input: string): string {
     return input.toLowerCase().replace(/[^a-z0-9\s']/g, ' ');
 }
 
-function tokenize(input: string): string[] {
-    return normalize(input)
-        .split(/\s+/)
-        .filter((t) => t.length > 0 && !STOPWORDS.has(t));
+function tokenize(normalized: string): string[] {
+    return normalized.split(/\s+/).filter((t) => t.length > 0 && !STOPWORDS.has(t));
 }
 
-function scoreTopic(topic: TopicDef, text: string, tokens: Set<string>, cfg: MatcherConfig): number {
-    if (topic.id === 'fallback') return 0;
-    let score = 0;
-    
-    if (topic.phrases) {
-        for (const phrase of topic.phrases) {
-            // Normalize the phrase so it matches the stripped user input perfectly
-            const normalizedPhrase = normalize(phrase);
-            
-            // Escape regex characters just in case you ever use symbols in phrases
-            const escapedPhrase = normalizedPhrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            
-            // \b ensures we only match whole words, preventing substring traps
-            const regex = new RegExp(`\\b${escapedPhrase}\\b`);
-            
-            if (regex.test(text)) score += cfg.phraseWeight;
-        }
-    }
-    
-    for (const kw of topic.keywords) {
-        if (tokens.has(kw.toLowerCase())) score += cfg.keywordWeight;
-    }
-    
-    return score;
+function escapeRegex(s: string): string {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// Pre-compile phrase regexes once at module load so matchTopic stays cheap on every keystroke.
+const compiled = topics.map((topic) => ({
+    topic,
+    phraseRegexes: (topic.phrases ?? []).map(
+        (p) => new RegExp(`\\b${escapeRegex(normalize(p))}\\b`)
+    )
+}));
+
+// Ties go to the FIRST topic in topics.ts — order specific intents before generic ones.
+// Overlapping keywords/phrases across topics (e.g. "work" in both `experience` and `projects`,
+// "github" in both `projects` and `contact`) are resolved purely by declaration order, so
+// reordering topics.ts will silently reroute matches.
 export function matchTopic(
     input: string,
     cfg: MatcherConfig = defaultMatcherConfig
 ): { id: TopicId; score: number } {
     const normalized = normalize(input);
-    const tokens = new Set(tokenize(input));
+    const tokens = new Set(tokenize(normalized));
 
     let best: { id: TopicId; score: number } = { id: 'fallback', score: 0 };
-    
-    for (const topic of topics) {
-        const score = scoreTopic(topic, normalized, tokens, cfg);
-        
-        // Strict greater-than means the FIRST topic in topics.ts wins ties.
-        // Tip: Order your topics.ts array with specific topics at the top, and generic (hello/help) at the bottom!
+    for (const { topic, phraseRegexes } of compiled) {
+        if (topic.id === 'fallback') continue;
+
+        let score = 0;
+        for (const regex of phraseRegexes) {
+            if (regex.test(normalized)) score += cfg.phraseWeight;
+        }
+        for (const kw of topic.keywords) {
+            if (tokens.has(kw)) score += cfg.keywordWeight;
+        }
+
         if (score > best.score) best = { id: topic.id, score };
     }
 

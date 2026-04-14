@@ -2,58 +2,47 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Repository context
-
-Kasidech C.'s personal portfolio (`Kawaeee.github.io`), rebuilt in SvelteKit on the `svelte-dev` branch. Sibling branches hold prior implementations: `main` (deployed Next.js build in `docs/`), `vuejs-dev`, `nextjs-dev`, `flutter-dev`. Image assets (experience logos, project thumbnails, contact icons) were pulled from the Next.js build on `main`.
-
-### Product direction
-
-Portfolio is a **chat-style UI** (`svelte-chat-portfolio`) in the spirit of LINE / iMessage — bubble rows, avatar, timestamps, typing indicator.
-
-- **Interaction model:** visitor types freely; input is scored against a fixed topic set and the bot replies with a canned, content-rich response. This is keyword/phrase intent matching, **not** an LLM.
-- **Topics:** bio, experience, projects, skills, contact, plus greeting/thanks/help/fallback.
-
 ## Commands
 
-- `npm run dev` — Vite dev server (`npm run dev -- --open` to open browser)
-- `npm run build` — production build to `build/`
-- `npm run preview` — preview the production build
-- `npm run check` — `svelte-kit sync` + `svelte-check` typecheck. This is the only correctness gate; there is no lint or test setup.
-- `npm run check:watch` — check in watch mode
+- `npm run dev` — start the Vite dev server (add `-- --open` to open a tab).
+- `npm run build` — produce the static site into `build/` via `@sveltejs/adapter-static`.
+- `npm run preview` — serve the built site locally.
+- `npm run check` — run `svelte-kit sync` then `svelte-check` against `tsconfig.json`. Use this as the type/lint gate; there is no separate ESLint or test runner configured.
+
+There are no unit tests in this repo.
+
+## Deployment target
+
+This is a user/organization GitHub Pages site (`Kawaeee.github.io`) served at the domain root. `svelte.config.js` sets `paths.base = ''` and uses `adapter-static` with `fallback: '404.html'`. Any link to a static asset must go through `src/lib/asset.ts`'s `asset()` helper so it composes with the SvelteKit `base` path — do not hard-code `/images/...`. The whole site is prerendered (`src/routes/+layout.ts` sets `prerender = true`, `trailingSlash = 'always'`).
 
 ## Architecture
 
-- **SvelteKit 2 + Svelte 5 in runes mode.** `svelte.config.js` force-enables runes for all non-`node_modules` files — use `$props()`, `$state()`, `$derived()`, `$effect()`, not legacy reactive syntax.
-- **Adapter is `@sveltejs/adapter-static`** writing to `build/` with `fallback: '404.html'`. Served at the domain root, so `paths.base` is `''` — **do not** add a subpath prefix. Prefix static URLs via `$lib/asset.ts` (`asset()` + `fallbackImage()`), which handles the base for you.
-- **Routes** in `src/routes/` (file-based); `+layout.svelte` wraps all pages.
-- **`static/images/`** holds experience/project/contact/profile artwork. `images/fallback.png` is the generic error fallback.
+The site is a single-page, chat-style portfolio. There is exactly one route (`src/routes/+page.svelte`) which renders `Chat.svelte`. All "content" (bio, experience, projects, skills, contacts) lives as typed data modules under `src/lib/data/`, and the UI is a thin chat shell around a rule-based matcher — **there is no backend, no LLM, no network calls for the chat logic**.
 
-### Content is data-driven — never hard-code in components
+### The chat loop
 
-All displayed strings, imagery, and tunables live under `src/lib/data/`:
+1. `Chat.svelte` owns `messages: ChatMessage[]` state (Svelte 5 runes — the whole project is in `runes: true` mode, see `svelte.config.js`).
+2. User input → `matchTopic(text)` in `src/lib/matcher.ts` → returns a `TopicId`.
+3. `topicById(id).reply()` in `src/lib/data/topics.ts` returns a `MessageContent[]` (see `src/lib/types.ts` for the tagged-union variants: `text`, `experiences`, `projects`, `contacts`, `skills`, `suggestions`).
+4. `Message.svelte` dispatches on `content.kind` to render the appropriate component (`ExperienceCard`, `ProjectCard`, `ContactGrid`, `SkillsList`, `Suggestions`).
 
-- `profile.ts` — name, bio, tagline, avatar, `contacts[]`
-- `experiences.ts`, `projects.ts`, `skills.ts` — card/list data
-- `topics.ts` — topic definitions (`keywords`, `phrases`, `reply()` → `MessageContent[]`)
-- `config.ts` — `chatConfig` (header, placeholder, quick replies, typing delay, greeting text, site meta)
+### The matcher (important when editing topics)
 
-When adding content, edit data modules. Components should stay generic.
+`src/lib/matcher.ts` scores each topic by summing `phraseWeight` for every matching regex in `phrases` and `keywordWeight` for every token in `keywords`. Phrase regexes are **pre-compiled at module load** — if you add a phrase, it's compiled once. Stopwords are filtered from keyword matches.
 
-### Message pipeline
+Ties are broken by **declaration order in `topics.ts`**. The file is organised into tiers (specific → generic → conversational → fallback) with comments marking each tier. **When adding a new topic, place it in the correct tier** — a generic topic placed above a specific one will steal matches. The `fallback` topic must remain last and is returned when no topic clears `minScore` (default 1).
 
-1. `Chat.svelte` is the single stateful shell — owns `messages`, `typing`, scroll state.
-2. User input → `matcher.ts` `matchTopic()` → `{ id, score }`. Scoring: stopword-filtered tokens, `keywordWeight=1`, `phraseWeight=3`, `minScore=1`; below threshold falls back to `fallback` topic.
-3. `topicById(id).reply()` returns `MessageContent[]` — a discriminated union (`text | experiences | projects | contacts | skills | suggestions`, see `src/lib/types.ts`).
-4. `Message.svelte` dispatches on `block.kind` and delegates to `ExperienceCard`, `ProjectCard`, `ContactGrid`, `SkillsList`, or `Suggestions`. Adding a new block type = extend the union in `types.ts` **and** add a branch in `Message.svelte`.
+### Content modules
 
-### Scroll-to-bottom (fragile — read before touching)
-
-The chat container is viewport-locked and only `.messages` scrolls. Auto-snap is held together by three pieces in `Chat.svelte`; changing one without the others tends to break it:
-
-- `.app { height: 100dvh; overflow: hidden }` + `.frame { grid-template-rows: auto 1fr auto; height: 100%; min-height: 0 }` + `.messages { overflow-y: auto; min-height: 0 }`. The `min-height: 0` unlocks on both the grid row and the scroller are required — without them, the page grows past the viewport.
-- `stickToBottom` is driven by an `IntersectionObserver` on a 1px `.bottom-sentinel` div, **not** by reading `scrollTop`/`scrollHeight`. Mid-reflow measurements during late image loads lie; the sentinel doesn't.
-- `forceScrollToBottom()` runs on every user action (send, chip tap, preset): set sticky → `await tick()` → `jumpToBottom()` → double `requestAnimationFrame` re-snap. A `ResizeObserver` on `.inner` and a capture-phase `load` listener re-snap for late-loading cards/images.
+- `src/lib/data/profile.ts` — single source of truth for name, bio, avatar path, `contacts[]`.
+- `src/lib/data/experiences.ts`, `projects.ts`, `skills.ts` — typed content arrays consumed by both topics and UI components.
+- `src/lib/data/config.ts` — `chatConfig`: header, greeting, quick replies, typing delay, site title/description. Pulls from `profile` so changing name/avatar ripples everywhere.
+- `src/lib/data/topics.ts` — the router. Each `topic({...})` entry defines keywords, phrases, and a `reply()` that returns `MessageContent[]`.
 
 ### Theming
 
-`src/lib/styles/palette.css` defines light/dark CSS variables; `src/lib/theme.svelte.ts` persists the choice to `localStorage` and toggles `documentElement.dataset.theme`. Components consume `var(--…)` only — no raw colors.
+`src/lib/theme.svelte.ts` exports a runes-based `theme` singleton that reads/writes `document.documentElement.dataset.theme` and `localStorage`. CSS variables live in `src/lib/styles/palette.css` (colours) and `tokens.css` (spacing/radii); they are toggled via `[data-theme="dark"]` selectors. `ThemeToggle.svelte` is the only UI for flipping it.
+
+### Scroll behaviour in `Chat.svelte`
+
+The chat uses an `IntersectionObserver` on a bottom sentinel to track `stickToBottom`, plus a `ResizeObserver` on the inner list and a capturing `load` listener for late-loading images. When adding new message content types (especially anything with images or async-sized content), rely on these observers rather than ad-hoc `scrollIntoView` calls — `forceScrollToBottom()` already double-rAFs to let layout settle.

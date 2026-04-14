@@ -6,9 +6,7 @@ export const profile = {
 	avatar: 'images/profile-pictures/icon-postelb.png',
 	bio: "Hi, I'm Kaw, a Data Scientist with 4+ years building ML systems, data pipelines, and AI infrastructure in production. I'm currently at Osotspa, where I architected the company's internal AI platform and shipped applications on top of it, including a RAG system and an LLM-powered OCR pipeline on LINE. Before that I worked on computer vision at EATLAB and large-scale NLP data processing at Omniscien Technologies, where I contributed to the ParaCrawl synthesized data release 2.",
 	currentRole: 'Data Scientist at Osotspa · Founder at Hedgehoglet',
-	location: 'Bangkok, Thailand',
-	openToWork: true,
-	coreStack: 'Python · GCP (Vertex AI, Cloud Run, Cloud Build) · AWS (SageMaker, Lambda, EC2) · Docker · LLMs/RAG · NLP · Computer Vision'
+	location: 'Bangkok, Thailand'
 } as const;
 
 export interface Contact {

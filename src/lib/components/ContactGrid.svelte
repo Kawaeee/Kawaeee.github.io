@@ -16,7 +16,11 @@
 				src={asset(c.icon)}
 				alt=""
 				loading="lazy"
-				onerror={(e) => ((e.currentTarget as HTMLImageElement).src = fallbackImage())}
+				onerror={(e) => {
+					const img = e.currentTarget as HTMLImageElement;
+					img.onerror = null;
+					img.src = fallbackImage();
+				}}
 			/>
 			<span class="label">
 				<span class="name">{c.name}</span>
