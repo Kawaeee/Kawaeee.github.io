@@ -1,0 +1,60 @@
+@import './lib/styles/tokens.css';
+@import './lib/styles/palette.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-md);
+	line-height: 1.5;
+	color: var(--fg);
+	background: var(--bg);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+button {
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+}
+
+input,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
+a {
+	color: var(--accent);
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+::selection {
+	background: var(--accent);
+	color: var(--accent-fg);
+}
+
+:focus-visible {
+	outline: 2px solid var(--ring);
+	outline-offset: 2px;
+	border-radius: var(--radius-sm);
+}
