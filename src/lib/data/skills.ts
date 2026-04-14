@@ -4,39 +4,42 @@ export interface SkillGroup {
 }
 
 export const skillGroups: SkillGroup[] = [
-	{
-		title: 'Languages',
-		items: ['Python', 'TypeScript', 'SQL', 'Bash', 'Scala']
-	},
-	{
-		title: 'AI / ML',
-		items: [
-			'LLMs',
-			'RAG',
-			'NLP',
-			'Computer Vision',
-			'PyTorch',
-			'TensorFlow',
-			'HuggingFace Transformers',
-			'DSPy',
-			'LangGraph',
-			'fastText'
-		]
-	},
-	{
-		title: 'Google Cloud',
-		items: ['Vertex AI', 'Cloud Run', 'Cloud Build', 'BigQuery', 'GCS']
-	},
-	{
-		title: 'AWS',
-		items: ['SageMaker', 'Lambda', 'EventBridge', 'EC2', 'S3']
-	},
-	{
-		title: 'Platform & Infra',
-		items: ['Docker', 'CI/CD', 'Linux', 'Git', 'TensorFlow Serving']
-	},
-	{
-		title: 'Backend & Web',
-		items: ['FastAPI', 'Flask', 'Streamlit', 'Next.js', 'Svelte']
-	}
+    {
+        title: 'Languages',
+        items: ['Python', 'TypeScript', 'SQL', 'Bash', 'Scala']
+    },
+    {
+        title: 'AI & Data Science',
+        items: [
+            'Generative AI (LLMs, RAG)', 
+            'NLP', 
+            'Computer Vision', 
+            'PyTorch', 
+            'TensorFlow', 
+            'Hugging Face',
+            'LangGraph', 
+            'DSPy'
+        ]
+    },
+    {
+        title: 'MLOps & Data Engineering',
+        items: [
+            'Data Pipelines', 
+            'CI/CD Workflows', 
+            'Docker', 
+            'TensorFlow Serving', 
+            'Model Monitoring'
+        ]
+    },
+    {
+        title: 'Cloud Computing',
+        items: [
+            'Google Cloud (Vertex AI, Cloud Run, BigQuery)', 
+            'AWS (SageMaker, Lambda, EC2, EventBridge)'
+        ]
+    },
+    {
+        title: 'Backend & Web',
+        items: ['FastAPI', 'Flask', 'Streamlit', 'Next.js', 'Svelte']
+    }
 ];
