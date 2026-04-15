@@ -1,3 +1,14 @@
+<!--
+	Root chat UI. Owns the full transcript (`messages`), the typing indicator,
+	and the scroll-sticky behaviour. The chat loop is:
+
+	    input → matchTopic() → topicById().reply() → append bot message
+
+	Three observers keep the list pinned to the bottom when the user is
+	already there: an IntersectionObserver on a bottom sentinel drives the
+	`stickToBottom` flag, a ResizeObserver re-snaps on content growth, and a
+	capturing `load` listener re-snaps after late-loading images.
+-->
 <script lang="ts">
 	import { tick } from 'svelte';
 	import { browser } from '$app/environment';
@@ -114,6 +125,11 @@
 	}
 
 	async function handleSend(text: string) {
+		// Ignore rapid re-entries while a bot reply is still pending — otherwise
+		// mashing a suggestion chip would queue up a wall of identical user
+		// messages and only one reply (because cancelPendingReply drops the
+		// older timers).
+		if (typing) return;
 		cancelPendingReply();
 		messages = [
 			...messages,
@@ -132,7 +148,23 @@
 			messages = [...messages, { id: makeId(), role: 'bot', content: reply, time: now() }];
 			await forceScrollToBottom();
 			input?.focus();
-		}, chatConfig.typingDelayMs);
+		}, pickTypingDelay(reply));
+	}
+
+	/**
+	 * Pick a humanish "typing" delay: uniform random inside the configured
+	 * range, plus a small per-text-character bonus so long replies feel like
+	 * they took a moment to compose. Capped at `typingDelayMaxMs * 1.4`.
+	 */
+	function pickTypingDelay(reply: ReturnType<ReturnType<typeof topicById>['reply']>): number {
+		const { typingDelayMinMs: min, typingDelayMaxMs: max } = chatConfig;
+		const base = min + Math.random() * (max - min);
+		const textChars = reply.reduce(
+			(n, b) => n + (b.kind === 'text' ? b.text.length : 0),
+			0
+		);
+		const lengthBonus = Math.min(textChars * 4, max * 0.6);
+		return Math.round(Math.min(base + lengthBonus, max * 1.4));
 	}
 </script>
 
@@ -187,7 +219,13 @@
 		>
 			<div class="inner" bind:this={inner}>
 				{#each messages as m (m.id)}
-					<Message role={m.role} content={m.content} time={m.time} onsuggestion={handleSend} />
+					<Message
+						role={m.role}
+						content={m.content}
+						time={m.time}
+						onsuggestion={handleSend}
+						suggestionsDisabled={typing}
+					/>
 				{/each}
 				{#if typing}
 					<TypingIndicator />
@@ -198,7 +236,7 @@
 
 		<div class="composer-wrap">
 			<div class="quick">
-				<Suggestions items={chatConfig.quickReplies} onpick={handleSend} />
+				<Suggestions items={chatConfig.quickReplies} onpick={handleSend} disabled={typing} />
 			</div>
 			<ChatInput
 				onsend={handleSend}
@@ -206,6 +244,7 @@
 				placeholder={chatConfig.inputPlaceholder}
 				onready={(api) => (input = api)}
 			/>
+			<p class="footer">© 2026 Kawaeee.</p>
 		</div>
 	</div>
 </div>
@@ -340,9 +379,21 @@
 		display: none;
 	}
 
+	.footer {
+		margin: 2px 0 0;
+		text-align: center;
+		font-size: 9px;
+		color: var(--fg-subtle);
+	}
+
 	@media (min-width: 720px) {
 		.app {
 			padding: 16px;
+			background:
+				radial-gradient(60ch 50ch at 12% 18%, var(--wallpaper-blob-1), transparent 60%),
+				radial-gradient(70ch 55ch at 88% 82%, var(--wallpaper-blob-2), transparent 62%),
+				radial-gradient(50ch 40ch at 80% 12%, var(--wallpaper-blob-3), transparent 65%),
+				var(--bg-app);
 		}
 		.frame {
 			border: 1px solid var(--border);

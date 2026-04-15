@@ -1,3 +1,8 @@
+/**
+ * Personal profile data — the single source of truth for name, bio, avatar,
+ * and contact links. Changing a field here ripples through the header,
+ * greeting, topics, and metadata automatically.
+ */
 export const profile = {
 	name: 'Kasidech Chumkun',
 	nickname: 'Kaw',
@@ -9,13 +14,19 @@ export const profile = {
 	location: 'Bangkok, Thailand'
 } as const;
 
+/** One row in the contact grid — rendered by `ContactGrid.svelte`. */
 export interface Contact {
+	/** Display label (e.g. `'Email'`, `'GitHub'`). */
 	name: string;
+	/** Destination URL; opened in a new tab with `noopener noreferrer`. */
 	url: string;
+	/** Static-asset path for the icon, resolved via `asset()`. */
 	icon: string;
+	/** Short handle shown under the name (e.g. `'@Kawaeee'`). */
 	handle: string;
 }
 
+/** External channels where I can be reached. */
 export const contacts: Contact[] = [
 	{
 		name: 'Email',

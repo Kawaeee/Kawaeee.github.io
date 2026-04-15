@@ -1,3 +1,4 @@
+<!-- One job-history card. Rendered inside a chat bubble when the `experience` topic matches. -->
 <script lang="ts">
 	import type { Experience } from '$lib/data/experiences';
 	import { asset, fallbackImage } from '$lib/asset';

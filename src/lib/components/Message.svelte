@@ -1,3 +1,9 @@
+<!--
+	One chat bubble. Dispatches on `content.kind` (see `MessageContent` in
+	`$lib/types`) and delegates each variant to the matching card component.
+	Adding a new `kind` requires adding a branch here and a producer in
+	`topics.ts`.
+-->
 <script lang="ts">
 	import type { MessageContent } from '$lib/types';
 	import ExperienceCard from './ExperienceCard.svelte';
@@ -10,10 +16,19 @@
 		role: 'user' | 'bot';
 		content: MessageContent[];
 		time?: string;
+		/** Invoked when the user taps an inline suggestion chip. */
 		onsuggestion?: (label: string) => void;
+		/** Disables inline suggestion chips (e.g. while a reply is pending). */
+		suggestionsDisabled?: boolean;
 	}
 
-	let { role, content, time, onsuggestion }: Props = $props();
+	let {
+		role,
+		content,
+		time,
+		onsuggestion,
+		suggestionsDisabled = false
+	}: Props = $props();
 </script>
 
 <div class="row" class:user={role === 'user'} class:bot={role === 'bot'}>
@@ -40,7 +55,11 @@
 			{:else if block.kind === 'skills'}
 				<SkillsList groups={block.groups} />
 			{:else if block.kind === 'suggestions'}
-				<Suggestions items={block.items} onpick={(l) => onsuggestion?.(l)} />
+				<Suggestions
+					items={block.items}
+					onpick={(l) => onsuggestion?.(l)}
+					disabled={suggestionsDisabled}
+				/>
 			{/if}
 		{/each}
 		{#if time}

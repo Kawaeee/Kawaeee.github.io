@@ -1,3 +1,4 @@
+<!-- One project card with optional demo + source links. -->
 <script lang="ts">
 	import type { Project } from '$lib/data/projects';
 	import { asset, fallbackImage } from '$lib/asset';

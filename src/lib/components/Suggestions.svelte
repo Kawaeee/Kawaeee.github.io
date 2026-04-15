@@ -1,14 +1,19 @@
+<!-- Row of tappable suggestion chips. Used for quick replies and inline prompts. -->
 <script lang="ts">
 	interface Props {
+		/** Labels to render; also the text sent when the chip is tapped. */
 		items: string[];
+		/** Invoked with the chip label when the user taps it. */
 		onpick: (label: string) => void;
+		/** When true, chips are visually and functionally inert. */
+		disabled?: boolean;
 	}
-	let { items, onpick }: Props = $props();
+	let { items, onpick, disabled = false }: Props = $props();
 </script>
 
 <div class="wrap" role="group" aria-label="Quick replies">
 	{#each items as label}
-		<button type="button" class="chip" onclick={() => onpick(label)}>
+		<button type="button" class="chip" {disabled} onclick={() => onpick(label)}>
 			{label}
 		</button>
 	{/each}
@@ -40,5 +45,10 @@
 	}
 	.chip:active {
 		transform: translateY(0);
+	}
+	.chip:disabled {
+		opacity: 0.45;
+		cursor: not-allowed;
+		pointer-events: none;
 	}
 </style>

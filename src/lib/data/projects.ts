@@ -1,12 +1,18 @@
+/** One project card rendered by `ProjectCard.svelte`. */
 export interface Project {
+	/** Stable key for `{#each}`. */
 	id: string;
 	name: string;
 	description: string;
+	/** Static-asset path for the project icon/thumbnail. */
 	icon: string;
+	/** Optional link to the source repo. */
 	sourceUrl?: string;
+	/** Optional link to a live demo / hosted version. */
 	demoUrl?: string;
 }
 
+/** Projects to showcase, displayed as a 1- or 2-column grid. */
 export const projects: Project[] = [
 	{
 		id: 'yolov8-tfserving',

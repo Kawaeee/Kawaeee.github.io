@@ -1,3 +1,4 @@
+<!-- Header icon button that flips light/dark via the `theme` singleton. -->
 <script lang="ts">
 	import { theme } from '$lib/theme.svelte';
 </script>

@@ -1,3 +1,13 @@
+/**
+ * Rule-based intent matcher.
+ *
+ * Scores every topic in `topics.ts` against the user's text by summing
+ * `phraseWeight` for each matching phrase regex and `keywordWeight` for each
+ * matching keyword token. Stopwords are filtered from keyword matches.
+ * Phrase regexes are pre-compiled at module load so matching on every
+ * keystroke stays cheap. Ties are broken by declaration order in `topics.ts`,
+ * which is why that file is organised into specific → generic tiers.
+ */
 import { topics, type TopicId } from './data/topics';
 
 const STOPWORDS = new Set([
@@ -9,7 +19,7 @@ const STOPWORDS = new Set([
     'can', 'could', 'will', 'would', 'should', 'shall', 'may', 'might'
 ]);
 
-export interface MatcherConfig {
+interface MatcherConfig {
     /** Minimum score a topic needs to win. Below this we return fallback. */
     minScore: number;
     /** Points per exact-phrase hit. */
@@ -18,7 +28,7 @@ export interface MatcherConfig {
     keywordWeight: number;
 }
 
-export const defaultMatcherConfig: MatcherConfig = {
+const defaultMatcherConfig: MatcherConfig = {
     minScore: 1,
     phraseWeight: 3,
     keywordWeight: 1
@@ -44,10 +54,17 @@ const compiled = topics.map((topic) => ({
     )
 }));
 
-// Ties go to the FIRST topic in topics.ts — order specific intents before generic ones.
-// Overlapping keywords/phrases across topics (e.g. "work" in both `experience` and `projects`,
-// "github" in both `projects` and `contact`) are resolved purely by declaration order, so
-// reordering topics.ts will silently reroute matches.
+/**
+ * Pick the best-matching topic for a user message.
+ *
+ * Ties go to the FIRST topic in `topics.ts` — order specific intents before
+ * generic ones. Overlapping keywords/phrases across topics (e.g. "work" in
+ * both `experience` and `projects`, "github" in both `projects` and
+ * `contact`) are resolved purely by declaration order, so reordering
+ * `topics.ts` will silently reroute matches.
+ *
+ * Returns `'fallback'` when no topic clears `cfg.minScore`.
+ */
 export function matchTopic(
     input: string,
     cfg: MatcherConfig = defaultMatcherConfig

@@ -58,6 +58,11 @@
 	--chip-hover-bg: #0084ff;
 	--chip-hover-fg: #ffffff;
 	--chip-hover-border: #0084ff;
+
+	/* Desktop wallpaper (soft ambient blobs behind the chat frame) */
+	--wallpaper-blob-1: rgba(0, 132, 255, 0.12);
+	--wallpaper-blob-2: rgba(139, 92, 246, 0.09);
+	--wallpaper-blob-3: rgba(34, 197, 94, 0.07);
 }
 
 /* ============================================================
@@ -105,4 +110,8 @@
 	--chip-hover-bg: #0a84ff;
 	--chip-hover-fg: #ffffff;
 	--chip-hover-border: #0a84ff;
+
+	--wallpaper-blob-1: rgba(10, 132, 255, 0.16);
+	--wallpaper-blob-2: rgba(139, 92, 246, 0.13);
+	--wallpaper-blob-3: rgba(52, 211, 153, 0.08);
 }

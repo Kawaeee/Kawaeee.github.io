@@ -1,8 +1,12 @@
+/** A titled bucket of skill chips rendered by `SkillsList.svelte`. */
 export interface SkillGroup {
+	/** Section heading (e.g. `'Languages'`). */
 	title: string;
+	/** Labels to render as chips inside this group. */
 	items: string[];
 }
 
+/** Skill buckets in display order. */
 export const skillGroups: SkillGroup[] = [
     {
         title: 'Languages',

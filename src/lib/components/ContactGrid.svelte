@@ -1,3 +1,4 @@
+<!-- Grid of external contact links (email, GitHub, LinkedIn, etc.). -->
 <script lang="ts">
 	import type { Contact } from '$lib/data/profile';
 	import { asset, fallbackImage } from '$lib/asset';

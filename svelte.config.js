@@ -9,8 +9,8 @@ const config = {
 	kit: {
 		// User/organization GitHub Pages site (Kawaeee.github.io) — served at root, so no base path.
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
+			pages: 'docs',
+			assets: 'docs',
 			fallback: '404.html',
 			precompress: false,
 			strict: true

@@ -1,3 +1,4 @@
+<!-- Grouped skill chips. One section per `SkillGroup`. -->
 <script lang="ts">
 	import type { SkillGroup } from '$lib/data/skills';
 
@@ -9,7 +10,7 @@
 
 <div class="wrap">
 	{#each groups as g}
-		<section class="group">
+		<section>
 			<h4 class="title">{g.title}</h4>
 			<div class="chips">
 				{#each g.items as s}

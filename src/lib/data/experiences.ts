@@ -1,15 +1,22 @@
+/** One job card rendered by `ExperienceCard.svelte`. */
 export interface Experience {
+	/** Stable key for `{#each}`. */
 	id: string;
 	role: string;
 	company: string;
 	employmentType?: string;
 	location?: string;
+	/** Free-text duration (e.g. `'July 2022 – Present'`). */
 	duration: string;
+	/** Bullet points shown under the header. */
 	details: string[];
+	/** Static-asset path for the company logo. */
 	icon: string;
+	/** If true, a "current" pill is shown next to the role. */
 	current?: boolean;
 }
 
+/** Professional history, ordered most-recent first. */
 export const experiences: Experience[] = [
 	{
 		id: 'osotspa',

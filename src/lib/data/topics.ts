@@ -1,10 +1,20 @@
+/**
+ * Topic router for the chat bot.
+ *
+ * Each topic defines `keywords` and optional `phrases` that the matcher
+ * scores against user input, plus a `reply()` that returns the content
+ * blocks to render. The file is organised into tiers (specific → generic →
+ * conversational → fallback) because the matcher breaks ties by declaration
+ * order — a generic topic placed above a specific one will steal matches.
+ * The `fallback` topic MUST remain last.
+ */
 import type { MessageContent } from '$lib/types';
 import { profile, contacts } from './profile';
 import { experiences } from './experiences';
 import { projects } from './projects';
 import { skillGroups } from './skills';
 
-export interface TopicDef {
+interface TopicDef {
     id: string;
     keywords: string[];
     phrases?: string[];
@@ -16,6 +26,10 @@ const r = (text: string): MessageContent => ({ kind: 'text', text });
 // Narrows the inferred `id` to its string literal so `TopicId` below can be derived from `topics`.
 const topic = <Id extends string>(t: TopicDef & { id: Id }): TopicDef & { id: Id } => t;
 
+/**
+ * Ordered list of topics. The matcher iterates this array in order, so the
+ * first topic in each tier wins ties against later ones.
+ */
 export const topics = [
     // --- TIER 1: HIGH SPECIFICITY / NICHE INTENTS ---
     // Place highly specific topics here so they always win ties against generic topics
@@ -347,7 +361,12 @@ export const topics = [
     })
 ];
 
+/** String-literal union of every registered topic id. */
 export type TopicId = (typeof topics)[number]['id'];
 
+/**
+ * Look up a topic by id. Falls back to the `fallback` topic if the id
+ * isn't found, so callers never need to null-check the result.
+ */
 export const topicById = (id: TopicId) =>
     topics.find((t) => t.id === id) ?? topics.find((t) => t.id === 'fallback')!;

@@ -1,3 +1,7 @@
+<!--
+	Root layout. Owns global CSS, the document title, favicon, and theme-color
+	meta tags. Everything else renders inside `{@render children()}`.
+-->
 <script lang="ts">
 	import '../app.css';
 	import { base } from '$app/paths';

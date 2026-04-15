@@ -1,3 +1,4 @@
+<!-- Three-dot "typing…" bubble shown while a bot reply is pending. -->
 <div class="row" role="status" aria-live="polite" aria-label="Kaw is typing">
 	<div class="dots">
 		<span></span>
