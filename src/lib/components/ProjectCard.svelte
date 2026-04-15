@@ -42,13 +42,13 @@
 <style>
 	.card {
 		display: grid;
-		grid-template-columns: 64px 1fr;
-		gap: 12px;
+		grid-template-columns: 56px 1fr;
+		gap: 10px;
 		align-items: flex-start;
 		background: var(--card-bg);
 		border: 1px solid var(--card-border);
 		border-radius: 14px;
-		padding: 12px;
+		padding: 11px;
 		box-shadow: var(--card-shadow);
 		transition: box-shadow 180ms ease, transform 180ms ease;
 	}
@@ -57,12 +57,59 @@
 		transform: translateY(-1px);
 	}
 	.thumb {
-		width: 64px;
-		height: 64px;
+		width: 56px;
+		height: 56px;
 		object-fit: contain;
 		background: var(--bg-elev-2);
 		border-radius: 10px;
-		padding: 6px;
+		padding: 5px;
+	}
+	@media (max-width: 480px) {
+		.card {
+			grid-template-columns: 48px 1fr;
+			gap: 9px;
+			padding: 10px;
+		}
+		.thumb {
+			width: 48px;
+			height: 48px;
+			padding: 4px;
+		}
+		.name {
+			font-size: 14px;
+		}
+		.desc {
+			font-size: 12px;
+		}
+		.link {
+			font-size: 11px;
+		}
+	}
+	@media (max-width: 375px) {
+		.card {
+			grid-template-columns: 40px 1fr;
+			gap: 8px;
+			padding: 8px;
+		}
+		.thumb {
+			width: 40px;
+			height: 40px;
+			padding: 3px;
+		}
+		.name {
+			font-size: 13px;
+		}
+		.desc {
+			font-size: 11px;
+			margin: 3px 0 6px;
+		}
+		.links {
+			gap: 4px;
+		}
+		.link {
+			font-size: 10px;
+			padding: 3px 8px;
+		}
 	}
 	.body {
 		min-width: 0;

@@ -122,10 +122,34 @@
 		background: transparent;
 		font-size: 16px;
 		line-height: 1.45;
-		max-height: 160px;
-		padding: 8px 0;
+		max-height: 140px;
+		padding: 7px 0;
 		overflow-y: auto;
 		min-width: 0;
+	}
+	@media (max-width: 480px) {
+		textarea {
+			padding: 6px 0;
+			max-height: 120px;
+		}
+	}
+	@media (max-width: 375px) {
+		.composer {
+			padding: 5px 5px 5px 12px;
+			gap: 6px;
+		}
+		textarea {
+			padding: 5px 0;
+			max-height: 100px;
+		}
+		.send {
+			width: 32px;
+			height: 32px;
+		}
+		.count {
+			font-size: 9px;
+			padding-bottom: 10px;
+		}
 	}
 	textarea::placeholder {
 		color: var(--fg-subtle);

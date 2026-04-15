@@ -34,8 +34,45 @@
 <style>
 	.grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 		gap: 8px;
+	}
+	@media (max-width: 480px) {
+		.grid {
+			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			gap: 6px;
+		}
+		.item {
+			padding: 8px 10px;
+			min-height: 48px;
+		}
+		.name {
+			font-size: 12px;
+		}
+		.handle {
+			font-size: 11px;
+		}
+	}
+	@media (max-width: 375px) {
+		.grid {
+			grid-template-columns: 1fr;
+			gap: 5px;
+		}
+		.item {
+			padding: 7px 9px;
+			min-height: 46px;
+			gap: 8px;
+		}
+		.name {
+			font-size: 11px;
+		}
+		.handle {
+			font-size: 10px;
+		}
+		.icon {
+			width: 24px;
+			height: 24px;
+		}
 	}
 	.item {
 		display: flex;

@@ -37,6 +37,23 @@
 		transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease,
 			transform 120ms ease;
 	}
+	@media (max-width: 480px) {
+		.chip {
+			font-size: 12px;
+			padding: 6px 12px;
+			min-height: 34px;
+		}
+	}
+	@media (max-width: 375px) {
+		.wrap {
+			gap: 5px;
+		}
+		.chip {
+			font-size: 11px;
+			padding: 5px 10px;
+			min-height: 32px;
+		}
+	}
 	.chip:hover {
 		background: var(--chip-hover-bg);
 		color: var(--chip-hover-fg);

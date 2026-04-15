@@ -25,16 +25,16 @@
 	.wrap {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: 9px;
 		background: var(--card-bg);
 		border: 1px solid var(--card-border);
 		border-radius: 14px;
-		padding: 12px 14px;
+		padding: 11px 13px;
 		box-shadow: var(--card-shadow);
 	}
 	.title {
-		margin: 0 0 6px;
-		font-size: 12px;
+		margin: 0 0 4px;
+		font-size: 11px;
 		font-weight: 600;
 		color: var(--fg-muted);
 		text-transform: uppercase;
@@ -43,14 +43,48 @@
 	.chips {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 6px;
+		gap: 5px;
 	}
 	.chip {
-		font-size: 12.5px;
+		font-size: 12px;
 		font-weight: 500;
-		padding: 4px 10px;
+		padding: 4px 9px;
 		border-radius: 999px;
 		background: var(--accent-soft);
 		color: var(--accent);
+	}
+	@media (max-width: 480px) {
+		.wrap {
+			padding: 10px 11px;
+			gap: 8px;
+		}
+		.title {
+			font-size: 10px;
+			margin-bottom: 3px;
+		}
+		.chips {
+			gap: 4px;
+		}
+		.chip {
+			font-size: 11px;
+			padding: 3px 8px;
+		}
+	}
+	@media (max-width: 375px) {
+		.wrap {
+			padding: 8px 9px;
+			gap: 6px;
+		}
+		.title {
+			font-size: 9px;
+			margin-bottom: 2px;
+		}
+		.chips {
+			gap: 3px;
+		}
+		.chip {
+			font-size: 10px;
+			padding: 2px 7px;
+		}
 	}
 </style>

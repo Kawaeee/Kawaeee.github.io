@@ -272,11 +272,25 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 12px;
-		padding: 10px 14px;
-		padding-top: calc(10px + env(safe-area-inset-top));
+		gap: 10px;
+		padding: 9px 12px;
+		padding-top: calc(9px + env(safe-area-inset-top));
 		border-bottom: 1px solid var(--border);
 		background: var(--bg-elev);
+	}
+	@media (max-width: 480px) {
+		.header {
+			padding: 8px 10px;
+			padding-top: calc(8px + env(safe-area-inset-top));
+			gap: 8px;
+		}
+	}
+	@media (max-width: 375px) {
+		.header {
+			padding: 6px 8px;
+			padding-top: calc(6px + env(safe-area-inset-top));
+			gap: 6px;
+		}
 	}
 
 	.identity {
@@ -290,12 +304,24 @@
 		flex: 0 0 auto;
 	}
 	.avatar {
-		width: 40px;
-		height: 40px;
+		width: 38px;
+		height: 38px;
 		border-radius: 999px;
 		object-fit: cover;
 		background: var(--bg-elev-2);
 		display: block;
+	}
+	@media (max-width: 480px) {
+		.avatar {
+			width: 36px;
+			height: 36px;
+		}
+	}
+	@media (max-width: 375px) {
+		.avatar {
+			width: 32px;
+			height: 32px;
+		}
 	}
 	.online-dot {
 		position: absolute;
@@ -344,10 +370,20 @@
 		min-height: 0;
 	}
 	.inner {
-		padding: 14px 12px 8px;
+		padding: 12px 10px 6px;
 		display: flex;
 		flex-direction: column;
 		gap: 2px;
+	}
+	@media (max-width: 480px) {
+		.inner {
+			padding: 10px 8px 4px;
+		}
+	}
+	@media (max-width: 375px) {
+		.inner {
+			padding: 8px 6px 2px;
+		}
 	}
 	.bottom-sentinel {
 		height: 1px;
@@ -358,11 +394,25 @@
 	.composer-wrap {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		padding: 10px 12px;
+		gap: 7px;
+		padding: 10px 10px;
 		padding-bottom: calc(10px + env(safe-area-inset-bottom));
 		border-top: 1px solid var(--border);
 		background: var(--bg);
+	}
+	@media (max-width: 480px) {
+		.composer-wrap {
+			padding: 8px 8px;
+			padding-bottom: calc(8px + env(safe-area-inset-bottom));
+			gap: 6px;
+		}
+	}
+	@media (max-width: 375px) {
+		.composer-wrap {
+			padding: 6px 6px;
+			padding-bottom: calc(6px + env(safe-area-inset-bottom));
+			gap: 5px;
+		}
 	}
 
 	.quick {
@@ -382,8 +432,13 @@
 	.footer {
 		margin: 2px 0 0;
 		text-align: center;
-		font-size: 9px;
+		font-size: 8px;
 		color: var(--fg-subtle);
+	}
+	@media (max-width: 480px) {
+		.footer {
+			font-size: 7px;
+		}
 	}
 
 	@media (min-width: 720px) {

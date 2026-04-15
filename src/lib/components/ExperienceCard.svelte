@@ -49,7 +49,7 @@
 		background: var(--card-bg);
 		border: 1px solid var(--card-border);
 		border-radius: 14px;
-		padding: 14px;
+		padding: 12px;
 		box-shadow: var(--card-shadow);
 		transition: box-shadow 180ms ease, transform 180ms ease;
 	}
@@ -60,17 +60,72 @@
 
 	.head {
 		display: grid;
-		grid-template-columns: 48px 1fr;
-		gap: 12px;
+		grid-template-columns: 44px 1fr;
+		gap: 10px;
 		align-items: center;
 	}
 	.logo {
-		width: 48px;
-		height: 48px;
+		width: 44px;
+		height: 44px;
 		object-fit: contain;
 		background: var(--bg-elev-2);
 		border-radius: 10px;
-		padding: 4px;
+		padding: 3px;
+	}
+	@media (max-width: 480px) {
+		.card {
+			padding: 11px;
+		}
+		.head {
+			grid-template-columns: 40px 1fr;
+			gap: 9px;
+		}
+		.logo {
+			width: 40px;
+			height: 40px;
+			padding: 2px;
+		}
+		.role {
+			font-size: 14px;
+		}
+		.company {
+			font-size: 12px;
+		}
+		.duration {
+			font-size: 11px;
+		}
+		.details {
+			font-size: 12.5px;
+			padding-left: 16px;
+		}
+	}
+	@media (max-width: 375px) {
+		.card {
+			padding: 9px;
+		}
+		.head {
+			grid-template-columns: 36px 1fr;
+			gap: 8px;
+		}
+		.logo {
+			width: 36px;
+			height: 36px;
+			padding: 2px;
+		}
+		.role {
+			font-size: 13px;
+		}
+		.company {
+			font-size: 11.5px;
+		}
+		.duration {
+			font-size: 10.5px;
+		}
+		.details {
+			font-size: 12px;
+			padding-left: 14px;
+			margin-top: 8px;
+		}
 	}
 	.meta {
 		min-width: 0;

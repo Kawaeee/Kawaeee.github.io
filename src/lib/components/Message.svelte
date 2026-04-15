@@ -119,8 +119,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: 6px;
-		max-width: min(92%, 720px);
+		max-width: min(88%, 720px);
 		min-width: 0;
+	}
+	@media (max-width: 375px) {
+		.stack {
+			max-width: min(86%, 720px);
+		}
 	}
 	.row.user .stack {
 		align-items: flex-end;
